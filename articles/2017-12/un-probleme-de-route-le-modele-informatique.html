@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="Nous allons maintenant modéliser le trafic routier pour une portion de route, en respectant les hypothèses données et décrites dans le dernier post.Pour cela...">
+  <meta name="keywords" content="Programming, Python, and CPGE">
+  <meta name="author" content="Un problème de route - Le modèle informatique linéaire | Nightlyside's corner">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f5f5f5">
+
+  <!-- Twitter Tags -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Un problème de route - Le modèle informatique linéaire | Nightlyside's corner">
+  <meta name="twitter:description" content="Nous allons maintenant modéliser le trafic routier pour une portion de route, en respectant les hypothèses données et décrites dans le dernier post.Pour cela...">
+  <meta name="twitter:image" content="http://localhost:4000/img/boyplusdog.png">
+
+  <!-- Open Graph Tags -->
+  <meta content="Nightlyside's corner" property="og:site_name">
+  
+    <meta content="Un problème de route - Le modèle informatique linéaire" property="og:title">
+  
+
+  
+    <meta content="article" property="og:type">
+  
+
+  
+    <meta content="<p>Nous allons maintenant modéliser le trafic routier pour une portion de route, en respectant les hypothèses données et décrites dans le dernier post.<br />
+Pour cela on procède en 3 étapes : on crée un modèle basique à une dimension, puis on l’étend à 2 dimensions et on ajoute en dernière étape les déviations et intersections. Ce post correspond à la première phase.</p>
+
+" property="og:description">
+  
+
+  
+    <meta content="http://localhost:4000/articles/2017-12/un-probleme-de-route-le-modele-informatique" property="og:url">
+  
+
+  
+    <meta content="2017-12-01T07:59:14+01:00" property="article:published_time">
+    <meta content="http://localhost:4000/cv/" property="article:author">
+  
+
+  
+    <meta content="http://localhost:4000/img/TIPE/sim_lineaire_front.jpg" property="og:image">
+  
+
+  
+    
+    <meta content="TIPE" property="article:section">
+    
+  
+
+  
+    
+    <meta content="code" property="article:tag">
+    
+    <meta content="routier" property="article:tag">
+    
+    <meta content="TIPE" property="article:tag">
+    
+  
+
+
+  
+  <title>Un problème de route - Le modèle informatique linéaire | Nightlyside's corner</title>
+
+  <!-- CSS files -->
+  <link rel="stylesheet" href="http://localhost:4000/css/font-awesome.min.css">
+  <link rel="stylesheet" href="http://localhost:4000/css/main.css">
+
+  <link rel="canonical" href="http://localhost:4000/articles/2017-12/un-probleme-de-route-le-modele-informatique">
+  <link rel="alternate" type="application/rss+xml" title="Nightlyside's corner" href="http://localhost:4000 /feed.xml " />
+
+  <!-- Icons -->
+  <!-- 16x16 -->
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.ico">
+  <!-- 32x32 -->
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.png">
+
+  <!--scripts -->
+  <script src="/js/jquery-3.2.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript">
+  </script>
+
+</head>
+
+
+<body>
+  <div class="row">
+    <div class="col s12 m3">
+      <div class="table cover">
+        
+
+<div class="cover-card table-cell table-middle">
+  
+  <img src="http://localhost:4000/img/boyplusdog.png" alt="" class="avatar">
+  
+  <a href="http://localhost:4000/" class="author_name">alexandre f</a>
+  <span class="author_job">Hobbyist programmer</span>
+  <span class="author_bio mbm">Petit développeur indépendant (aka. Nightlyside) dont le rêve est d’être capable de publier un projet terminé. Actuellement étudiant en CPGE (PSI* Lycée Kléber)</span>
+  <nav class="nav">
+    <ul class="nav-list">
+      <li class="nav-item">
+        <a href="http://localhost:4000/">home</a>
+        <span>/</span>
+      </li>
+         
+      <li class="nav-item">
+        <a href="http://localhost:4000/archive/">Archive</a>
+        
+          <span>/</span>
+        
+      </li>
+        
+      <li class="nav-item">
+        <a href="http://localhost:4000/cv/">C.V.</a>
+        
+          <span>/</span>
+        
+      </li>
+          
+      <li class="nav-item">
+        <a href="http://localhost:4000/categories/">Categories</a>
+        
+          <span>/</span>
+        
+      </li>
+          
+      <li class="nav-item">
+        <a href="http://localhost:4000/tags/">Tags</a>
+        
+          <span>/</span>
+        
+      </li>
+        
+      <li class="nav-item">
+        <a href="http://localhost:4000/index.html">Nightlyside's corner</a>
+        
+      </li>
+       
+    </ul>
+  </nav>
+  <script type="text/javascript">
+  // based on http://stackoverflow.com/a/10300743/280842
+  function gen_mail_to_link(hs, subject) {
+    var lhs,rhs;
+    var p = hs.split('@');
+    lhs = p[0];
+    rhs = p[1];
+    document.write("<a class=\"social-link-item\" target=\"_blank\" href=\"mailto");
+    document.write(":" + lhs + "@");
+    document.write(rhs + "?subject=" + subject + "\"><i class=\"fa fa-fw fa-envelope\"></i><\/a>");
+  }
+</script>
+<div class="social-links">
+  <ul>
+    
+      <li>
+      <script>gen_mail_to_link('nightlyside@gmail.com', 'Hello from website');</script>
+      </li>
+    
+    
+    <li><a href="http://facebook.com/alexandre.froehlich.1" class="social-link-item" target="_blank"><i class="fa fa-fw fa-facebook"></i></a></li>
+    
+    
+    
+    
+    
+    <li><a href="http://github.com/NightlySide" class="social-link-item" target="_blank"><i class="fa fa-fw fa-github"></i></a></li>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  </ul>
+</div>
+
+</div>
+
+      </div>
+    </div>
+    <div class="col s12 m9">
+      <div class="post-listing">
+        
+<div class="post-top-image">
+  <img class="feature-image" src=
+  
+  "http://localhost:4000/img/TIPE/sim_lineaire_front.jpg"
+  
+  alt="Un problème de route - Le modèle informatique linéaire feature image">
+
+  
+</div><!-- /.image-wrap -->
+
+
+<a class="btn" href= "http://localhost:4000/" >
+  Home
+</a>
+
+<div id="post">
+  <header class="post-header">
+    <h1 title="Un problème de route - Le modèle informatique linéaire">Un problème de route - Le modèle informatique linéaire</h1>
+    <span class="post-meta">
+      <span class="post-date">
+        1 DEC 2017
+      </span>
+      •
+      <span class="read-time" title="Estimated read time">
+  
+  
+    5 mins read
+  
+</span>
+
+    </span>
+
+  </header>
+
+  <article class="post-content col l11 s12">
+    <p>Nous allons maintenant modéliser le trafic routier pour une portion de route, en respectant les hypothèses données et décrites dans le dernier post.<br />
+Pour cela on procède en 3 étapes : on crée un modèle basique à une dimension, puis on l’étend à 2 dimensions et on ajoute en dernière étape les déviations et intersections. Ce post correspond à la première phase.</p>
+
+<!--more-->
+
+<p>La question qui m’a le plus souvent été posée lorsque je décrivais mon projet à mes camarades de classe était la suivante :</p>
+<blockquote>
+  <p>Mais comment est-ce que tu choisis l’endroit où va se produire l’embouteillage ?</p>
+</blockquote>
+
+<p>A cette question je leur réponds simplement que je ne choisis pas ! En effet, le but de cette modélisation est de faire en sorte que les voitures, par leur comportement, créent une congestion.</p>
+
+<h2 id="le-comportement-de-base-des-voitures">Le comportement de base des voitures</h2>
+
+<p>En suivant l’idée du <a href="http://ccp.scei-concours.fr/cpge/sujet/2017/PSI/PSI-Informatique.pdf" target="_blank">sujet de concours CCP 2017</a> (concours d’entrée aux écoles d’ingénieur), on peut décrire le comportement des voitures simplement en décomposant un instant <script type="math/tex">t</script> en plusieurs étapes, en mettant à jour leur vitesse. Cette méthode de simulation s’appelle aussi la <strong>simulation de Nagel et Schreckenberg</strong>.</p>
+
+<h3 id="accélération">Accélération</h3>
+
+<p>La première étape consiste à accélérer le véhicule d’une case par unité de temps. Cela correspond à une phase normale d’accélération. On limite cependant la vitesse à la vitesse maximale de la route.</p>
+
+<p>\[ v_k(t + 1) \rightarrow \text{min}(v_k(t) + 1,v_\text{max}) \]</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">acceleration</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">vitesses</span><span class="p">,</span> <span class="n">vmax</span><span class="p">):</span>
+    <span class="s">"""
+    Augmente l'accélération du véhicule k d'une unité
+    si il n'est pas à sa vitesse maximale
+    """</span>
+    <span class="n">vitesses</span><span class="p">[</span><span class="n">t</span><span class="o">+</span><span class="mi">1</span><span class="p">][</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">vitesses</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">k</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">vmax</span><span class="p">)</span></code></pre></figure>
+
+<h3 id="décélération">Décélération</h3>
+
+<p>La seconde étape consiste à faire ralentir le véhicule si la vitesse actuelle le fait rentrer en collision avec un autre véhicule. Pour se faire, on calcule la distance entre le véhicule et le précédent et on le compare à la vitesse actuelle. Si le véhicule est trop loin, le véhicule roule à la même vitesse, mais s’il est trop proche, le véhicule avance jusqu’à coller le véhicule devant lui, sa vitesse en sera diminuée pour simuler un freinage.</p>
+
+<p>\[ v_k(t + 1) \rightarrow \text{min}(v_k(t + 1),d_k − 1) \]</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">deceleration</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">xk</span><span class="p">,</span> <span class="n">xk1</span><span class="p">,</span> <span class="n">route</span><span class="p">,</span> <span class="n">vitesses</span><span class="p">):</span>
+    <span class="s">"""
+    Décélère si le véhicule k ne peut pas continuer à sa vitesse 
+    actuelle (il y a un véhicule devant)
+    """</span>
+    <span class="n">dk</span> <span class="o">=</span> <span class="n">xk1</span> <span class="o">-</span> <span class="n">xk</span> <span class="c"># distance entre les véhicules</span>
+    <span class="c"># mise à jour de la vitesse</span>
+    <span class="n">vitesses</span><span class="p">[</span><span class="n">t</span><span class="o">+</span><span class="mi">1</span><span class="p">][</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">vitesses</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">k</span><span class="p">],</span> <span class="n">dk</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span></code></pre></figure>
+
+<h3 id="facteur-aléatoire">Facteur aléatoire</h3>
+
+<p>Cette étape correspond au ralentissement aléatoire qui peut survenir en tout temps. Pour expliquer le réalisme d’une telle opération, il faut s’imaginer rouler sur une autoroute droite sans personne dessus à part un véhicule qui roule (sans régulateur de vitesse bien sûr). Alors il peut survenir un moment d’inattention qui va faire ralentir aléatoirement le conducteur.</p>
+
+<p>\[ \text{Si rand()}&lt; p \text{ alors }v_k(t + 1) \rightarrow \text{max}(v_k(t + 1) − 1,0) \]</p>
+
+<p>C’est ce phénomène qui est représenté par cette étape, il se trouve d’ailleurs que pour cette simulation, cette étape est celle qui crée les embouteillages routiers.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">facteur_aleatoire</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">vitesses</span><span class="p">):</span>
+    <span class="s">"""
+    Facteur aléatoire de ralentissement (p)
+    """</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">random</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">p</span><span class="p">):</span>
+        <span class="n">vitesses</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">vitesses</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">k</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span></code></pre></figure>
+
+<h3 id="déplacement">Déplacement</h3>
+
+<p>Cette dernière étape permet d’inscrire le mouvement lié à la vitesse de chaque véhicule. C’est à dire qu’après avoir fait la mise à jour de toutes les vitesses et en vérifiant bien qu’aucun véhicule ne rentre en collision avec d’autres, on déplace les voitures sur la route en mettant à jour leur position.</p>
+
+<p>\[ X_n(t + 1) \rightarrow X_n(t) + v_n(t + 1) \]</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">deplacement</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">xk</span><span class="p">,</span> <span class="n">vitesses</span><span class="p">):</span>
+    <span class="s">"""
+    Déplace le véhicule k a sa position suivante
+    """</span>
+    <span class="n">xk</span><span class="p">[</span><span class="n">t</span><span class="o">+</span><span class="mi">1</span><span class="p">][</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">xk</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">k</span><span class="p">]</span> <span class="o">+</span> <span class="n">vitesses</span><span class="p">[</span><span class="n">t</span><span class="o">+</span><span class="mi">1</span><span class="p">][</span><span class="n">k</span><span class="p">]</span></code></pre></figure>
+
+<h2 id="résultat">Résultat</h2>
+
+<p>En prenant une route d’une certaine taille puis en initialisant la route avec un nombre de voitures donné, on obtient un tableau de taille <script type="math/tex">longueur\_route \times itérations</script> qui représentera la route et chaque ligne correspondra à un instant donné. On obtient un tableau de la forme :</p>
+
+<p><img src="http://localhost:4000/img/TIPE/sim_lineaire.jpg" alt="Simulation linéaire" height="200px" /></p>
+
+<p>Les conditions initiales étant :</p>
+<ul>
+  <li>toutes les voitures partent à la même vitesse</li>
+  <li>toutes les voitures partent avec une distance égale avec la précédente</li>
+  <li>toutes les voitures possèdent le même facteur aléatoire (<script type="math/tex">80\%</script> ici)</li>
+</ul>
+
+<p>Chaque point jaune correspond à un véhicule, le reste étant la route. On se rend compte qu’avec de telles hypothèses, un bouchon se forme (sorte d’amas de points jaunes). Le code fonctionne !</p>
+
+<p>Pour mieux comprendre voici une animation qui reprends chaque ligne de l’image du dessus et la fait défiler l’une après l’autre. On comprends ainsi mieux pourquoi les amas de points correspondent à un embouteillage.</p>
+
+<p><img src="http://localhost:4000/img/TIPE/sim_lineaire_anim.gif" alt="Animation lineire" /></p>
+
+<p>La prochaine étape vue dans le prochain post sera de traduire ce code, d’utiliser le même principe et le même fonctionnement mais cette fois-ci sur une grille en 2D.</p>
+
+<!--<a class="btn" align="center" href="/articles/2017-11/un-probleme-de-route-demarche">Post précédent</a>-->
+
+  </article>
+</div>
+
+<div class="row"></div>
+
+<div class="share-buttons">
+  <h6>Share on: </h6>
+  <ul>
+    <li>
+      <a href="https://twitter.com/intent/tweet?text=http://localhost:4000/articles/2017-12/un-probleme-de-route-le-modele-informatique" class="twitter btn" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+    </li>
+    <li>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/articles/2017-12/un-probleme-de-route-le-modele-informatique" class="facebook btn" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
+    </li>
+    <li>
+      <a href="https://plus.google.com/share?url=http://localhost:4000/articles/2017-12/un-probleme-de-route-le-modele-informatique" class="google-plus btn" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
+    </li>
+    <li>
+      <a href="https://news.ycombinator.com/submitlink?u=http://localhost:4000/articles/2017-12/un-probleme-de-route-le-modele-informatique" class="hacker-news btn" title="Share on Hacker News"><i class="fa fa-hacker-news"></i><span> Hacker News</span></a>
+    </li>
+    <li>
+      <a href="https://www.reddit.com/submit?url=http://localhost:4000/articles/2017-12/un-probleme-de-route-le-modele-informatique" class="reddit btn" title="Share on Reddit"><i class="fa fa-reddit"></i><span> Reddit</span></a>
+    </li>
+  </ul>
+</div><!-- end share-buttons -->
+
+
+<div id="disqus_thread"></div>
+<script>
+
+    /**
+    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    
+    var disqus_config = function () {
+    this.page.url = "http://localhost:4000/articles/2017-12/un-probleme-de-route-le-modele-informatique;  // Replace PAGE_URL with your page's canonical URL variable";
+    this.page.identifier = "/articles/2017-12/un-probleme-de-route-le-modele-informatique"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    
+(function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://nightlysides-corner.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                            
+
+
+        <footer>
+  &copy; 2017 alexandre f. Powered by <a href="http://jekyllrb.com/">Jekyll</a> made with <i class="fa fa-heart heart-icon"></i>
+</footer>
+
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript" src="http://localhost:4000/js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="http://localhost:4000/js/main.js"></script>
+
+
+</body>
+</html>
