@@ -3,10 +3,10 @@
   <channel>
     <title>Nightlyside's corner</title>
     <description>A little place to show what's going through my head</description>
-    <link>http://localhost:4000/</link>
-    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 06 Dec 2017 23:07:54 +0100</pubDate>
-    <lastBuildDate>Wed, 06 Dec 2017 23:07:54 +0100</lastBuildDate>
+    <link>https://nightlyside.github.io/</link>
+    <atom:link href="https://nightlyside.github.io/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Wed, 06 Dec 2017 23:12:05 +0100</pubDate>
+    <lastBuildDate>Wed, 06 Dec 2017 23:12:05 +0100</lastBuildDate>
     <generator>Jekyll v3.6.2</generator>
     
       <item>
@@ -36,13 +36,13 @@
 
 &lt;p&gt;Avec le système actuel d’exportation de tableau qui consiste à attribuer une couleur par case (0 pour blanc, 1 pour vert et 2 pour orange pale) avec chaque couleur associée à un élément de la simulation (respectivement vide, route et véhicule). Le code ci-dessus retournera une grille de la bonne taille. Le remplissage étant aléatoire pour mettre en évidence la structure de la grille, un exemple est le suivant :&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://localhost:4000/img/TIPE/random.jpg&quot; alt=&quot;Grille aléatoire&quot; height=&quot;200px&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://nightlyside.github.io/img/TIPE/random.jpg&quot; alt=&quot;Grille aléatoire&quot; height=&quot;200px&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;création-de-la-route&quot;&gt;Création de la route&lt;/h2&gt;
 
 &lt;p&gt;On entame dès à présent une des parties des plus compliquées avec la création de la route. On définit la route comme étant l’ensemble des positions prises par un chemin pour aller d’un point &lt;script type=&quot;math/tex&quot;&gt;A&lt;/script&gt; à un point &lt;script type=&quot;math/tex&quot;&gt;B&lt;/script&gt;.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://localhost:4000/img/TIPE/AtoB.jpg&quot; alt=&quot;A vers B&quot; height=&quot;200px&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://nightlyside.github.io/img/TIPE/AtoB.jpg&quot; alt=&quot;A vers B&quot; height=&quot;200px&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;En prenant les coordonnées de &lt;script type=&quot;math/tex&quot;&gt;A = (0,0)&lt;/script&gt; et &lt;script type=&quot;math/tex&quot;&gt;B = (2,2)&lt;/script&gt; alors le chemin correpondant sera :&lt;/p&gt;
 
@@ -107,7 +107,7 @@ Une fois qu’on est arrivée à la dernière case on retourne la liste crée.&l
 
 &lt;p&gt;Correspondra à la grille suivante :&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://localhost:4000/img/TIPE/chemin_sur_route.jpg&quot; alt=&quot;A vers B&quot; height=&quot;200px&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://nightlyside.github.io/img/TIPE/chemin_sur_route.jpg&quot; alt=&quot;A vers B&quot; height=&quot;200px&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;faire-avancer-les-voitures&quot;&gt;Faire avancer les voitures&lt;/h2&gt;
 
@@ -205,11 +205,11 @@ Une fois qu’on est arrivée à la dernière case on retourne la liste crée.&l
 
 &lt;p&gt;On réaplique le même procédé que pour la situation linéaire. On prends sur la route du dessus 100 voitures roulant à 130km/h maximum et on calcule la simulation sur 250 itérations. On calcule chaque itération puis on exporte la grille à chaque instant. En assemblant les images dans un GIF animé, on obtient l’animation suivante :&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://localhost:4000/img/TIPE/sim_2D_anim.gif&quot; alt=&quot;Animation 2D&quot; height=&quot;400px&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://nightlyside.github.io/img/TIPE/sim_2D_anim.gif&quot; alt=&quot;Animation 2D&quot; height=&quot;400px&quot; /&gt;&lt;/p&gt;
 </description>
         <pubDate>Sat, 02 Dec 2017 13:59:14 +0100</pubDate>
-        <link>http://localhost:4000/articles/2017-12/un-probleme-de-route-passage-2D</link>
-        <guid isPermaLink="true">http://localhost:4000/articles/2017-12/un-probleme-de-route-passage-2D</guid>
+        <link>https://nightlyside.github.io/articles/2017-12/un-probleme-de-route-passage-2D</link>
+        <guid isPermaLink="true">https://nightlyside.github.io/articles/2017-12/un-probleme-de-route-passage-2D</guid>
         
         <category>code</category>
         
@@ -301,7 +301,7 @@ Pour cela on procède en 3 étapes : on crée un modèle basique à une dimensio
 
 &lt;p&gt;En prenant une route d’une certaine taille puis en initialisant la route avec un nombre de voitures donné, on obtient un tableau de taille &lt;script type=&quot;math/tex&quot;&gt;longueur\_route \times itérations&lt;/script&gt; qui représentera la route et chaque ligne correspondra à un instant donné. On obtient un tableau de la forme :&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://localhost:4000/img/TIPE/sim_lineaire.jpg&quot; alt=&quot;Simulation linéaire&quot; height=&quot;200px&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://nightlyside.github.io/img/TIPE/sim_lineaire.jpg&quot; alt=&quot;Simulation linéaire&quot; height=&quot;200px&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Les conditions initiales étant :&lt;/p&gt;
 &lt;ul&gt;
@@ -314,15 +314,15 @@ Pour cela on procède en 3 étapes : on crée un modèle basique à une dimensio
 
 &lt;p&gt;Pour mieux comprendre voici une animation qui reprends chaque ligne de l’image du dessus et la fait défiler l’une après l’autre. On comprends ainsi mieux pourquoi les amas de points correspondent à un embouteillage.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://localhost:4000/img/TIPE/sim_lineaire_anim.gif&quot; alt=&quot;Animation lineire&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://nightlyside.github.io/img/TIPE/sim_lineaire_anim.gif&quot; alt=&quot;Animation lineire&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;La prochaine étape vue dans le prochain post sera de traduire ce code, d’utiliser le même principe et le même fonctionnement mais cette fois-ci sur une grille en 2D.&lt;/p&gt;
 
 &lt;!--&lt;a class=&quot;btn&quot; align=&quot;center&quot; href=&quot;/articles/2017-11/un-probleme-de-route-demarche&quot;&gt;Post précédent&lt;/a&gt;--&gt;
 </description>
         <pubDate>Fri, 01 Dec 2017 07:59:14 +0100</pubDate>
-        <link>http://localhost:4000/articles/2017-12/un-probleme-de-route-le-modele-informatique</link>
-        <guid isPermaLink="true">http://localhost:4000/articles/2017-12/un-probleme-de-route-le-modele-informatique</guid>
+        <link>https://nightlyside.github.io/articles/2017-12/un-probleme-de-route-le-modele-informatique</link>
+        <guid isPermaLink="true">https://nightlyside.github.io/articles/2017-12/un-probleme-de-route-le-modele-informatique</guid>
         
         <category>code</category>
         
@@ -361,7 +361,7 @@ La question a déjà été pensée, réfléchie, retournée. L’APRR (Autoroute
 
 &lt;p&gt;Expliquée autrement, il suffit qu’un conducteur adopte un mode de conduite qui sortirait de la “conduite de croisière”, en changeant de voie rapidement par exemple ou encore en ralentissant dans une ligne droite tandis qu’aucun obstacle ne lui fait face.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://localhost:4000/img/TIPE/chg_voie.jpg&quot; alt=&quot;Changement de voie&quot; height=&quot;200px&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://nightlyside.github.io/img/TIPE/chg_voie.jpg&quot; alt=&quot;Changement de voie&quot; height=&quot;200px&quot; /&gt;&lt;/p&gt;
 &lt;p align=&quot;center&quot;&gt;
 Source : &lt;a href=&quot;https://www.wikihow.com/Merge-with-Heavy-Traffic&quot; target=&quot;_blank&quot;&gt;Wikihow&lt;/a&gt;
 &lt;/p&gt;
@@ -393,8 +393,8 @@ Source : &lt;a href=&quot;https://www.wikihow.com/Merge-with-Heavy-Traffic&quot;
 &lt;/ul&gt;
 </description>
         <pubDate>Wed, 29 Nov 2017 12:17:38 +0100</pubDate>
-        <link>http://localhost:4000/articles/2017-11/un-probleme-de-route-demarche</link>
-        <guid isPermaLink="true">http://localhost:4000/articles/2017-11/un-probleme-de-route-demarche</guid>
+        <link>https://nightlyside.github.io/articles/2017-11/un-probleme-de-route-demarche</link>
+        <guid isPermaLink="true">https://nightlyside.github.io/articles/2017-11/un-probleme-de-route-demarche</guid>
         
         <category>code</category>
         
