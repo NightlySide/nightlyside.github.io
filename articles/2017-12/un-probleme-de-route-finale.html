@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="Dernière ligne droite pour le modèle informatique. La dernière étape consiste à implémenter les carrefours, les déviations et les intersections. On se place ...">
+  <meta name="keywords" content="Programming, Python, and CPGE">
+  <meta name="author" content="Un problème de route - Le final (4/4) | Nightlyside's corner">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f5f5f5">
+
+  <!-- Twitter Tags -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Un problème de route - Le final (4/4) | Nightlyside's corner">
+  <meta name="twitter:description" content="Dernière ligne droite pour le modèle informatique. La dernière étape consiste à implémenter les carrefours, les déviations et les intersections. On se place ...">
+  <meta name="twitter:image" content="https://nightlyside.github.io/img/boyplusdog.png">
+
+  <!-- Open Graph Tags -->
+  <meta content="Nightlyside's corner" property="og:site_name">
+  
+    <meta content="Un problème de route - Le final (4/4)" property="og:title">
+  
+
+  
+    <meta content="article" property="og:type">
+  
+
+  
+    <meta content="<p>Dernière ligne droite pour le modèle informatique. La dernière étape consiste à implémenter les carrefours, les déviations et les intersections. On se place toujours dans les hypothèses mises en place dans l’explication de la démarche. Mais leur implémentation n’est pas facile à se représenter. Durant la phase de développement, on a fait face à de nombreux problèmes, voici comment on les a résolu.</p>
+
+" property="og:description">
+  
+
+  
+    <meta content="https://nightlyside.github.io/articles/2017-12/un-probleme-de-route-finale" property="og:url">
+  
+
+  
+    <meta content="2017-12-09T21:39:02+01:00" property="article:published_time">
+    <meta content="https://nightlyside.github.io/cv/" property="article:author">
+  
+
+  
+    <meta content="https://nightlyside.github.io/img/TIPE/final_front.jpg" property="og:image">
+  
+
+  
+    
+    <meta content="TIPE" property="article:section">
+    
+  
+
+  
+    
+    <meta content="code" property="article:tag">
+    
+    <meta content="routier" property="article:tag">
+    
+    <meta content="TIPE" property="article:tag">
+    
+    <meta content="python" property="article:tag">
+    
+  
+
+
+  
+  <title>Un problème de route - Le final (4/4) | Nightlyside's corner</title>
+
+  <!-- CSS files -->
+  <link rel="stylesheet" href="https://nightlyside.github.io/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://nightlyside.github.io/css/main.css">
+
+  <link rel="canonical" href="https://nightlyside.github.io/articles/2017-12/un-probleme-de-route-finale">
+  <link rel="alternate" type="application/rss+xml" title="Nightlyside's corner" href="https://nightlyside.github.io /feed.xml " />
+
+  <!-- Icons -->
+  <!-- 16x16 -->
+  <link rel="shortcut icon" href="https://nightlyside.github.io/favicon.ico">
+  <!-- 32x32 -->
+  <link rel="shortcut icon" href="https://nightlyside.github.io/favicon.png">
+
+  <!--scripts -->
+  <script src="/js/jquery-3.2.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript">
+  </script>
+
+</head>
+
+
+<body>
+  <div class="row">
+    <div class="col s12 m3">
+      <div class="table cover">
+        
+
+<div class="cover-card table-cell table-middle">
+  
+  <img src="https://nightlyside.github.io/img/boyplusdog.png" alt="" class="avatar">
+  
+  <a href="https://nightlyside.github.io/" class="author_name">alexandre f</a>
+  <span class="author_job">Hobbyist programmer</span>
+  <span class="author_bio mbm">Petit développeur indépendant (aka. Nightlyside) dont le rêve est d’être capable de publier un projet terminé. Actuellement étudiant en CPGE (PSI* Lycée Kléber)</span>
+  <nav class="nav">
+    <ul class="nav-list">
+      <li class="nav-item">
+        <a href="https://nightlyside.github.io/">accueil</a>
+        <span>/</span>
+      </li>
+       
+      <li class="nav-item">
+        <a href="https://nightlyside.github.io/archive/">archive</a>
+        
+          <span>/</span>
+        
+      </li>
+        
+      <li class="nav-item">
+        <a href="https://nightlyside.github.io/cv/">CV</a>
+        
+          <span>/</span>
+        
+      </li>
+        
+      <li class="nav-item">
+        <a href="https://nightlyside.github.io/categories/">categories</a>
+        
+          <span>/</span>
+        
+      </li>
+        
+      <li class="nav-item">
+        <a href="https://nightlyside.github.io/tags/">tags</a>
+        
+      </li>
+       
+    </ul>
+  </nav>
+  <script type="text/javascript">
+  // based on http://stackoverflow.com/a/10300743/280842
+  function gen_mail_to_link(hs, subject) {
+    var lhs,rhs;
+    var p = hs.split('@');
+    lhs = p[0];
+    rhs = p[1];
+    document.write("<a class=\"social-link-item\" target=\"_blank\" href=\"mailto");
+    document.write(":" + lhs + "@");
+    document.write(rhs + "?subject=" + subject + "\"><i class=\"fa fa-fw fa-envelope\"></i><\/a>");
+  }
+</script>
+<div class="social-links">
+  <ul>
+    
+      <li>
+      <script>gen_mail_to_link('nightlyside@gmail.com', 'Hello from website');</script>
+      </li>
+    
+    
+    <li><a href="http://facebook.com/alexandre.froehlich.1" class="social-link-item" target="_blank"><i class="fa fa-fw fa-facebook"></i></a></li>
+    
+    
+    
+    
+    
+    <li><a href="http://github.com/NightlySide" class="social-link-item" target="_blank"><i class="fa fa-fw fa-github"></i></a></li>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  </ul>
+</div>
+
+</div>
+
+      </div>
+    </div>
+    <div class="col s12 m9">
+      <div class="post-listing">
+        
+<div class="post-top-image">
+  <img class="feature-image" src=
+  
+  "https://nightlyside.github.io/img/TIPE/final_front.jpg"
+  
+  alt="Un problème de route - Le final (4/4) feature image">
+
+  
+</div><!-- /.image-wrap -->
+
+
+<a class="btn" href= "https://nightlyside.github.io/" >
+  Home
+</a>
+
+<div id="post">
+  <header class="post-header">
+    <h1 title="Un problème de route - Le final (4/4)">Un problème de route - Le final (4/4)</h1>
+    <span class="post-meta">
+      <span class="post-date">
+        9 DEC 2017
+      </span>
+      •
+      <span class="read-time" title="Estimated read time">
+  
+  
+    11 mins read
+  
+</span>
+
+    </span>
+
+  </header>
+
+  <article class="post-content col l11 s12">
+    <p>Dernière ligne droite pour le modèle informatique. La dernière étape consiste à implémenter les carrefours, les déviations et les intersections. On se place toujours dans les hypothèses mises en place dans l’explication de la démarche. Mais leur implémentation n’est pas facile à se représenter. Durant la phase de développement, on a fait face à de nombreux problèmes, voici comment on les a résolu.</p>
+
+<!--more-->
+
+<h2 id="réécriture-des-représentations-des-voitures-chemins-et-de-la-grille">Réécriture des représentations des voitures, chemins et de la grille</h2>
+
+<p>L’ancienne représentation (à l’aide de tableau) n’est probablement pas la meilleure solution à considérer pour la compréhension et la lisibilité de l’algorithme. Pour cela on utilisera les classes (notion hors programme de PSI en CPGE), pour plus d’information <a href="https://openclassrooms.com/courses/apprenez-a-programmer-en-python/premiere-approche-des-classes" target="_blank">ce cours publié sur OpenClassroom</a> explique mieux ce concept que je ne pourrais le faire.</p>
+
+<h3 id="les-voitures">Les voitures</h3>
+
+<p>Une des raisons pour lesquelles nous allons utiliser les classes est que cela facilite la compréhension. En effet pour récupérer la vitesse d’une voiture avant il fallait récupérer une entrée d’un tableau correspondant à ladite voiture. En utilisant les classes on utilise maintenant la méthode <code class="highlighter-rouge">voiture.getPosition(t)</code>.<br />
+Ainsi, on crée chaque voiture en lui donnant le nombre d’itérations que la simulation va calculer afin de stocker toutes les positions et vitesses pour les analyser. On lui donne le chemin sur lequel elle va évoluer ainsi que sa position initiale et la vitesse maximale à laquelle et pourra circuler. Le reste sera géré par la simulation.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Voiture</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nbTemps</span><span class="p">,</span> <span class="n">chemin</span><span class="p">,</span> <span class="n">carte</span><span class="p">,</span> <span class="n">position</span><span class="p">,</span> <span class="n">vmax</span><span class="p">,</span> <span class="n">facteur</span><span class="p">):</span>
+        <span class="c"># On définit les attributs de la voiture</span>
+
+    <span class="k">def</span> <span class="nf">setPosition</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">position</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">getPosition</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">getVitesse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">maj_vitesse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+        <span class="c"># On adapte ici le code de la simulation précédente</span>
+</code></pre></div></div>
+
+<h3 id="la-carte-et-ses-routes">La carte et ses routes</h3>
+
+<p>De même on retranscrit le code précédent en quelque chose de plus exploitable. En effet, il est plus simple d’écrire <code class="highlighter-rouge">carte.placerVoiture(t, voiture)</code> pour modifier la carte en ajoutant une voiture à l’instant <code class="highlighter-rouge">t</code>.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Carte</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hauteur</span><span class="p">,</span> <span class="n">largeur</span><span class="p">,</span> <span class="n">nbTemps</span><span class="p">,</span> <span class="n">aleatoire</span><span class="p">):</span>
+        <span class="c"># On définit les attributs de la carte</span>
+    
+    <span class="k">def</span> <span class="nf">elementALaPosition</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">position</span><span class="p">):</span>
+        <span class="c"># Retourne l'élément de la carte se trouvant à une certaine position</span>
+    <span class="k">def</span> <span class="nf">creerGrille</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hauteur</span><span class="p">,</span> <span class="n">largeur</span><span class="p">,</span> <span class="n">nbTemps</span><span class="p">,</span> <span class="n">aleatoire</span><span class="p">)</span>
+        <span class="c"># Permet d'initialiser la grille pour la simulation</span>
+    <span class="k">def</span> <span class="nf">represente</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">taille</span><span class="p">):</span>
+        <span class="c"># Retourne une représentation de la carte à l'instant t</span>
+        <span class="c"># Et ce, taille fois plus grand</span>
+    <span class="k">def</span> <span class="nf">placerVoiture</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">voiture</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">placerRoute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">route</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>De même pour les routes :</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Chemin</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">carte</span><span class="p">,</span> <span class="o">*</span><span class="n">positions</span><span class="p">):</span>
+        <span class="c"># On initialise la route à partir des positions par lesquelles</span>
+        <span class="c"># elle passera</span>
+
+    <span class="k">def</span> <span class="nf">creerCheminSimple</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos_i</span><span class="p">,</span> <span class="n">pos_f</span><span class="p">):</span>
+        <span class="c"># Permet de créer un chemin simple entre 2 points</span>
+    <span class="k">def</span> <span class="nf">creerCheminComplexe</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">positions</span><span class="p">):</span>
+        <span class="c"># Permet de créer un chemin complexe passant par un ensemble de positions</span>
+    <span class="k">def</span> <span class="nf">additionneChemins</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
+        <span class="c"># Permet d'additionner le chemin c à l'actuel</span>
+    <span class="k">def</span> <span class="nf">estSurChemin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos</span><span class="p">):</span>
+        <span class="c"># Vérifie si une position se trouve sur le chemin</span>
+    <span class="k">def</span> <span class="nf">voisins</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">position</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">voisin_suivant</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">position</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">distance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos1</span><span class="p">,</span> <span class="n">pos2</span><span class="p">):</span>
+        <span class="c"># Retourner la distance en nombre de cases entre les deux positions</span>
+</code></pre></div></div>
+
+<h2 id="le-problème-de-lancienne-simulation">Le problème de l’ancienne simulation</h2>
+
+<p>L’ancienne simulation fonctionnait bien lorsqu’il n’y avait qu’une seule voiture sur la route. Cependant, la voiture, face à une bifurcation va choisir aléatoirement une route ou l’autre. Nous l’avions codé de cette manière, mais nous voulons que la circulation ne se fasse que dans un sens pour pouvoir analyser la vitesse et la densité des voitures.</p>
+
+<p><img src="https://nightlyside.github.io/img/TIPE/probleme.gif" alt="Problème" height="200px" /></p>
+
+<p>Pour résoudre ce problème, une solution (celle que j’ai choisi), est de numéroter chaque case de la route, ainsi le sens de circulation sera donné par des indices de case croissants. C’est à dire que le chemin du post précédent devient maintenant :</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">chemin</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)],</span> 
+          <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)],</span> 
+          <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)],</span> 
+          <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)],</span> 
+          <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)]]</span>
+</code></pre></div></div>
+
+<h2 id="utilisation-du-nouveau-code">Utilisation du nouveau code</h2>
+
+<h3 id="quelques-procédures-et-fonctions-bien-utiles">Quelques procédures et fonctions bien utiles</h3>
+
+<p>Depuis le début de ces posts, je vous ai présenté des images, du texte, correspondant au résultats des simulations mais je ne vous ai pas encore expliqué comment cela se fait. Voici quelques fonctions bien utiles que j’ai utilisé entre autre afin d’exporte la carte à un instant donné, comment j’ai transformé une vitesse en cases par unité de temps en km/h, etc.</p>
+
+<p>La fonction suivante permet de récupérer une distance cartésienne entre deux points (il s’agit de la norme de la distance à ces points).</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">distancePos</span><span class="p">(</span><span class="n">pos_i</span><span class="p">,</span> <span class="n">pos_f</span><span class="p">):</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">pos_i</span>
+    <span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="o">=</span> <span class="n">pos_f</span>
+    <span class="k">return</span> <span class="p">((</span><span class="n">x</span> <span class="o">-</span> <span class="n">i</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="n">j</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> 
+</code></pre></div></div>
+
+<p>Voici une autre fonction très utile que je traîne avec moi depuis quelques années et qui me sert pour numéroter des images d’une simulation afin qu’elles soient acceptée par certains logiciels. Elle permet entre autre de transformer <code class="highlighter-rouge">98</code> et <code class="highlighter-rouge">6</code> en <code class="highlighter-rouge">00098</code> et <code class="highlighter-rouge">00006</code>.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">ajoutezeros</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">nombrezeros</span><span class="p">):</span>
+    <span class="s">"""
+    Prends le nombre n et rajoute le nombre de zéros nécessaires
+    à sa représentation en chaine de charactère
+    Retourne une chaine de charactères
+    ex : on veut un nombre à 3 chiffres : ajoutezeros(3, 5) = "003"
+    """</span>
+    <span class="n">nb</span> <span class="o">=</span> <span class="n">nombrezeros</span><span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">nb</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s">"0"</span><span class="o">*</span><span class="n">nb</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>  
+</code></pre></div></div>
+
+<p>Le code suivant permet d’afficher la carte à l’instant <script type="math/tex">t</script>. J’ai décidé de laisser tomber matplotlib pour pylab qui à l’avantage de supporter un raffraichissement de l’image plus fréquent (et par conséquent le support des animations).</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">affiche_grille</span><span class="p">(</span><span class="n">carte</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+    <span class="n">pylab</span><span class="o">.</span><span class="n">ion</span><span class="p">()</span>
+    <span class="n">tabplot</span> <span class="o">=</span> <span class="n">pylab</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">carte</span><span class="o">.</span><span class="n">represente</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">taille</span><span class="o">=</span><span class="mi">10</span><span class="p">),</span> <span class="n">cmap</span><span class="o">=</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">colors</span><span class="o">.</span><span class="n">ListedColormap</span><span class="p">([</span><span class="s">'white'</span><span class="p">,</span> <span class="s">'palegreen'</span><span class="p">,</span> <span class="s">'antiquewhite'</span><span class="p">]))</span>
+</code></pre></div></div>
+
+<p>Voici une des plus grandes avancées de mon code depuis la première version (en linéaire) il sert à jouer l’animation sans pour autant l’exporter en fichiers. Cela reste plutot lent et le paramètre qui permet de contrôle le nombre d’images par secondes (FPS en anglais) est homéopathique.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">affiche_simulation</span><span class="p">(</span><span class="n">carte</span><span class="p">,</span> <span class="n">fps</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">tmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">tmax</span><span class="o">=</span><span class="n">nbTemps</span><span class="p">):</span>
+    <span class="n">pylab</span><span class="o">.</span><span class="n">ion</span><span class="p">()</span>
+    <span class="n">tabplot</span> <span class="o">=</span> <span class="n">pylab</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">carte</span><span class="o">.</span><span class="n">represente</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">taille</span><span class="o">=</span><span class="mi">10</span><span class="p">),</span> \ 
+        <span class="n">cmap</span><span class="o">=</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">colors</span><span class="o">.</span><span class="n">ListedColormap</span><span class="p">([</span><span class="s">'white'</span><span class="p">,</span> <span class="s">'palegreen'</span><span class="p">,</span> <span class="s">'antiquewhite'</span><span class="p">]))</span>
+    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">tmin</span><span class="p">,</span> <span class="n">tmax</span><span class="p">):</span>
+        <span class="n">tabplot</span><span class="o">.</span><span class="n">set_data</span><span class="p">(</span><span class="n">carte</span><span class="o">.</span><span class="n">represente</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">taille</span><span class="o">=</span><span class="mi">10</span><span class="p">))</span>
+        <span class="n">pylab</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+        <span class="n">xx</span> <span class="o">=</span> <span class="n">pylab</span><span class="o">.</span><span class="n">waitforbuttonpress</span><span class="p">(</span><span class="n">timeout</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="n">fps</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="création-de-la-simulation">Création de la simulation</h3>
+
+<p>Le code précédent s’est bien raccourci grâce aux classes et possède une certaine compréhension quand à son initialisation.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># on crée la carte</span>
+<span class="n">carte</span> <span class="o">=</span> <span class="n">Carte</span><span class="p">(</span><span class="n">W</span><span class="p">,</span> <span class="n">H</span><span class="p">,</span> <span class="n">nbTemps</span><span class="p">)</span>
+<span class="c"># on crée la route</span>
+<span class="n">route</span> <span class="o">=</span> <span class="n">Chemin</span><span class="p">(</span><span class="n">carte</span><span class="p">,</span> <span class="p">(</span><span class="mi">74</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">74</span><span class="p">,</span> <span class="mi">54</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">54</span><span class="p">))</span>
+<span class="c"># on crée la seconde route</span>
+<span class="n">route2</span> <span class="o">=</span> <span class="n">Chemin</span><span class="p">(</span><span class="n">carte</span><span class="p">,</span> <span class="p">(</span><span class="mi">74</span><span class="p">,</span> <span class="mi">45</span><span class="p">),</span> <span class="p">(</span><span class="mi">54</span><span class="p">,</span> <span class="mi">45</span><span class="p">),</span> <span class="p">(</span><span class="mi">54</span><span class="p">,</span> <span class="mi">29</span><span class="p">),</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">29</span><span class="p">),</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">54</span><span class="p">))</span>
+<span class="c"># on indique l'endroit où les routes vont se rejoindre</span>
+<span class="n">route</span><span class="o">.</span><span class="n">deviation</span><span class="p">(</span><span class="n">route2</span><span class="p">,</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">54</span><span class="p">))</span>    
+<span class="c"># On place la route</span>
+<span class="n">carte</span><span class="o">.</span><span class="n">placerChemin</span><span class="p">(</span><span class="n">route</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>On a ainsi crée la carte sur laquelle la simulation va se dérouler, crée la route principale avec une déviation. Maintenant on doit crée les voitures. Pour se faire rien de plus simple on utilise la classe du dessus pour crée autant d’instances que de voitures. On utilise le code suivant, notez bien la structure particulière qui est presque transparente.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">voitures</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nbVoitures</span><span class="p">):</span>
+    <span class="n">voiture</span> <span class="o">=</span> <span class="n">Voiture</span><span class="p">(</span><span class="n">nbTemps</span><span class="p">,</span> <span class="n">route</span><span class="p">,</span> <span class="n">carte</span><span class="p">,</span> <span class="n">vitessemax</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="n">random</span><span class="p">())</span>
+    <span class="n">voitures</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">voiture</span><span class="p">)</span>
+    <span class="c"># On place la voiture</span>
+    <span class="n">voiture</span><span class="o">.</span><span class="n">setPosition</span><span class="p">(</span><span class="n">t</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">position</span><span class="p">)</span>
+    <span class="n">carte</span><span class="o">.</span><span class="n">placerVoiture</span><span class="p">(</span><span class="n">t</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">voiture</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>On vient de créer toutes les voitures et on les a placées à leur première position c’est à dire pour à <code class="highlighter-rouge">t=0</code>. Il ne reste plus qu’à calculer la vitesse de chaque voiture pour chaque temps et les déplacer en conséquence. On commence à <code class="highlighter-rouge">t=1</code> puisque la situation initiale à déjà été définie.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">nbTemps</span><span class="p">):</span>
+    <span class="c"># Pour chacune des voitures</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">voitures</span><span class="p">)):</span>
+        <span class="c"># On fait avancer les voitures et on change leur vitesse</span>
+        <span class="n">voitures</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">setPosition</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">voitures</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">avance</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">voitures</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">getPosition</span><span class="p">(</span><span class="n">t</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="n">voitures</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">vitesse</span><span class="p">[</span><span class="n">t</span><span class="o">-</span><span class="mi">1</span><span class="p">])[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">voitures</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">maj_vitesse</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+        <span class="c"># On replace la voiture sur la grille de l'instant t</span>
+        <span class="n">carte</span><span class="o">.</span><span class="n">placerVoiture</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">voitures</span><span class="p">[</span><span class="n">k</span><span class="p">])</span>
+</code></pre></div></div>
+
+<h3 id="lanimation-finale">L’animation finale</h3>
+
+<p>Ca y est ! On touche à la fin. Normalement tout fonctionne maintenant et on se retrouve avec une carte contenant la position de toutes les voitures à tout instant de la simulation. Il ne reste plus qu’à traiter ce tableau afin d’afficher la simulation. On obtient finalement quelque chose qui ressemble à l’animation ci-dessous.</p>
+
+<p><img src="https://nightlyside.github.io/img/TIPE/anim_finale.gif" alt="Animation finale" height="400px" /></p>
+
+<p>Le modèle informatique est dès à présent terminé. La prochaine étape consiste à construire une maquette modélisant la circulation et de tout comparer à la réalité.</p>
+
+  </article>
+</div>
+
+<div class="row"></div>
+
+<div class="share-buttons">
+  <h6>Share on: </h6>
+  <ul>
+    <li>
+      <a href="https://twitter.com/intent/tweet?text=https://nightlyside.github.io/articles/2017-12/un-probleme-de-route-finale" class="twitter btn" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+    </li>
+    <li>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=https://nightlyside.github.io/articles/2017-12/un-probleme-de-route-finale" class="facebook btn" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
+    </li>
+    <li>
+      <a href="https://plus.google.com/share?url=https://nightlyside.github.io/articles/2017-12/un-probleme-de-route-finale" class="google-plus btn" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
+    </li>
+    <li>
+      <a href="https://news.ycombinator.com/submitlink?u=https://nightlyside.github.io/articles/2017-12/un-probleme-de-route-finale" class="hacker-news btn" title="Share on Hacker News"><i class="fa fa-hacker-news"></i><span> Hacker News</span></a>
+    </li>
+    <li>
+      <a href="https://www.reddit.com/submit?url=https://nightlyside.github.io/articles/2017-12/un-probleme-de-route-finale" class="reddit btn" title="Share on Reddit"><i class="fa fa-reddit"></i><span> Reddit</span></a>
+    </li>
+  </ul>
+</div><!-- end share-buttons -->
+
+
+<div id="disqus_thread"></div>
+<script>
+
+    /**
+    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    
+    var disqus_config = function () {
+    this.page.url = "https://nightlyside.github.io/articles/2017-12/un-probleme-de-route-finale;  // Replace PAGE_URL with your page's canonical URL variable";
+    this.page.identifier = "/articles/2017-12/un-probleme-de-route-finale"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    
+(function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://nightlysides-corner.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                            
+
+
+        <footer>
+  &copy; 2017 alexandre f. Powered by <a href="http://jekyllrb.com/">Jekyll</a> made with <i class="fa fa-heart heart-icon"></i>
+</footer>
+
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript" src="https://nightlyside.github.io/js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="https://nightlyside.github.io/js/main.js"></script>
+
+
+</body>
+</html>
