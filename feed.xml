@@ -5,9 +5,75 @@
     <description>A little place to show what's going through my head</description>
     <link>https://nightlyside.github.io/</link>
     <atom:link href="https://nightlyside.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 09 Dec 2017 21:56:52 +0100</pubDate>
-    <lastBuildDate>Sat, 09 Dec 2017 21:56:52 +0100</lastBuildDate>
+    <pubDate>Wed, 21 Mar 2018 12:33:46 +0100</pubDate>
+    <lastBuildDate>Wed, 21 Mar 2018 12:33:46 +0100</lastBuildDate>
     <generator>Jekyll v3.6.2</generator>
+    
+      <item>
+        <title>Un problème de route - Bonus</title>
+        <description>&lt;p&gt;Un petit bonus pour ce projet. Je cherche maintenant à représenter la vitesse de chaque véhicule afin d’avoir une idée plus précise sur la fluidité du trafic routier. Il y a certe peu de modifications à faire, mais cela en vaut le coup.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;h2 id=&quot;pourquoi-une-telle-représentation&quot;&gt;Pourquoi une telle représentation&lt;/h2&gt;
+
+&lt;p&gt;L’idée m’est venue en lisant des articles sur la représentation de Nagel-Schreckenberg. Après avoir flâné quelques temps sur wikipédia, j’ai décidé de changer la langue de la page afin de voir si d’autres contributeurs non francophones avaient étoffés leur page plus que ça n’est le cas sur celle française.&lt;/p&gt;
+
+&lt;p&gt;A ma grande surprise, la &lt;a href=&quot;https://de.wikipedia.org/wiki/Nagel-Schreckenberg-Modell&quot; target=&quot;_blank&quot;&gt;page allemande du model de Nagel Schreckenberg&lt;/a&gt; montre une représentation du model plutôt ingénieuse : donner une couleur par véhicule en fonction de la vitesse de circulation de celui-ci. &lt;em&gt;(voir figure ci-dessous)&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://nightlyside.github.io/img/TIPE/NaSch.png&quot; alt=&quot;Représentation&quot; height=&quot;300px&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Maintenant on va modifier le code source de notre étude afin d’y implémenter cette nouvelle fonctionalité.&lt;/p&gt;
+
+&lt;h2 id=&quot;implémentation&quot;&gt;Implémentation&lt;/h2&gt;
+
+&lt;p&gt;La première étape est de modifier la fonction qui place les véhicules. En effet, précedemment, pour placer une voiture sur la carte, la simulation ajoutait un &lt;script type=&quot;math/tex&quot;&gt;2&lt;/script&gt; sur la case correspondante.&lt;/p&gt;
+
+&lt;p&gt;Maintenant nous allons remplacer la fonction &lt;code class=&quot;highlighter-rouge&quot;&gt;placerVoiture&lt;/code&gt; de la classe &lt;em&gt;Carte&lt;/em&gt; par le bout de code suivant :&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;placerVoiture&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;voiture&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;voiture&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;getPosition&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;grille&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;voiture&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;getVitesse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;La seule grande différence est que l’on calcule la valeur de la case par &lt;code class=&quot;highlighter-rouge&quot;&gt;2 + vitesse de la voiture&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Cela nous amène à notre seconde modification, en effet, pour détecter la présence d’une voiture, on récupérait la valeur d’une case de la carte que l’on comparait à &lt;script type=&quot;math/tex&quot;&gt;2&lt;/script&gt;. 
+On remplace alors toutes les occurence par &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;gt;= 2&lt;/code&gt; ce qui permettera de détecter la présence d’une voiture quelque soit sa vitesse&lt;/p&gt;
+
+&lt;h2 id=&quot;affichage&quot;&gt;Affichage&lt;/h2&gt;
+
+&lt;p&gt;On a maintenant l’ajout des vitesses des voitures sur la carte, il est grand temps de les afficher ! 
+Pour cela on change légèrement la liste des couleurs de &lt;em&gt;matplotlib.pyplot&lt;/em&gt; par :&lt;/p&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'white'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'palegreen'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'antiquewhite'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'yellow'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'orange'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'orangered'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'firebrick'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'darkred'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'black'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Ainsi une voiture à l’arrêt sera de couleur jaune et tendra vers le rouge en accélérant, puis sera noire à vitesse maximale. Le seul problème avec &lt;em&gt;matplotlib&lt;/em&gt; est que si il n’y a pas au moins une occurence de chaque couleur, il n’affichera pas correctement la couleur de la route et des véhicules.
+On ajoute alors à la représentation de la carte une unique ligne de pixels contenant toutes les valeurs de la vitesse afin quelles soient toutes représentées :&lt;/p&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;tableau&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tableau&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;k&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vmax&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;k&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tableau&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vmax&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))]&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;C’est tout ce qu’il y avait à faire !! (oui j’ai passé près de 2 heures sur ces modifications) Le résultat est vraiment satisfaisant par contre.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://nightlyside.github.io/img/TIPE/sim_vitesse.png&quot; alt=&quot;Vitesses&quot; height=&quot;300px&quot; /&gt;&lt;/p&gt;
+</description>
+        <pubDate>Wed, 21 Mar 2018 11:39:02 +0100</pubDate>
+        <link>https://nightlyside.github.io/articles/2018-03/un-probleme-de-route-bonus</link>
+        <guid isPermaLink="true">https://nightlyside.github.io/articles/2018-03/un-probleme-de-route-bonus</guid>
+        
+        <category>code</category>
+        
+        <category>routier</category>
+        
+        <category>TIPE</category>
+        
+        <category>python</category>
+        
+        
+        <category>TIPE</category>
+        
+        <category>Python</category>
+        
+      </item>
     
       <item>
         <title>Un problème de route - Le final (4/4)</title>
