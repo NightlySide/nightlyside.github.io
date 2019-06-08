@@ -3,10 +3,10 @@
   <channel>
     <title>Alexandre Froehlich</title>
     <description>Site vitrine des projets et des compétences de l'IETA Alexandre FROEHLICH Etudiant à l'ENSTA Bretagne, futur ingénieur en études et techniques de  l'armement.</description>
-    <link>http://localhost:4000/</link>
-    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sat, 08 Jun 2019 13:29:04 +0000</pubDate>
-    <lastBuildDate>Sat, 08 Jun 2019 13:29:04 +0000</lastBuildDate>
+    <link>https://nightlyside.github.io/</link>
+    <atom:link href="https://nightlyside.github.io/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Sat, 08 Jun 2019 13:42:17 +0000</pubDate>
+    <lastBuildDate>Sat, 08 Jun 2019 13:42:17 +0000</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
     
       <item>
@@ -53,8 +53,8 @@ Nous allons voir comment créer un algorithme pour compresser ces vilaines photo
 &lt;h3 id=&quot;développer-le-scénario&quot;&gt;Développer le scénario&lt;/h3&gt;
 </description>
         <pubDate>Sat, 08 Jun 2019 04:32:00 +0000</pubDate>
-        <link>http://localhost:4000/2019/06/08/algorithme-image-compression-python/</link>
-        <guid isPermaLink="true">http://localhost:4000/2019/06/08/algorithme-image-compression-python/</guid>
+        <link>https://nightlyside.github.io/2019/06/08/algorithme-image-compression-python/</link>
+        <guid isPermaLink="true">https://nightlyside.github.io/2019/06/08/algorithme-image-compression-python/</guid>
         
         
         <category>Python</category>
@@ -88,13 +88,13 @@ Nous allons voir comment créer un algorithme pour compresser ces vilaines photo
 
 &lt;p&gt;Avec le système actuel d’exportation de tableau qui consiste à attribuer une couleur par case (0 pour blanc, 1 pour vert et 2 pour orange pale) avec chaque couleur associée à un élément de la simulation (respectivement vide, route et véhicule). Le code ci-dessus retournera une grille de la bonne taille. Le remplissage étant aléatoire pour mettre en évidence la structure de la grille, un exemple est le suivant :&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://localhost:4000/public/images/profile.png&quot; alt=&quot;Grille aléatoire&quot; height=&quot;200px&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://nightlyside.github.io/public/images/profile.png&quot; alt=&quot;Grille aléatoire&quot; height=&quot;200px&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;création-de-la-route&quot;&gt;Création de la route&lt;/h2&gt;
 
 &lt;p&gt;On entame dès à présent une des parties des plus compliquées avec la création de la route. On définit la route comme étant l’ensemble des positions prises par un chemin pour aller d’un point &lt;script type=&quot;math/tex&quot;&gt;A&lt;/script&gt; à un point &lt;script type=&quot;math/tex&quot;&gt;B&lt;/script&gt;.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://localhost:4000/public/images/profile.png&quot; alt=&quot;A vers B&quot; height=&quot;200px&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://nightlyside.github.io/public/images/profile.png&quot; alt=&quot;A vers B&quot; height=&quot;200px&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;En prenant les coordonnées de &lt;script type=&quot;math/tex&quot;&gt;A = (0,0)&lt;/script&gt; et &lt;script type=&quot;math/tex&quot;&gt;B = (2,2)&lt;/script&gt; alors le chemin correpondant sera :&lt;/p&gt;
 
@@ -159,7 +159,7 @@ Une fois qu’on est arrivée à la dernière case on retourne la liste crée.&l
 
 &lt;p&gt;Correspondra à la grille suivante :&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://localhost:4000/public/images/profile.png&quot; alt=&quot;A vers B&quot; height=&quot;200px&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://nightlyside.github.io/public/images/profile.png&quot; alt=&quot;A vers B&quot; height=&quot;200px&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;faire-avancer-les-voitures&quot;&gt;Faire avancer les voitures&lt;/h2&gt;
 
@@ -257,11 +257,11 @@ Une fois qu’on est arrivée à la dernière case on retourne la liste crée.&l
 
 &lt;p&gt;On réaplique le même procédé que pour la situation linéaire. On prends sur la route du dessus 100 voitures roulant à 130km/h maximum et on calcule la simulation sur 250 itérations. On calcule chaque itération puis on exporte la grille à chaque instant. En assemblant les images dans un GIF animé, on obtient l’animation suivante :&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://localhost:4000/public/images/profile.png&quot; alt=&quot;Animation 2D&quot; height=&quot;400px&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://nightlyside.github.io/public/images/profile.png&quot; alt=&quot;Animation 2D&quot; height=&quot;400px&quot; /&gt;&lt;/p&gt;
 </description>
         <pubDate>Sat, 02 Dec 2017 12:59:14 +0000</pubDate>
-        <link>http://localhost:4000/2017/12/02/un-probleme-de-route-passage-2D/</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/12/02/un-probleme-de-route-passage-2D/</guid>
+        <link>https://nightlyside.github.io/2017/12/02/un-probleme-de-route-passage-2D/</link>
+        <guid isPermaLink="true">https://nightlyside.github.io/2017/12/02/un-probleme-de-route-passage-2D/</guid>
         
         
         <category>TIPE</category>
