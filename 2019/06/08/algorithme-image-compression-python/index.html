@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+
+
+
+
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="description" content="Stocker des images sur son PC ne pose rarement jamais problème en raison de la taille des nouveaux disques durs sur le marché, ainsi que de leur prix toujour...">
+	<meta name="keywords" content="Programming, Python, and Ingénieur">
+	<meta name="author" content="Alexandre Froehlich">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="theme-color" content="#333333">
+
+	<!-- Twitter Tags -->
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="Algorithme de compression d'images en Python | Alexandre Froehlich">
+	<meta name="twitter:description" content="Stocker des images sur son PC ne pose rarement jamais problème en raison de la taille des nouveaux disques durs sur le marché, ainsi que de leur prix toujour...">
+	<meta name="twitter:image" content="http://localhost:4000/img/boyplusdog.png">
+  
+	<!-- Open Graph Tags -->
+	<meta content="Alexandre Froehlich" property="og:site_name">
+	
+	  <meta content="Algorithme de compression d'images en Python" property="og:title">
+	
+  
+	
+	  <meta content="article" property="og:type">
+	
+  
+	<!--
+	  <meta content="<p>Stocker des images sur son PC ne pose rarement jamais problème en raison de la taille des nouveaux disques durs sur le marché, ainsi que de leur prix toujours décroissant. Cependant, il arrive que pour uploader ces images (c’est à dire les publier en ligne), la bande passante ne soit pas suffisante pour envoyer ces images de 20MPx.
+Nous allons voir comment créer un algorithme pour compresser ces vilaines photos lourdes.</p>
+
+" property="og:description">
+	-->
+  
+	
+	  <meta content="http://localhost:4000/2019/06/08/algorithme-image-compression-python/" property="og:url">
+	
+  
+	
+	  <meta content="2019-06-08T04:32:00+00:00" property="article:published_time">
+	  <meta content="http://localhost:4000/about/" property="article:author">
+	
+  
+	
+	  <meta content="http://localhost:4000/public/img/profile.png" property="og:image">
+	
+  
+	
+	  
+	  <meta content="Python" property="article:section">
+	  
+	
+  
+	
+	  
+	
+	
+	<title>Algorithme de compression d'images en Python | Alexandre Froehlich</title>
+
+	<!-- CSS -->
+	<link rel="stylesheet" type="text/css" href="http://localhost:4000/public/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="http://localhost:4000/public/css/posts.css">
+	<link rel="stylesheet" type="text/css" href="http://localhost:4000/public/css/highlighter.css">
+
+	<!-- Icons -->
+	<!-- 16x16 -->
+	<link rel="shortcut icon" href="http://localhost:4000/favicon.ico">
+	<!-- 32x32 -->
+	<link rel="shortcut icon" href="http://localhost:4000/favicon.png">
+
+	<!-- Javascript -->
+	<script src="http://localhost:4000/public/js/p5.js"></script>
+	<script src="http://localhost:4000/public/js/bootstrap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
+	type="text/javascript"></script>
+	<!-- MathJax config -->
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+	</script>
+
+	<!--
+
+		 _   _ _       _     _   _           _     _      
+		| \ | (_)     | |   | | | |         (_)   | |     
+		|  \| |_  __ _| |__ | |_| |_   _ ___ _  __| | ___ 
+		| . ` | |/ _` | '_ \| __| | | | / __| |/ _` |/ _ \
+		| |\  | | (_| | | | | |_| | |_| \__ \ | (_| |  __/
+		\_| \_/_|\__, |_| |_|\__|_|\__, |___/_|\__,_|\___|
+							__/ |             __/ |                 
+			   		 |___/             |___/          
+		
+	-->
+</head>
+
+<body>
+    <div class="fluid-container wrapper">
+        <!-- Sidebar -->
+        <nav class="col-md-3 d-none d-md-block sidebar">
+    <div class="sidebar-wrapper">
+    <img src="http://localhost:4000/public/images/profile.png">
+    <div class="row">
+        <a href="http://localhost:4000" class="author-name">Alexandre Froehlich</a>
+    </div>
+    <div class="row">
+        <span class="author-bio">Petit développeur indépendant (aka. Nightlyside) dont le rêve est d’être capable de publier
+                un projet terminé. Actuellement étudiant en CPGE (PSI* Lycée Kléber)</span>
+    </div>
+    
+    <div class="row">
+    <nav class="static-links">
+        <ul class="nav-list">
+            <li class="nav-item">
+                <a href="http://localhost:4000">Accueil</a>
+                <span>/</span>
+            </li>
+            <li class="nav-item">
+                <a href="http://localhost:4000/projets.html">Projets</a>
+                <span>/</span>
+            </li>
+            <li class="nav-item">
+                <a href="http://localhost:4000/blog.html">Blog</a>
+                <span>/</span>
+            </li>
+            <li class="nav-item">
+                <a href="http://localhost:4000/about.html">A propos</a>
+            </li>
+        </ul>
+    </nav>
+    </div>
+
+    <div class="social-links"></div>
+    </div>
+</nav>
+        
+        <!-- Content -->
+        <main class="col-md-8 ml-sm-auto col-lg-9" role="main">
+            
+            <!-- Cover picture -->
+            <div class="row">
+                <img class="cover-img" src=
+                    
+                        "http://localhost:4000/public/images/compression_example.jpg"
+                    
+                    alt="Algorithme de compression d'images en Python feature image">
+            </div>
+            
+
+            <div class="container content">
+                <span class="post-category">
+                    
+                        <a class="link-to-category" href="http://localhost:4000/categories/#Python">Python</a>
+                        
+                    
+                </span>
+                <h1>Algorithme de compression d'images en Python</h1>
+                <span class="post-meta">
+                    <span class="post-date">8 JUN 2019</span>
+                    •
+                    <span class="read-time" title="Temps de lecture estimé">
+    
+    
+        2 minutes
+    
+</span>
+      
+                </span>
+                <hr>
+
+                <!-- Content -->
+                <p>Stocker des images sur son PC ne pose rarement jamais problème en raison de la taille des nouveaux disques durs sur le marché, ainsi que de leur prix toujours décroissant. Cependant, il arrive que pour uploader ces images (c’est à dire les publier en ligne), la bande passante ne soit pas suffisante pour envoyer ces images de 20MPx.
+Nous allons voir comment créer un algorithme pour compresser ces vilaines photos lourdes.</p>
+
+<!--more-->
+
+<h2 id="quest-ce-que-la-compression-">Qu’est ce que la compression ?</h2>
+
+<p>Vous utilisez déjà probablement la compression sans même peut être le savoir. Sur votre ordinateur il se peut que vous ayez affaire à des archivs compressées comme les <code class="highlighter-rouge">.zip</code>, <code class="highlighter-rouge">.7z</code>, ou encore <code class="highlighter-rouge">.rar</code>. Mais savez vous que vos morceaux de musiques en <code class="highlighter-rouge">.mp3</code> sont aussi compressés ? Ces derniers emploient le principe de l’<a href="https://fr.wikipedia.org/wiki/Analyse_harmonique_(math%C3%A9matiques)">analyse de fourier</a> (point sur lequel nous n’allons pas revenir ici).</p>
+
+<p>On peut en soit distinguer deux sortes de compression :</p>
+<ul>
+  <li><strong>Avec pertes</strong> : la compression sera plus forte, mais l’image ou le morceau de musique va perdre en qualité (perte d’informations), le processus étant irréversible.</li>
+  <li><strong>Sans pertes</strong> : la compression est plus légère cependant il n’y a pas (ou très peu) de perte d’information. En musique, le format FLAC en est un exemple.</li>
+</ul>
+
+<p>Pour plus de simplicité, nous travaillerons ici avec une compression avec pertes.</p>
+
+<h2 id="différents-moyens-de-réduire-le-poids-dune">Différents moyens de réduire le poids d’une</h2>
+
+<h3 id="le-format-jpeg">Le format JPEG</h3>
+<p>Les images de type <code class="highlighter-rouge">RAW</code> ou même encore <code class="highlighter-rouge">bmp</code> contiennent les données brutes de l’images, souvent directement leur valeur de couleur pour chaque pixel (3 couleurs par pixel).</p>
+
+<p>Calculons pour voir. Pour une image en full HD (1920 x 1080), chaque pixel est composé de 3 composantes de couleurs allant de 0 à 255 donc codées sur 8 bits.</p>
+
+<script type="math/tex; mode=display">1920 \times 1080 \times 3 \times 8 = 49\;766\;400</script>
+
+<p>Ainsi pour une image en full HD, la taille de l’image en <code class="highlighter-rouge">.bmp</code> est de près de 49,7 Mb ! Vous commencez à saisir l’importance d’une bonne compression ?</p>
+
+<p>Le format <a href="https://fr.wikipedia.org/wiki/JPEG">JPEG</a> (<em>Joint Photographic Experts Group</em>) publié en 1992 est un format de compression dit “avec pertes”, est l’un des plus utilisé sur internet en raison de son faible coût en ressources. La plupart des appareils photos et téléphones exportent directement les photos dans ce format.</p>
+
+<p>De nombreuses bibliothèques python et même des interfaces en ligne sont capable de convertir vos fichiers dans ce format si ce n’est pas déjà le cas.</p>
+
+<h3 id="réduire-simplement-sa-résolution">Réduire simplement sa résolution</h3>
+<p>Je sais que vous aimez regarder vos photos de votre chat en 4K sur votre téléviseur intelligent et connecté. Mais pour le web, une si grande résolution n’est pas nécessaire. Dans le cadre de cet article il s’agit de créer des images qui auront pour taille maximale du full HD afin d’être publiées en ligne.</p>
+
+<p>Pour cela nous allons utiliser la bibliothèque python <a href="https://he-arc.github.io/livre-python/pillow/index.html">PIL</a> (<em>Python Image Library</em>), ainsi que python 3.7 (bouh à vous si vous êtes encore si python 2.7).</p>
+
+<h2 id="création-de-lalgorithme">Création de l’algorithme</h2>
+
+<h3 id="développer-le-scénario">Développer le scénario</h3>
+
+
+            </div>
+        </main>
+    </div>
+</body>
+</html>

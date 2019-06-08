@@ -1,416 +1,52 @@
-<!DOCTYPE html>
-<html lang="en">
-
-
-
-
-
+<!doctype html>
+<html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="description" content="A little place to show what's going through my head">
-  <meta name="keywords" content="Programming, Python, and CPGE">
-  <meta name="author" content="Nightlyside's corner | Nightlyside's corner">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#f5f5f5">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <!-- Twitter Tags -->
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Nightlyside's corner | Nightlyside's corner">
-  <meta name="twitter:description" content="A little place to show what's going through my head">
-  <meta name="twitter:image" content="https://nightlyside.github.io/img/boyplusdog.png">
+    <title>Landing page</title>
 
-  <!-- Open Graph Tags -->
-  <meta content="Nightlyside's corner" property="og:site_name">
-  
-    <meta content="Nightlyside's corner" property="og:title">
-  
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="./public/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./public/css/landing.css">
 
-  
-    <meta content="article" property="og:type">
-  
-
-  
-    <meta content="A little place to show what's going through my head" property="og:description">
-  
-
-  
-    <meta content="https://nightlyside.github.io/index.html" property="og:url">
-  
-
-  
-
-  
-    <meta content="https://nightlyside.github.io/img/boyplusdog.png" property="og:image">
-  
-
-  
-
-  
-
-
-  
-  <title>Nightlyside's corner | Nightlyside's corner</title>
-
-  <!-- CSS files -->
-  <link rel="stylesheet" href="https://nightlyside.github.io/css/font-awesome.min.css">
-  <link rel="stylesheet" href="https://nightlyside.github.io/css/main.css">
-
-  <link rel="canonical" href="https://nightlyside.github.io/">
-  <link rel="alternate" type="application/rss+xml" title="Nightlyside's corner" href="https://nightlyside.github.io /feed.xml " />
-
-  <!-- Icons -->
-  <!-- 16x16 -->
-  <link rel="shortcut icon" href="https://nightlyside.github.io/favicon.ico">
-  <!-- 32x32 -->
-  <link rel="shortcut icon" href="https://nightlyside.github.io/favicon.png">
-
-  <!--scripts -->
-  <script src="/js/jquery-3.2.1.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript">
-  </script>
-
+    <!-- Javascript -->
+    <script src="./public/js/p5.js"></script>
+    <script src="./public/js/sketch.js"></script>
+    <script src="./public/js/bootstrap.min.js"></script>
 </head>
 
-
 <body>
-  <div class="row">
-    <div class="col s12 m3">
-      <div class="table cover">
-        
+    <!--
+ __   __  __  ______  ______  __      __  __  ______  __  _____   ______    
+/\ "-.\ \/\ \/\  ___\/\__  _\/\ \    /\ \_\ \/\  ___\/\ \/\  __-./\  ___\   
+\ \ \-.  \ \ \ \ \__ \/_/\ \/\ \ \___\ \____ \ \___  \ \ \ \ \/\ \ \  __\   
+ \ \_\\"\_\ \_\ \_____\ \ \_\ \ \_____\/\_____\/\_____\ \_\ \____-\ \_____\ 
+  \/_/ \/_/\/_/\/_____/  \/_/  \/_____/\/_____/\/_____/\/_/\/____/ \/_____/ 
+                                                                            
+    -->
 
-<div class="cover-card table-cell table-middle">
-  
-  <img src="https://nightlyside.github.io/img/boyplusdog.png" alt="" class="avatar">
-  
-  <a href="https://nightlyside.github.io/" class="author_name">alexandre f</a>
-  <span class="author_job">Hobbyist programmer</span>
-  <span class="author_bio mbm">Petit développeur indépendant (aka. Nightlyside) dont le rêve est d’être capable de publier un projet terminé. Actuellement étudiant en CPGE (PSI* Lycée Kléber)</span>
-  <nav class="nav">
-    <ul class="nav-list">
-      <li class="nav-item">
-        <a href="https://nightlyside.github.io/">accueil</a>
-        <span>/</span>
-      </li>
-       
-      <li class="nav-item">
-        <a href="https://nightlyside.github.io/archive/">archive</a>
-        
-          <span>/</span>
-        
-      </li>
-        
-      <li class="nav-item">
-        <a href="https://nightlyside.github.io/cv/">CV</a>
-        
-          <span>/</span>
-        
-      </li>
-        
-      <li class="nav-item">
-        <a href="https://nightlyside.github.io/categories/">categories</a>
-        
-          <span>/</span>
-        
-      </li>
-        
-      <li class="nav-item">
-        <a href="https://nightlyside.github.io/tags/">tags</a>
-        
-      </li>
-       
-    </ul>
-  </nav>
-  <script type="text/javascript">
-  // based on http://stackoverflow.com/a/10300743/280842
-  function gen_mail_to_link(hs, subject) {
-    var lhs,rhs;
-    var p = hs.split('@');
-    lhs = p[0];
-    rhs = p[1];
-    document.write("<a class=\"social-link-item\" target=\"_blank\" href=\"mailto");
-    document.write(":" + lhs + "@");
-    document.write(rhs + "?subject=" + subject + "\"><i class=\"fa fa-fw fa-envelope\"></i><\/a>");
-  }
-</script>
-<div class="social-links">
-  <ul>
-    
-      <li>
-      <script>gen_mail_to_link('nightlyside@gmail.com', 'Hello from website');</script>
-      </li>
-    
-    
-    <li><a href="http://facebook.com/alexandre.froehlich.1" class="social-link-item" target="_blank"><i class="fa fa-fw fa-facebook"></i></a></li>
-    
-    
-    
-    
-    
-    <li><a href="http://github.com/NightlySide" class="social-link-item" target="_blank"><i class="fa fa-fw fa-github"></i></a></li>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-  </ul>
-</div>
-
-</div>
-
-      </div>
+    <!-- Content -->
+    <div id="content" class="container">
+        <div class="row justify-content-sm-center">
+            <h1 class="display-2">Alexandre Froehlich</h1>
+        </div>
+        <div class="row justify-content-sm-center">
+            <p>Développeur hobbyist et indépendant. J'aime coder des programmes étranges mais funs !</p>
+        </div>
+        <div id="nav-btn" class="row justify-content-sm-center">
+            <a href="post.html" class="btn btn-outline-light" role="button" aria-pressed="true">Projets</a>
+            <a href="/posts/" class="btn btn-outline-light" role="button" aria-pressed="true">Blog</a>
+            <a href="#" class="btn btn-outline-light" role="button" aria-pressed="true">A Propos</a>
+        </div>
     </div>
-    <div class="col s12 m9">
-      <div class="post-listing">
-        <!-- For the pagination buttons style -->
-<style>
-  ul.pager { text-align: center; list-style: none; }
-  ul.pager li {display: inline;border: 1px solid black; padding: 10px; margin: 5px;}
-</style>
 
-
-<section class="post row">
-  <header class="post-header">
-    <p class="post-meta">
-      <span class="post-date">
-        21 MAR 2018
-      </span>
-      
-      •
-      
-        <a class="post-cat" href="https://nightlyside.github.io/categories/#TIPE">TIPE</a>
-        
-        <span>/</span>
-        
-      
-        <a class="post-cat" href="https://nightlyside.github.io/categories/#Python">Python</a>
-        
-      
-      
-    </p>
-    <h4>
-      <a href="https://nightlyside.github.io/articles/2018-03/un-probleme-de-route-bonus" class="post-title" title="Un problème de route - Bonus">Un problème de route - Bonus</a>
-      
-    </h4>
-
-    
-
-    </header>
-
-    
-    <div class="col s12 l2 post-image-feature">
-      <img src=
-      
-      "https://nightlyside.github.io/img/TIPE/sim_vitesse_front.jpg"
-      
-      alt="Un problème de route - Bonus feature image">
-
-      
-    </div><!-- /.image-wrap -->
-    
-
-    
-    
-    <div class="col s12 l9 post-description">
-    
-      <p>Un petit bonus pour ce projet. Je cherche maintenant à représenter la vitesse de chaque véhicule afin d’avoir une idée plus précise sur la fluidité du trafic routier. Il y a certe peu de modifications à faire, mais cela en vaut le coup.</p>
-
-
-      <a href="https://nightlyside.github.io/articles/2018-03/un-probleme-de-route-bonus">Lire la suite...</a> 
+    <!-- Footer -->
+    <div class="container">
+        <div class="row justify-content-sm-center fixed-bottom">
+            <p>© 2019 alexandre froehlich</p>
+        </div>
     </div>
-    
-
-</section>
-
-<section class="post row">
-  <header class="post-header">
-    <p class="post-meta">
-      <span class="post-date">
-        9 DEC 2017
-      </span>
-      
-      •
-      
-        <a class="post-cat" href="https://nightlyside.github.io/categories/#TIPE">TIPE</a>
-        
-        <span>/</span>
-        
-      
-        <a class="post-cat" href="https://nightlyside.github.io/categories/#Python">Python</a>
-        
-      
-      
-    </p>
-    <h4>
-      <a href="https://nightlyside.github.io/articles/2017-12/un-probleme-de-route-finale" class="post-title" title="Un problème de route - Le final (4/4)">Un problème de route - Le final (4/4)</a>
-      
-    </h4>
-
-    
-
-    </header>
-
-    
-    <div class="col s12 l2 post-image-feature">
-      <img src=
-      
-      "https://nightlyside.github.io/img/TIPE/final_front.jpg"
-      
-      alt="Un problème de route - Le final (4/4) feature image">
-
-      
-    </div><!-- /.image-wrap -->
-    
-
-    
-    
-    <div class="col s12 l9 post-description">
-    
-      <p>Dernière ligne droite pour le modèle informatique. La dernière étape consiste à implémenter les carrefours, les déviations et les intersections. On se place toujours dans les hypothèses mises en place dans l’explication de la démarche. Mais leur implémentation n’est pas facile à se représenter. Durant la phase de développement, on a fait face à de nombreux problèmes, voici comment on les a résolu.</p>
-
-
-      <a href="https://nightlyside.github.io/articles/2017-12/un-probleme-de-route-finale">Lire la suite...</a> 
-    </div>
-    
-
-</section>
-
-<section class="post row">
-  <header class="post-header">
-    <p class="post-meta">
-      <span class="post-date">
-        2 DEC 2017
-      </span>
-      
-      •
-      
-        <a class="post-cat" href="https://nightlyside.github.io/categories/#TIPE">TIPE</a>
-        
-        <span>/</span>
-        
-      
-        <a class="post-cat" href="https://nightlyside.github.io/categories/#Python">Python</a>
-        
-      
-      
-    </p>
-    <h4>
-      <a href="https://nightlyside.github.io/articles/2017-12/un-probleme-de-route-passage-2D" class="post-title" title="Un problème de route - Passage en 2D (3/4)">Un problème de route - Passage en 2D (3/4)</a>
-      
-    </h4>
-
-    
-
-    </header>
-
-    
-    <div class="col s12 l2 post-image-feature">
-      <img src=
-      
-      "https://nightlyside.github.io/img/TIPE/random_front.jpg"
-      
-      alt="Un problème de route - Passage en 2D (3/4) feature image">
-
-      
-    </div><!-- /.image-wrap -->
-    
-
-    
-    
-    <div class="col s12 l9 post-description">
-    
-      <p>La deuxième étape consiste à passer la simulation à deux dimensions en vue d’implémenter les déviations et intersections. On peut encore séparer cette étape en plusieurs sous-étapes : création d’une grille qui va accueillir la route, à la manière d’un plateau contenant des cartes ou des jetons, puis création de la route et finalement adaptation des véhicules au nouveau système de route en 2 dimensions.</p>
-
-
-      <a href="https://nightlyside.github.io/articles/2017-12/un-probleme-de-route-passage-2D">Lire la suite...</a> 
-    </div>
-    
-
-</section>
-
-<section class="post row">
-  <header class="post-header">
-    <p class="post-meta">
-      <span class="post-date">
-        1 DEC 2017
-      </span>
-      
-      •
-      
-        <a class="post-cat" href="https://nightlyside.github.io/categories/#TIPE">TIPE</a>
-        
-        <span>/</span>
-        
-      
-        <a class="post-cat" href="https://nightlyside.github.io/categories/#Python">Python</a>
-        
-      
-      
-    </p>
-    <h4>
-      <a href="https://nightlyside.github.io/articles/2017-12/un-probleme-de-route-le-modele-informatique" class="post-title" title="Un problème de route - Le modèle informatique linéaire (2/4)">Un problème de route - Le modèle informatique linéaire (2/4)</a>
-      
-    </h4>
-
-    
-
-    </header>
-
-    
-    <div class="col s12 l2 post-image-feature">
-      <img src=
-      
-      "https://nightlyside.github.io/img/TIPE/sim_lineaire_front.jpg"
-      
-      alt="Un problème de route - Le modèle informatique linéaire (2/4) feature image">
-
-      
-    </div><!-- /.image-wrap -->
-    
-
-    
-    
-    <div class="col s12 l9 post-description">
-    
-      <p>Nous allons maintenant modéliser le trafic routier pour une portion de route, en respectant les hypothèses données et décrites dans le dernier post.<br />
-Pour cela on procède en 3 étapes : on crée un modèle basique à une dimension, puis on l’étend à 2 dimensions et on ajoute en dernière étape les déviations et intersections. Ce post correspond à la première phase.</p>
-
-
-      <a href="https://nightlyside.github.io/articles/2017-12/un-probleme-de-route-le-modele-informatique">Lire la suite...</a> 
-    </div>
-    
-
-</section>
-
-
-
-<ul class="pager">
-    
-    
-    <li class="next">
-        <a href="/page/2/index.html">Plus vieux &rarr;</a>
-    </li>
-    
-</ul>
-
-
-        <footer>
-  &copy; 2018 alexandre f. Powered by <a href="http://jekyllrb.com/">Jekyll</a> made with <i class="fa fa-heart heart-icon"></i>
-</footer>
-
-      </div>
-    </div>
-  </div>
-  <script type="text/javascript" src="https://nightlyside.github.io/js/jquery-3.2.1.min.js"></script>
-<script type="text/javascript" src="https://nightlyside.github.io/js/main.js"></script>
-
-
 </body>
 </html>
