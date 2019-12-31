@@ -1,0 +1,40 @@
+body {
+  margin: 0;
+}
+
+canvas {
+  display: block;
+  z-index: 1;
+}
+
+#particles-js {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #272727;
+  background-image: url("");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+#content {
+  position: relative;
+  z-index: 2;
+  margin-top: 50vh;
+  /* poussé de la moitié de hauteur de viewport */
+  transform: translateY(-50%);
+  /* tiré de la moitié de sa propre hauteur */
+}
+
+h1,
+p {
+  color: #e4e4e4;
+  text-align: center;
+}
+
+#nav-btn .btn {
+  margin: 0 0.25em;
+}
