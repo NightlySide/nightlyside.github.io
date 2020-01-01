@@ -75,6 +75,11 @@ li {
   margin-top: 2em;
 }
 
+.content img.center{
+   margin: 0 auto;
+   display: block;
+}
+
 .post:last-child {
   border-bottom: none;
 }
