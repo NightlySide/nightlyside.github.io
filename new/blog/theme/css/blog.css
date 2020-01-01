@@ -4,7 +4,7 @@
   margin: 0 auto;
 }
 
-li {
+.about li {
   display: inline-block;
 }
 
@@ -76,13 +76,17 @@ li {
 }
 
 .content img.center{
-   margin: 0 auto;
-   display: block;
-   max-width: 100%;
+  margin: 0 auto;
+  display: block;
+  max-width: 100%;
 }
 
 .content h2 {
   border-bottom: 1px solid rgba(0,0,0,.3);
+}
+
+.content h3 {
+  margin-top: 0.5em;;
 }
 
 .post:last-child {

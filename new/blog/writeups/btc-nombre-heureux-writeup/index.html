@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="" />
+
+    <!-- Favicon -->
+    <link rel="icon" href="https://nightlyside.github.io/new/blog/theme/favicon.ico" />
+    <link rel="icon" type="image/png" href="https://nightlyside.github.io/new/blog/theme/favicon.png" />
+
+    <!-- Browser Color -->
+ <meta name="author" content="Alexandre Froehlich" />
+<meta name="description" content="En fouillant dans la clé USB, vous tombez sur un dossier contenant un morceau d&#39;annuaire téléphonique, et un fichier contenant des instructions. &#34;Depuis quelques mois, un de mes collègues me harcèle et j&#39;ai peur qu&#39;il finisse par me faire du mal. Des fois qu&#39;il tomberait sur ce document, je préfère …" />
+<meta name="keywords" content="writeup, btc, cyber, python" />
+
+    <title>[BTC] Nombre heureux - WriteUp
+ | Alexandre Froehlich</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="https://nightlyside.github.io/new/blog/theme/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="https://nightlyside.github.io/new/blog/theme/css/fontawesome.css" />
+    <link rel="stylesheet" type="text/css" href="https://nightlyside.github.io/new/blog/theme/css/pygments/default.css">
+    <link rel="stylesheet" type="text/css" href="https://nightlyside.github.io/new/blog/theme/css/blog.css" />
+
+    <!-- Javascript -->
+    <script src="https://nightlyside.github.io/new/blog/theme/js/jquery.js"></script>
+    <script src="https://nightlyside.github.io/new/blog/theme/js/bootstrap.js"></script>
+    <script src="https://nightlyside.github.io/new/blog/theme/js/fontawesome.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']]
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+</head>
+
+<body>
+    <!--
+  _   _ _       _     _   _           _     _      
+ | \ | (_) __ _| |__ | |_| |_   _ ___(_) __| | ___ 
+ |  \| | |/ _` | '_ \| __| | | | / __| |/ _` |/ _ \
+ | |\  | | (_| | | | | |_| | |_| \__ \ | (_| |  __/
+ |_| \_|_|\__, |_| |_|\__|_|\__, |___/_|\__,_|\___|
+          |___/             |___/                  
+-->
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Fixed nav section -->
+            <div class="about col-sm-12 col-md-3 col-lg-2">
+                <nav class="navbar navbar-fixed-side sticky-top row">
+                    <img src="https://nightlyside.github.io/new/blog/images/avatar.png" alt="Alexandre Froehlich" />
+                    <h2 class="col-sm-12"><a href="https://nightlyside.github.io/new/blog/">Alexandre Froehlich</a></h2>
+                    <p class="col-sm-12">
+                        Hobbyist programmer. Petit développeur indépendant (aka.
+                        Nightlyside) dont le rêve est d’être capable de publier un projet
+                        terminé. Actuellement étudiant à l'ENSTA Bretagne
+                    </p>
+
+                    <!-- Navigation -->
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <span class="nav-item-separator">//</span><a href="https://nightlyside.github.io/new/blog/">Accueil</a>
+                        </li>
+                        <li class="nav-item">
+                            <span class="nav-item-separator">//</span><a href="https://nightlyside.github.io/new/blog/files/cv.pdf">CV</a>
+                        </li>
+                        <li class="nav-item">
+                            <span class="nav-item-separator">//</span><a href="https://nightlyside.github.io/new/blog/categories">Catégories</a>
+                        </li>
+                        <li class="nav-item">
+                            <span class="nav-item-separator">//</span><a href="https://nightlyside.github.io/new/blog/archives">Archives</a>
+                        </li>
+                        <li class="nav-item">
+                            <span class="nav-item-separator">//</span><a href="#">À propos</a>
+                        </li>
+                    </ul>
+
+                    <!-- Social links -->
+                    <ul class="social">
+                        <a href="https://github.com/nightlyside">
+                            <li><i class="fab fa-github-square"></i></li>
+                        </a>
+                        <a href="https://www.linkedin.com/in/alexandre-f-1102298a">
+                            <li><i class="fab fa-linkedin"></i></li>
+                        </a>
+                        <a href="https://twitter.com/froalexandre">
+                            <li><i class="fab fa-twitter-square"></i></li>
+                        </a>
+                        <a href="https://reddit.com/u/nightlyside">
+                            <li><i class="fab fa-reddit-square"></i></li>
+                        </a>
+                    </ul>
+                </nav>
+            </div>
+            <!-- Main content -->
+            <div class="col-sm-12 col-md-9 col-lg-10 main">
+<img class="featured_image" src="https://nightlyside.github.io/new/blog/images/BTC/team.jpg" alt="Image de l'article">
+                <div class="container content">
+                    <!-- Insert content here -->
+
+<h1 class="title">[BTC] Nombre heureux - WriteUp</h1>
+<p class="sous-titre">
+    <span class="date-poste">Posté le mer. 01 janvier 2020 dans <a href="https://nightlyside.github.io/new/blog/category/writeups.html">writeups</a></span> <br>
+    <span class="temps-lecture">Temps de lecture : 3 minutes</span>
+</p>
+
+<hr>
+<p>En fouillant dans la clé USB, vous tombez sur un dossier contenant un morceau d'annuaire téléphonique, et un fichier contenant des instructions.</p>
+<p>"Depuis quelques mois, un de mes collègues me harcèle et j'ai peur qu'il finisse par me faire du mal. Des fois qu'il tomberait sur ce document, je préfère ne pas le citer directement ..."</p>
+<p>Aidez la police en trouvant l'identité de la personne dont M. X parle.</p>
+<hr />
+<p>Le Challenge Break the Code est une compétition du type Capture The Flag (CTF) organisée par <a href="https://www.soprasteria.com/fr">Sopra Steria</a> qui dure 1h30. Les équipes des grandes écoles du bassin brestois s’y affrontent sur des challenges informatiques. Ces challenges mélangent différentes compétences telles que la programmation, l’analyse de donnée et la culture du numérique.</p>
+<h2>Première analyse</h2>
+<p>Nombre heureux est la 7ème épreuve de ce CTF, le but étant de trouver un numéro de téléphone présent dans l'annuaire de l'exercice.</p>
+<blockquote>
+<p>Si vous voulez essayer par vous-même, les fichiers de cet exercice sont <a href="https://nightlyside.github.io/new/blog/files/BTC/nombre-heureux.zip">disponibles ici</a>.</p>
+</blockquote>
+<p>Pour retrouver ce numéro l'exercice nous donne des instructions, il s'agit de la somme des nombres qui remplissent les conditions suivantes :</p>
+<ul>
+<li>être compris entre 0 et 200 000 <strong>inclus</strong> </li>
+<li>être heureux</li>
+<li>être impair</li>
+<li>être premier</li>
+</ul>
+<p>Comme Break The Code est une compétition de rapidité, pour le prototypage de l'algorithme j'ai décidé de choisir python.</p>
+<h2>Conception de l'algorithme</h2>
+<h3>Nombre heureux</h3>
+<p>L'exercice nous définit un nombre heureux de la sorte :<br />
+Partant de n'importe quel entier positif, remplacer cet entier par la somme des carrés des chiffres qui le composent, et répéter le processus jusqu'à ce que le nombre soit égal à 1 (auquel cas le nombre est qualifié de "heureux").
+Si le processus boucle (i.e. on repasse sur un nombre déja obtenu lors d'une étape précédente), alors le chiffre n'est pas "heureux" et le processus peut être stoppé.</p>
+<p>Un algorithme naïf est une fonction récursive permettant de déterminer si le nombre est heureux ou non :  </p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">heureux</span><span class="p">(</span><span class="n">k</span><span class="p">):</span>
+    <span class="c1"># Si on entre dans une boucle</span>
+    <span class="c1"># Le nombre n&#39;est pas heureux</span>
+    <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">37</span><span class="p">,</span> <span class="mi">58</span><span class="p">,</span> <span class="mi">89</span><span class="p">,</span> <span class="mi">145</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="mi">20</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">if</span> <span class="n">k</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">True</span>
+    <span class="n">s_k</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+    <span class="n">s</span><span class="o">=</span><span class="mi">0</span>
+    <span class="c1"># Calcul de la somme des carrés des chiffres de k</span>
+    <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">s_k</span><span class="p">:</span>
+       <span class="n">s</span> <span class="o">+=</span> <span class="nb">int</span><span class="p">(</span><span class="n">l</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+    <span class="c1"># On réitère</span>
+    <span class="k">return</span> <span class="n">heureux</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+</pre></div>
+
+
+<blockquote>
+<p>La méthode que je recommande dans ce genre de cas (pour des calculs "classiques") est de chercher un algorithme préfait sur internet.<br />
+Par exemple <a href="http://www.developpement-informatique.com/article/98/exercices-corriges-python-serie-9">celui-ci</a> fera très bien l'affaire et pourra vous faire gagner 10-15 minutes sur l'exercice  </p>
+</blockquote>
+<h3>Nombre impair et premier</h3>
+<p>En python la syntaxe pour vérifier si un nombre est impair est très simple :  </p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">impair</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">%</span><span class="mi">2</span><span class="o">!=</span><span class="mi">0</span>
+</pre></div>
+
+
+<p>Pour savoir si il est premier, le plus rapide sera de chercher un algorithme préfait sur internet. Dans le contexte de cet exercice j'ai utilisé <a href="https://stackoverflow.com/a/27946768">celui-ci</a>  </p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">count</span><span class="p">,</span> <span class="n">islice</span>
+<span class="k">def</span> <span class="nf">premier</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="ow">and</span> <span class="nb">all</span><span class="p">(</span><span class="n">n</span><span class="o">%</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">islice</span><span class="p">(</span><span class="n">count</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">sqrt</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)))</span>
+</pre></div>
+
+
+<h3>Ecriture de la boucle</h3>
+<p>Il ne rest plus qu'à itérer sur chaque nombre et de calculer la somme :  </p>
+<div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">somme</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="c1"># Pour tous les nombres de 1 à 200 000 inclus</span>
+    <span class="c1"># 0 n&#39;étant pas impair</span>
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">200001</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">heureux</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="ow">and</span> <span class="n">impair</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="ow">and</span> <span class="n">premier</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+            <span class="n">somme</span> <span class="o">+=</span> <span class="n">n</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Le numéro de téléphone est : </span><span class="si">{somme}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>On récupère finalement en sortie de notre algorithme : <code>Le numéro de téléphone est : 254445710</code><br />
+La toute dernière étape est de vérifier que le numéro est bien présent dans l'annuaire.<br />
+Il est effectivement présent et il s'agit de <code>Michael Scarn</code> qui représente le flag (drapeau) de cet exercice.</p>
+<h2>Conclusion</h2>
+<p>Ce challenge est relativement simple, il s'agit plus d'une épreuve de programmation que d'une enquête digne d'un CTF.<br />
+Cependant il peut s'avérer être un véritable challenge si on souhaite recoder "à la main" chaque fonction utilisée dans cet exercice.<br />
+Internet à été inventé dans le but de partager les connaissances. Si les CTF tels que Break The Code autorisent son utilisation durant le challenge c'est bien pour que l'on s'en serve !</p>
+
+
+<!-- Footer -->
+<hr>
+<div class="container">
+    <div class="row justify-content-sm-center">
+        <p>© 2020 Alexandre Froehlich</p>
+    </div>
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
