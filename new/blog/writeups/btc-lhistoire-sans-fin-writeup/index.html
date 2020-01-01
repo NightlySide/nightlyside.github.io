@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="" />
+
+    <!-- Favicon -->
+    <link rel="icon" href="https://nightlyside.github.io/new/blog/theme/favicon.ico" />
+    <link rel="icon" type="image/png" href="https://nightlyside.github.io/new/blog/theme/favicon.png" />
+
+    <!-- Browser Color -->
+ <meta name="author" content="Alexandre Froehlich" />
+<meta name="description" content="Le Challenge Break the Code est une compétition du type Capture The Flag (CTF) organisée par Sopra Steria qui dure 1h30. Les équipes des grandes écoles du bassin brestois s’y affrontent sur des challenges informatiques. Ces challenges mélangent différentes compétences telles que la programmation, l’analyse de donnée et …" />
+<meta name="keywords" content="writeup, btc, cyber, python" />
+
+    <title>[BTC] L&#39;Histoire sans fin - WriteUp
+ | Alexandre Froehlich</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="https://nightlyside.github.io/new/blog/theme/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="https://nightlyside.github.io/new/blog/theme/css/fontawesome.css" />
+    <link rel="stylesheet" type="text/css" href="https://nightlyside.github.io/new/blog/theme/css/pygments/default.css">
+    <link rel="stylesheet" type="text/css" href="https://nightlyside.github.io/new/blog/theme/css/blog.css" />
+
+    <!-- Javascript -->
+    <script src="https://nightlyside.github.io/new/blog/theme/js/jquery.js"></script>
+    <script src="https://nightlyside.github.io/new/blog/theme/js/bootstrap.js"></script>
+    <script src="https://nightlyside.github.io/new/blog/theme/js/fontawesome.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']]
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+</head>
+
+<body>
+    <!--
+  _   _ _       _     _   _           _     _      
+ | \ | (_) __ _| |__ | |_| |_   _ ___(_) __| | ___ 
+ |  \| | |/ _` | '_ \| __| | | | / __| |/ _` |/ _ \
+ | |\  | | (_| | | | | |_| | |_| \__ \ | (_| |  __/
+ |_| \_|_|\__, |_| |_|\__|_|\__, |___/_|\__,_|\___|
+          |___/             |___/                  
+-->
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Fixed nav section -->
+            <div class="about col-sm-12 col-md-3 col-lg-2">
+                <nav class="navbar navbar-fixed-side sticky-top row">
+                    <img src="https://nightlyside.github.io/new/blog/images/avatar.png" alt="Alexandre Froehlich" />
+                    <h2 class="col-sm-12"><a href="https://nightlyside.github.io/new/blog/">Alexandre Froehlich</a></h2>
+                    <p class="col-sm-12">
+                        Hobbyist programmer. Petit développeur indépendant (aka.
+                        Nightlyside) dont le rêve est d’être capable de publier un projet
+                        terminé. Actuellement étudiant à l'ENSTA Bretagne
+                    </p>
+
+                    <!-- Navigation -->
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <span class="nav-item-separator">//</span><a href="https://nightlyside.github.io/new/blog/">Accueil</a>
+                        </li>
+                        <li class="nav-item">
+                            <span class="nav-item-separator">//</span><a href="https://nightlyside.github.io/new/blog/files/cv.pdf">CV</a>
+                        </li>
+                        <li class="nav-item">
+                            <span class="nav-item-separator">//</span><a href="https://nightlyside.github.io/new/blog/categories">Catégories</a>
+                        </li>
+                        <li class="nav-item">
+                            <span class="nav-item-separator">//</span><a href="https://nightlyside.github.io/new/blog/archives">Archives</a>
+                        </li>
+                        <li class="nav-item">
+                            <span class="nav-item-separator">//</span><a href="#">À propos</a>
+                        </li>
+                    </ul>
+
+                    <!-- Social links -->
+                    <ul class="social">
+                        <a href="https://github.com/">
+                            <li><i class="fab fa-github-square"></i></li>
+                        </a>
+                        <a href="https://linkedin.com/">
+                            <li><i class="fab fa-linkedin"></i></li>
+                        </a>
+                        <a href="https://twitter.com/">
+                            <li><i class="fab fa-twitter-square"></i></li>
+                        </a>
+                    </ul>
+                </nav>
+            </div>
+            <!-- Main content -->
+            <div class="col-sm-12 col-md-9 col-lg-10 main">
+<img class="featured_image" src="https://nightlyside.github.io/new/blog/images/BTC/team.jpg" alt="Image de l'article">
+                <div class="container content">
+                    <!-- Insert content here -->
+
+<h1 class="title">[BTC] L'Histoire sans fin - WriteUp</h1>
+<p class="sous-titre">
+    <span class="date-poste">Posté le mer. 01 janvier 2020 dans <a href="https://nightlyside.github.io/new/blog/category/writeups.html">writeups</a></span> <br>
+    <span class="temps-lecture">Temps de lecture : 3 minutes</span>
+</p>
+
+<hr>
+<p>Le Challenge Break the Code est une compétition du type Capture The Flag (CTF) organisée par <a href="https://www.soprasteria.com/fr">Sopra Steria</a> qui dure 1h30. Les équipes des grandes écoles du bassin brestois s’y affrontent sur des challenges informatiques. Ces challenges mélangent différentes compétences telles que la programmation, l’analyse de donnée et la culture du numérique.</p>
+<h2>Analyse du premier fichier</h2>
+<p>L'histoire sans fin est la 3ème épreuve de ce CTF, le but étant de trouver le drapeau qui est caché dans les fichiers de l'épreuve.</p>
+<blockquote>
+<p>Si vous voulez essayer par vous-même, les fichiers de cet exercice sont <a href="https://nightlyside.github.io/new/blog/files/BTC/histoire-sans-fin.zip">disponibles ici</a>.</p>
+</blockquote>
+<p>On arrive sur une première difficulté. Les deux fichiers fournis ne présentant pas d'extension, c'est à nous d'en retrouver le type.
+Pour cela plusieurs méthodes.</p>
+<p>La première est la lecture du code source. Pour le fichier <code>ItCanHelp</code>, une simple ouverture avec un bloc notes nous donne un indice : 
+<img alt="Code source ItCanHelp" class="center" src="https://nightlyside.github.io/new/blog/images/BTC/source_code.jpg" /></p>
+<p>La deuxième méthode est l'utilisation sous linux de la commande file :
+<img alt="Command file ItCanHelp" class="center" src="https://nightlyside.github.io/new/blog/images/BTC/jpg_file_cmd.jpg" /></p>
+<p>Une troisième méthode est l'utilisation de sites web détecteurs de types de fichiers tel que <a href="http://www.checkfiletype.com/">ChekFileType.com</a>.</p>
+<p>On reconnait que le fichier inconnu est une image au format JPEG.
+Il suffit alors j'ajouter <code>.jpg</code> au nom du fichier pour en découvrir le contenu :
+<img alt="Contenu de ItCanHelp" class="center" height="200px" src="https://nightlyside.github.io/new/blog/images/BTC/ItCanHelp.jpg" /></p>
+<p>On obtient le premier indice qui nous permettra de résoudre le challenge, on aura à faire à du morse.</p>
+<h2>Analyse du second fichier</h2>
+<p>Avec le second fichier, certaines méthodes présentées précédemment ne pourront pas fonctionner. En effet, en essayant d'ouvrir le fichier avec un bloc note, le contenu reste illisible à l'oeil nu. 
+Pour trouver le type de fichier, la seconde comme la troisième méthode montrent qu'il s'agit d'un fichier <a href="https://fr.wikipedia.org/wiki/Musical_Instrument_Digital_Interface">MIDI</a>, audio donc.
+<img alt="Commande file NeverEndingStory" class="center" src="https://nightlyside.github.io/new/blog/images/BTC/midi_file_cmd.jpg" /></p>
+<p>Mon premier réflèxe est alors de rajouter l'extension <code>.midi</code> au fichier et de l'écouter pour voir si je ne peux pas récupérer d'autres indices.
+(petit moment gênant du au fait que tout le monde était concentré dans son épreuve et que je joue un morceau de musique à fond sur les hauts parleurs de mon pc portable).</p>
+<p>Malheureusement l'écoute de ce fichier ne me donne absolument aucun indice. Je repense alors au format du fichier. Le MIDI est un format qui permet de traduire assez facilement une partition en musique, je me suis alors souvenu que l'on pouvait éditer les fichiers MIDI !
+L'étape suivante à donc été de télécharger un éditeur, j'ai opté pour <a href="https://www.midieditor.org">MIDIeditor</a> qui fonctionne à la fois sous windows et linux.
+L'ouverture du fichier <code>NeverEndingStory</code> me donne ceci :  </p>
+<p><img alt="Commande file NeverEndingStory" class="center" src="https://nightlyside.github.io/new/blog/images/BTC/midieditor.jpg" /></p>
+<p>On remarque deux choses fabuleuses :<br />
+1. Il existe une piste (en violet) qui a une tonalité constante<br />
+2. Il existe un canal correspondant qui porte un nom bien choisi : "Do you know Planck's constant ? I know it starts with two sixes, and then a ..."  </p>
+<p>On supprime les autres canaux, puis en zoomant sur celui qui reste on observe que le signal correspond à un code morse. Bingo !</p>
+<p><img alt="Canal morse du fichier" class="center" src="https://nightlyside.github.io/new/blog/images/BTC/midi_solo.jpg" /></p>
+<p>Ci-dessous vous retrouverez la retranscription en morse (- étant un long, . étant un court)</p>
+<p><code>-.... .-.-.- -.... ..--- -.... ----- --... ----- ----- ....- --- .... - .... .- -. -.- ... ... ..- --.. .. . ..-. --- .-. - .... .- - .. ... - .... . -.- . -.--</code></p>
+<p>Il suffit alors de décripter le message avec un site comme <a href="https://www.dcode.fr/code-morse">dcode.fr</a> qui nous retourne le flag (drapeau) suivant : 
+<code>6.62607004OHTHANKSSUZIEFORTHATISTHEKEY</code></p>
+<h2>Conclusion</h2>
+<p>Ce challenge en temps réel m'a prit près de 40 minutes à résoudre. Je n'avais pas les outils adéquats et le stress s'ajoutant, j'ai commis des erreurs qui auraient pu me faire gagner en vitesse. </p>
+<p>Cependant ce challenge représentait à lui tout seul 55 points sur le challenge, en ajoutant les 10 points de bonus en étant la première équipe a avoir trouvé ce challenge (et finalement la seule sur les deux représentations de l'épreuve à Rennes et Brest), cela a fait près de 65 points d'un coup.</p>
+<p>Je me suis éclaté pendant la résolution de ce challenge dont les indices étaient nombreux et j'espère qu'au travers de ces quelques lignes vous avez pu expérimenter ce même enthousiasthme !</p>
+
+
+<!-- Footer -->
+<hr>
+<div class="container">
+    <div class="row justify-content-sm-center">
+        <p>© 2020 Alexandre Froehlich</p>
+    </div>
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

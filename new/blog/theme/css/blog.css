@@ -64,7 +64,7 @@ li {
 .post {
   margin-top: 2em;
   padding-bottom: 1em;
-  border-bottom: 1px solid #a0a0a0;
+  border-bottom: 1px solid rgba(0,0,0,.1);
 }
 
 .post p {
@@ -78,6 +78,11 @@ li {
 .content img.center{
    margin: 0 auto;
    display: block;
+   max-width: 100%;
+}
+
+.content h2 {
+  border-bottom: 1px solid rgba(0,0,0,.3);
 }
 
 .post:last-child {
@@ -115,4 +120,14 @@ img.featured_image {
   object-position: center;
   width: 100%;
   height: 20em;
+}
+
+blockquote {
+  margin: 0;
+  background: #86b37a54;
+  padding: 0.5em 0.5em 0.5em 2em;
+}
+
+blockquote p {
+  margin: 0;
 }
