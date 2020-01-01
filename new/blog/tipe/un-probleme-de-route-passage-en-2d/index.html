@@ -10,8 +10,8 @@
     <meta name="robots" content="" />
 
     <!-- Favicon -->
-    <link rel="icon" href="theme/favicon.ico" />
-    <link rel="icon" type="image/png" href="theme/favicon.png" />
+    <link rel="icon" href="https://nightlyside.github.io/new/blog/theme/favicon.ico" />
+    <link rel="icon" type="image/png" href="https://nightlyside.github.io/new/blog/theme/favicon.png" />
 
     <!-- Browser Color -->
  <meta name="author" content="Alexandre Froehlich" />
@@ -19,20 +19,30 @@
 <meta name="keywords" content="" />
 
     <title>Un problème de route - Passage en 2D
-|Alexandre Froehlich</title>
+ | Alexandre Froehlich</title>
 
     <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="theme/css/bootstrap.css" />
-    <link rel="stylesheet" type="text/css" href="theme/css/fontawesome.css" />
-    <link rel="stylesheet" type="text/css" href="theme/css/pygments/default.css">
-    <link rel="stylesheet" type="text/css" href="theme/css/blog.css" />
+    <link rel="stylesheet" type="text/css" href="https://nightlyside.github.io/new/blog/theme/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="https://nightlyside.github.io/new/blog/theme/css/fontawesome.css" />
+    <link rel="stylesheet" type="text/css" href="https://nightlyside.github.io/new/blog/theme/css/pygments/default.css">
+    <link rel="stylesheet" type="text/css" href="https://nightlyside.github.io/new/blog/theme/css/blog.css" />
 
     <!-- Javascript -->
-    <script src="theme/js/jquery.js"></script>
-    <script src="theme/js/bootstrap.js"></script>
-    <script src="theme/js/fontawesome.js"></script>
+    <script src="https://nightlyside.github.io/new/blog/theme/js/jquery.js"></script>
+    <script src="https://nightlyside.github.io/new/blog/theme/js/bootstrap.js"></script>
+    <script src="https://nightlyside.github.io/new/blog/theme/js/fontawesome.js"></script>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']]
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
 </head>
 
 <body>
@@ -49,8 +59,8 @@
             <!-- Fixed nav section -->
             <div class="about col-sm-12 col-md-3 col-lg-2">
                 <nav class="navbar navbar-fixed-side sticky-top row">
-                    <img src="theme/images/avatar.png" alt="Alexandre Froehlich" />
-                    <h2 class="col-sm-12">Alexandre Froehlich</h2>
+                    <img src="/images/avatar.png" alt="Alexandre Froehlich" />
+                    <h2 class="col-sm-12"><a href="https://nightlyside.github.io/new/blog/">Alexandre Froehlich</a></h2>
                     <p class="col-sm-12">
                         Hobbyist programmer. Petit développeur indépendant (aka.
                         Nightlyside) dont le rêve est d’être capable de publier un projet
@@ -60,13 +70,16 @@
                     <!-- Navigation -->
                     <ul class="nav-list">
                         <li class="nav-item">
-                            <span class="nav-item-separator">//</span><a href="/">Accueil</a>
+                            <span class="nav-item-separator">//</span><a href="https://nightlyside.github.io/new/blog/">Accueil</a>
                         </li>
                         <li class="nav-item">
-                            <span class="nav-item-separator">//</span><a href="#">CV</a>
+                            <span class="nav-item-separator">//</span><a href="/files/cv.pdf">CV</a>
                         </li>
                         <li class="nav-item">
-                            <span class="nav-item-separator">//</span><a href="#">Catégories</a>
+                            <span class="nav-item-separator">//</span><a href="https://nightlyside.github.io/new/blog/categories">Catégories</a>
+                        </li>
+                        <li class="nav-item">
+                            <span class="nav-item-separator">//</span><a href="https://nightlyside.github.io/new/blog/archives">Archives</a>
                         </li>
                         <li class="nav-item">
                             <span class="nav-item-separator">//</span><a href="#">À propos</a>
@@ -89,12 +102,16 @@
             </div>
             <!-- Main content -->
             <div class="col-sm-12 col-md-9 col-lg-10 main">
+<img class="featured_image" src="/images/post.jpg" alt="Image de l'article">
                 <div class="container content">
                     <!-- Insert content here -->
 
 <h1 class="title">Un problème de route - Passage en 2D</h1>
-<span class="sous-titre">Posté le sam. 02 décembre 2017 dans <a href="">misc</a></span> <br>
-<span class="temps-lecture">Temps de lecture : 5 minutes</span>
+<p class="sous-titre">
+    <span class="date-poste">Posté le sam. 02 décembre 2017 dans <a href="https://nightlyside.github.io/new/blog/category/tipe.html">TIPE</a></span> <br>
+    <span class="temps-lecture">Temps de lecture : 5 minutes</span>
+</p>
+
 <hr>
 <p>La deuxième étape consiste à passer la simulation à deux dimensions en vue d'implémenter les déviations et intersections. On peut encore séparer cette étape en plusieurs sous-étapes : création d'une grille qui va accueillir la route, à la manière d'un plateau contenant des cartes ou des jetons, puis création de la route et finalement adaptation des véhicules au nouveau système de route en 2 dimensions.</p>
 <!--more-->
@@ -269,6 +286,15 @@ Une fois qu'on est arrivée à la dernière case on retourne la liste crée.</p>
 <h2>Résultat</h2>
 <p>On réaplique le même procédé que pour la situation linéaire. On prends sur la route du dessus 100 voitures roulant à 130km/h maximum et on calcule la simulation sur 250 itérations. On calcule chaque itération puis on exporte la grille à chaque instant. En assemblant les images dans un GIF animé, on obtient l'animation suivante :</p>
 <p><img alt="Animation 2D" height="400px" src="{{ &quot;/public/images/profile.png&quot; | absolute_url }}" /></p>
+
+
+<!-- Footer -->
+<hr>
+<div class="container">
+    <div class="row justify-content-sm-center">
+        <p>© 2020 Alexandre Froehlich</p>
+    </div>
+</div>
                 </div>
             </div>
         </div>
