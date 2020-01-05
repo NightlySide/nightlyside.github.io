@@ -108,6 +108,7 @@
   padding: 1em;
   border-radius: 0.5em;
   margin-bottom: 1em;
+  border: 1px solid #aaa;
 }
 
 .highlight pre {
@@ -134,4 +135,8 @@ blockquote {
 
 blockquote p {
   margin: 0;
+}
+
+hr {
+  border: 1px solid rgba(0,0,0,.3);
 }
