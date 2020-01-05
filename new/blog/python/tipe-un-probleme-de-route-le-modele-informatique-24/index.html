@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="" />
+
+    <!-- Favicon -->
+    <link rel="icon" href="https://nightlyside.github.io/new/blog/theme/favicon.ico" />
+    <link rel="icon" type="image/png" href="https://nightlyside.github.io/new/blog/theme/favicon.png" />
+
+    <!-- Browser Color -->
+ <meta name="author" content="Alexandre Froehlich" />
+<meta name="description" content="Nous allons maintenant modéliser le trafic routier pour une portion de route, en respectant les hypothèses données et décrites dans le dernier post. Pour cela on procède en 3 étapes : on crée un modèle basique à une dimension, puis on l’étend à 2 dimensions et on ajoute en dernière …" />
+<meta name="keywords" content="concours, TIPE, python" />
+
+    <title>[TIPE] Un problème de route - Le modèle informatique (2/4)
+ | Alexandre Froehlich</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="https://nightlyside.github.io/new/blog/theme/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="https://nightlyside.github.io/new/blog/theme/css/fontawesome.css" />
+    <link rel="stylesheet" type="text/css" href="https://nightlyside.github.io/new/blog/theme/css/pygments/default.css">
+    <link rel="stylesheet" type="text/css" href="https://nightlyside.github.io/new/blog/theme/css/blog.css" />
+
+    <!-- Javascript -->
+    <script src="https://nightlyside.github.io/new/blog/theme/js/jquery.js"></script>
+    <script src="https://nightlyside.github.io/new/blog/theme/js/bootstrap.js"></script>
+    <script src="https://nightlyside.github.io/new/blog/theme/js/fontawesome.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']]
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+</head>
+
+<body>
+    <!--
+  _   _ _       _     _   _           _     _      
+ | \ | (_) __ _| |__ | |_| |_   _ ___(_) __| | ___ 
+ |  \| | |/ _` | '_ \| __| | | | / __| |/ _` |/ _ \
+ | |\  | | (_| | | | | |_| | |_| \__ \ | (_| |  __/
+ |_| \_|_|\__, |_| |_|\__|_|\__, |___/_|\__,_|\___|
+          |___/             |___/                  
+-->
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Fixed nav section -->
+            <div class="about col-sm-12 col-md-3 col-lg-2">
+                <nav class="navbar navbar-fixed-side sticky-top row">
+                    <img src="https://nightlyside.github.io/new/blog/images/avatar.png" alt="Alexandre Froehlich" />
+                    <h2 class="col-sm-12"><a href="https://nightlyside.github.io/new/blog/">Alexandre Froehlich</a></h2>
+                    <p class="col-sm-12">
+                        Hobbyist programmer. Petit développeur indépendant (aka.
+                        Nightlyside) dont le rêve est d’être capable de publier un projet
+                        terminé. Actuellement étudiant à l'ENSTA Bretagne
+                    </p>
+
+                    <!-- Navigation -->
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <span class="nav-item-separator">//</span><a href="https://nightlyside.github.io/new/blog/">Accueil</a>
+                        </li>
+                        <li class="nav-item">
+                            <span class="nav-item-separator">//</span><a href="https://nightlyside.github.io/new/blog/files/cv.pdf">CV</a>
+                        </li>
+                        <li class="nav-item">
+                            <span class="nav-item-separator">//</span><a href="https://nightlyside.github.io/new/blog/categories">Catégories</a>
+                        </li>
+                        <li class="nav-item">
+                            <span class="nav-item-separator">//</span><a href="https://nightlyside.github.io/new/blog/archives">Archives</a>
+                        </li>
+                        <li class="nav-item">
+                            <span class="nav-item-separator">//</span><a href="#">À propos</a>
+                        </li>
+                    </ul>
+
+                    <!-- Social links -->
+                    <ul class="social">
+                        <a href="https://github.com/nightlyside">
+                            <li><i class="fab fa-github-square"></i></li>
+                        </a>
+                        <a href="https://www.linkedin.com/in/alexandre-f-1102298a">
+                            <li><i class="fab fa-linkedin"></i></li>
+                        </a>
+                        <a href="https://twitter.com/froalexandre">
+                            <li><i class="fab fa-twitter-square"></i></li>
+                        </a>
+                        <a href="https://reddit.com/u/nightlyside">
+                            <li><i class="fab fa-reddit-square"></i></li>
+                        </a>
+                    </ul>
+                </nav>
+            </div>
+            <!-- Main content -->
+            <div class="col-sm-12 col-md-9 col-lg-10 main">
+<img class="featured_image" src="https://nightlyside.github.io/new/blog/images/TIPE/sim_lineaire.jpg" alt="Image de l'article">
+                <div class="container content">
+                    <!-- Insert content here -->
+
+<h1 class="title">[TIPE] Un problème de route - Le modèle informatique (2/4)</h1>
+<p class="sous-titre">
+    <span class="date-poste">Posté le ven. 01 décembre 2017 dans <a href="https://nightlyside.github.io/new/blog/category/python.html">python</a></span> <br>
+    <span class="temps-lecture">Temps de lecture : 3 minutes</span>
+</p>
+
+<hr>
+<p>Nous allons maintenant modéliser le trafic routier pour une portion de route, en respectant les hypothèses données et décrites dans le dernier post.
+Pour cela on procède en 3 étapes : on crée un modèle basique à une dimension, puis on l’étend à 2 dimensions et on ajoute en dernière étape les déviations et intersections. Ce post correspond à la première phase.</p>
+<p>La question qui m’a le plus souvent été posée lorsque je décrivais mon projet à mes camarades de classe était la suivante :</p>
+<blockquote>
+<p>Mais comment est-ce que tu choisis l’endroit où va se produire l’embouteillage ?</p>
+</blockquote>
+<p>A cette question je leur réponds simplement que je ne choisis pas ! En effet, le but de cette modélisation est de faire en sorte que les voitures, par leur comportement, créent une congestion.</p>
+<h2>Le comportement de base des voitures</h2>
+<p>En suivant l’idée du sujet de concours <a href="https://nightlyside.github.io/new/blog/files/TIPE/PSI-Informatique.pdf">CCP 2017</a> (concours d’entrée aux écoles d’ingénieur), on peut décrire le comportement des voitures simplement en décomposant un instant t en plusieurs étapes, en mettant à jour leur vitesse. Cette méthode de simulation s’appelle aussi <strong>la simulation de Nagel et Schreckenberg</strong>.</p>
+<h3>Accélération</h3>
+<p>La première étape consiste à accélérer le véhicule d’une case par unité de temps. Cela correspond à une phase normale d’accélération. On limite cependant la vitesse à la vitesse maximale de la route.</p>
+<p>$$v_k(t + 1) \rightarrow \text{min}(v_k(t) + 1,v_\text{max})$$</p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">acceleration</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">vitesses</span><span class="p">,</span> <span class="n">vmax</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Augmente l&#39;accélération du véhicule k d&#39;une unité</span>
+<span class="sd">    si il n&#39;est pas à sa vitesse maximale</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">vitesses</span><span class="p">[</span><span class="n">t</span><span class="o">+</span><span class="mi">1</span><span class="p">][</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">vitesses</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">k</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">vmax</span><span class="p">)</span>
+</pre></div>
+
+
+<h3>Décélération</h3>
+<p>La seconde étape consiste à faire ralentir le véhicule si la vitesse actuelle le fait rentrer en collision avec un autre véhicule. Pour se faire, on calcule la distance entre le véhicule et le précédent et on le compare à la vitesse actuelle. Si le véhicule est trop loin, le véhicule roule à la même vitesse, mais s’il est trop proche, le véhicule avance jusqu’à coller le véhicule devant lui, sa vitesse en sera diminuée pour simuler un freinage.</p>
+<p>$$v_k(t + 1) \rightarrow \text{min}(v_k(t + 1),d_k − 1)$$</p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">deceleration</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">xk</span><span class="p">,</span> <span class="n">xk1</span><span class="p">,</span> <span class="n">route</span><span class="p">,</span> <span class="n">vitesses</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Décélère si le véhicule k ne peut pas continuer à sa vitesse </span>
+<span class="sd">    actuelle (il y a un véhicule devant)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">dk</span> <span class="o">=</span> <span class="n">xk1</span> <span class="o">-</span> <span class="n">xk</span> <span class="c1"># distance entre les véhicules</span>
+    <span class="c1"># mise à jour de la vitesse</span>
+    <span class="n">vitesses</span><span class="p">[</span><span class="n">t</span><span class="o">+</span><span class="mi">1</span><span class="p">][</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">vitesses</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">k</span><span class="p">],</span> <span class="n">dk</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+
+
+<h3>Facteur aléatoire</h3>
+<p>Cette étape correspond au ralentissement aléatoire qui peut survenir en tout temps. Pour expliquer le réalisme d’une telle opération, il faut s’imaginer rouler sur une autoroute droite sans personne dessus à part un véhicule qui roule (sans régulateur de vitesse bien sûr). Alors il peut survenir un moment d’inattention qui va faire ralentir aléatoirement le conducteur.</p>
+<p>$$\text{Si rand()}&lt; p \text{ alors }v_k(t + 1) \rightarrow \text{max}(v_k(t + 1) − 1,0)$$</p>
+<p>C’est ce phénomène qui est représenté par cette étape, il se trouve d’ailleurs que pour cette simulation, cette étape est celle qui crée les embouteillages routiers.</p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">facteur_aleatoire</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">vitesses</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Facteur aléatoire de ralentissement (p)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">random</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">p</span><span class="p">):</span>
+        <span class="n">vitesses</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">vitesses</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">k</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+
+
+<h3>Déplacement</h3>
+<p>Cette dernière étape permet d’inscrire le mouvement lié à la vitesse de chaque véhicule. C’est à dire qu’après avoir fait la mise à jour de toutes les vitesses et en vérifiant bien qu’aucun véhicule ne rentre en collision avec d’autres, on déplace les voitures sur la route en mettant à jour leur position.</p>
+<p>$$X_n(t + 1) \rightarrow X_n(t) + v_n(t + 1)$$</p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">deplacement</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">xk</span><span class="p">,</span> <span class="n">vitesses</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Déplace le véhicule k a sa position suivante</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">xk</span><span class="p">[</span><span class="n">t</span><span class="o">+</span><span class="mi">1</span><span class="p">][</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">xk</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">k</span><span class="p">]</span> <span class="o">+</span> <span class="n">vitesses</span><span class="p">[</span><span class="n">t</span><span class="o">+</span><span class="mi">1</span><span class="p">][</span><span class="n">k</span><span class="p">]</span>
+</pre></div>
+
+
+<h2>Résultat</h2>
+<p>En prenant une route d’une certaine taille puis en initialisant la route avec un nombre de voitures donné, on obtient un tableau de taille $longueur\times itérations$ qui représentera la route et chaque ligne correspondra à un instant donné. On obtient un tableau de la forme :</p>
+<p><img alt="Simulation linéaire" class="center" height="200px" src="https://nightlyside.github.io/new/blog/images/TIPE/sim_lineaire.jpg" /></p>
+<p>Les conditions initiales étant :</p>
+<ul>
+<li>toutes les voitures partent à la même vitesse</li>
+<li>toutes les voitures partent avec une distance égale avec la précédente</li>
+<li>toutes les voitures possèdent le même facteur aléatoire (80% ici)</li>
+</ul>
+<p>Chaque point jaune correspond à un véhicule, le reste étant la route. On se rend compte qu’avec de telles hypothèses, un bouchon se forme (sorte d’amas de points jaunes). Le code fonctionne !</p>
+<p>Pour mieux comprendre voici une animation qui reprends chaque ligne de l’image du dessus et la fait défiler l’une après l’autre. On comprends ainsi mieux pourquoi les amas de points correspondent à un embouteillage.</p>
+<p><img alt="Animation lineaire" src="https://nightlyside.github.io/new/blog/images/TIPE/sim_lineaire_anim.gif" /></p>
+<p>La prochaine étape vue dans le prochain post sera de traduire ce code, d’utiliser le même principe et le même fonctionnement mais cette fois-ci sur une grille en 2D.</p>
+
+
+<!-- Footer -->
+<hr>
+<div class="container">
+    <div class="row justify-content-sm-center">
+        <p>© 2020 Alexandre Froehlich</p>
+    </div>
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
