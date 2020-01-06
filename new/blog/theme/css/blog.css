@@ -129,8 +129,10 @@ img.featured_image {
 
 blockquote {
   margin: 0;
+  margin-bottom: 1em;
   background: #86b37a54;
-  padding: 0.5em 0.5em 0.5em 2em;
+  padding: 0.5em 1em 0.5em 2em;
+  border-left: solid 5px #3a6a3a;
 }
 
 blockquote p {
