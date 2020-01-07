@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="" />
+
+    <!-- Favicon -->
+    <link rel="icon" href="https://nightlyside.github.io/new/blog/theme/favicon.ico" />
+    <link rel="icon" type="image/png" href="https://nightlyside.github.io/new/blog/theme/favicon.png" />
+
+    <!-- Browser Color -->
+ <meta name="author" content="Alexandre Froehlich" />
+<meta name="description" content="Si vous recevez cette lettre, c&#39;est qu&#39;il m&#39;est arrivé quelque chose. J&#39;imagine, avide d&#39;argent comme vous êtes, que vous souhaitez plutôt mettre la main sur ma fortune plutôt que de dépenser votre énergie pour me retrouver. Celà ne m&#39;arrange pas car j&#39;aimerai plutôt être secouru. Enfin, vous savez comme je suis prévoyant, j&#39;ai tout prévu. En échange de prévenir les forces de l&#39;ordre, je vous propose le contenu de mon portefeuille numérique. Aujourd&#39;hui, il devrait être valorisé à plusieurs millions si le cours ne s&#39;est pas effondré." />
+<meta name="keywords" content="writeup, btc, cyber, python" />
+
+    <title>[BTC] Warm Up - WriteUp
+ | Alexandre Froehlich</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="https://nightlyside.github.io/new/blog/theme/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="https://nightlyside.github.io/new/blog/theme/css/fontawesome.css" />
+    <link rel="stylesheet" type="text/css" href="https://nightlyside.github.io/new/blog/theme/css/pygments/default.css">
+    <link rel="stylesheet" type="text/css" href="https://nightlyside.github.io/new/blog/theme/css/blog.css" />
+
+    <!-- Javascript -->
+    <script src="https://nightlyside.github.io/new/blog/theme/js/jquery.js"></script>
+    <script src="https://nightlyside.github.io/new/blog/theme/js/bootstrap.js"></script>
+    <script src="https://nightlyside.github.io/new/blog/theme/js/fontawesome.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']]
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+</head>
+
+<body>
+    <!--
+  _   _ _       _     _   _           _     _      
+ | \ | (_) __ _| |__ | |_| |_   _ ___(_) __| | ___ 
+ |  \| | |/ _` | '_ \| __| | | | / __| |/ _` |/ _ \
+ | |\  | | (_| | | | | |_| | |_| \__ \ | (_| |  __/
+ |_| \_|_|\__, |_| |_|\__|_|\__, |___/_|\__,_|\___|
+          |___/             |___/                  
+-->
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Fixed nav section -->
+            <div class="about col-sm-12 col-md-3 col-lg-2">
+                <nav class="navbar navbar-fixed-side sticky-top row">
+                    <img src="https://nightlyside.github.io/new/blog/images/avatar.png" alt="Alexandre Froehlich" />
+                    <h2 class="col-sm-12"><a href="https://nightlyside.github.io/new/blog/">Alexandre Froehlich</a></h2>
+                    <p class="col-sm-12">
+                        Hobbyist programmer. Petit développeur indépendant (aka.
+                        Nightlyside) dont le rêve est d’être capable de publier un projet
+                        terminé. Actuellement étudiant à l'ENSTA Bretagne
+                    </p>
+
+                    <!-- Navigation -->
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <span class="nav-item-separator">//</span><a href="https://nightlyside.github.io/new/blog/">Accueil</a>
+                        </li>
+                        <li class="nav-item">
+                            <span class="nav-item-separator">//</span><a href="https://nightlyside.github.io/new/blog/files/cv.pdf">CV</a>
+                        </li>
+                        <li class="nav-item">
+                            <span class="nav-item-separator">//</span><a href="https://nightlyside.github.io/new/blog/categories">Catégories</a>
+                        </li>
+                        <li class="nav-item">
+                            <span class="nav-item-separator">//</span><a href="https://nightlyside.github.io/new/blog/archives">Archives</a>
+                        </li>
+                        <li class="nav-item">
+                            <span class="nav-item-separator">//</span><a href="#">À propos</a>
+                        </li>
+                    </ul>
+
+                    <!-- Social links -->
+                    <ul class="social">
+                        <a href="https://github.com/nightlyside">
+                            <li><i class="fab fa-github-square"></i></li>
+                        </a>
+                        <a href="https://www.linkedin.com/in/alexandre-f-1102298a">
+                            <li><i class="fab fa-linkedin"></i></li>
+                        </a>
+                        <a href="https://twitter.com/froalexandre">
+                            <li><i class="fab fa-twitter-square"></i></li>
+                        </a>
+                        <a href="https://reddit.com/u/nightlyside">
+                            <li><i class="fab fa-reddit-square"></i></li>
+                        </a>
+                    </ul>
+                </nav>
+            </div>
+            <!-- Main content -->
+            <div class="col-sm-12 col-md-9 col-lg-10 main">
+<img class="featured_image" src="https://nightlyside.github.io/new/blog/images/BTC/lettre_cryptee.jpg" alt="Image de l'article">
+                <div class="container content">
+                    <!-- Insert content here -->
+
+<h1 class="title">[BTC] Warm Up - WriteUp</h1>
+<p class="sous-titre">
+    <span class="date-poste">Posté le dim. 05 janvier 2020 dans <a href="https://nightlyside.github.io/new/blog/category/writeups.html">writeups</a></span> <br>
+    <span class="temps-lecture">Temps de lecture : 7 minutes</span>
+</p>
+
+<hr>
+<p><em>Lettre de M. X :</em></p>
+<p>À ma chère famille,</p>
+<p>Ave,</p>
+
+
+<p>Si vous recevez cette lettre, c'est qu'il m'est arrivé quelque chose.
+J'imagine, avide d'argent comme vous êtes, que vous souhaitez plutôt mettre la main sur ma fortune plutôt que de dépenser votre énergie pour me retrouver.
+Celà ne m'arrange pas car j'aimerai plutôt être secouru. Enfin, vous savez comme je suis prévoyant, j'ai tout prévu.</p>
+<p>En échange de prévenir les forces de l'ordre, je vous propose le contenu de mon portefeuille numérique. Aujourd'hui, il devrait être valorisé à plusieurs millions si le cours ne s'est pas effondré.</p>
+
+
+<p>Je vous lègue cette clé U.S.B où j'ai dissimulé plusieurs énigmes menant à des framgents qui vous permettront de reconstituer ma clé privée vous permettant d'accéder à ce portefeuille. Pour aider les enquêteurs, j'y ai également introduis plusieurs éléments sur où je me trouvais et avec qui je me trouvais avant que cette clé ne soit envoyée. Pour être sûr que vous contactiez réellement les forces de l'ordre, toute information est cachée. Je doute que vous parviendrez par vous-mêmes à résoudre une quelconque de ces énigmes, alors entourez-vous des meilleurs enquêteurs.</p>
+<p>Pour commencer, je vous propose de déchiffrer le contenu du message que je vous ai laissé (encrypted.txt).
+Sachez que César, à son époque, utilisait ce même système pour communiquer avec ses généraux. Je n'ai pas changé la clé, mais l'alphabet est bien différent. Et il pourrait bien être juste sous vos yeux.</p>
+<p>M. X</p>
+<hr />
+<p>Le Challenge Break the Code est une compétition du type Capture The Flag (CTF) organisée par <a href="https://www.soprasteria.com/fr">Sopra Steria</a> qui dure 1h30. Les équipes des grandes écoles du bassin brestois s’y affrontent sur des challenges informatiques. Ces challenges mélangent différentes compétences telles que la programmation, l’analyse de donnée et la culture du numérique.  </p>
+<h2>Première Analyse</h2>
+<p>Ce premier exercice permettait pendant la compétition de débloquer les challenges suivants. Il était donc primordial de le réussir le plus rapidement possible de manière à gagner un maximum de temps et de points.  </p>
+<blockquote>
+<p>Si vous voulez essayer par vous-même, les fichiers de cet exercice sont <a href="https://nightlyside.github.io/new/blog/files/BTC/warm-up.zip">disponibles ici</a>.  </p>
+</blockquote>
+<p>Le contenu de l'exercice est composé d'un fichier README.md et d'un texte encrypté : </p>
+<div class="highlight"><pre><span></span><span class="n">ZURAS</span> <span class="n">NLYUG</span> <span class="n">YEFPYIYPUG</span><span class="p">,</span> <span class="n">MY</span> <span class="n">HSPIY</span> <span class="n">FPY</span> <span class="n">CR</span> <span class="n">JRCQXXY</span> <span class="n">RQI</span> <span class="n">UYPGGQ</span> <span class="n">YXXY</span> <span class="n">CYCY</span> <span class="n">R</span> <span class="n">HYNLQJJUYU</span> <span class="n">NY</span> <span class="n">CYGGRKY</span><span class="p">,</span> <span class="n">N</span> <span class="n">YGI</span> <span class="n">DSPUFPSQ</span> <span class="n">MY</span> <span class="n">ASPG</span> <span class="n">JYXQNQIY</span> <span class="n">DYUGSEEYXXYCYEI</span><span class="p">.</span>
+
+<span class="n">MY</span> <span class="n">GPQG</span> <span class="n">YCZYIY</span><span class="p">,</span> <span class="n">MY</span> <span class="n">EY</span> <span class="n">DYPB</span> <span class="n">HYASQXYU</span> <span class="n">R</span> <span class="n">CR</span> <span class="n">JRCQXXY</span> <span class="n">X</span> <span class="n">RJJRQUY</span> <span class="n">GPU</span> <span class="n">XRFPYXXY</span> <span class="n">MY</span> <span class="n">GPQG</span><span class="p">.</span>
+<span class="n">CRQG</span> <span class="n">MY</span> <span class="n">GPQG</span> <span class="n">RPMSPUH</span> <span class="n">LPQ</span> <span class="n">QENRDRZXY</span> <span class="n">HY</span> <span class="n">CY</span> <span class="n">XQZYUYU</span> <span class="n">HY</span> <span class="n">X</span> <span class="n">YEHUSQI</span> <span class="n">SP</span> <span class="n">MY</span> <span class="n">GPQG</span><span class="p">.</span> 
+<span class="n">DSPU</span> <span class="n">NSEARQENUY</span> <span class="n">CR</span> <span class="n">JRCQXXY</span> <span class="n">HY</span> <span class="k">C</span> <span class="n">RQHYU</span> <span class="n">YI</span> <span class="n">HY</span> <span class="n">JQERENYU</span> <span class="n">X</span> <span class="n">YEFPYIY</span> <span class="n">DSPU</span> <span class="n">CY</span> <span class="n">UYIUSPAYU</span><span class="p">,</span> <span class="n">M</span> <span class="n">RQ</span> <span class="n">HQGGQCPXYU</span> <span class="n">FPRIUY</span> <span class="n">JURKCYEIG</span> <span class="n">HY</span> <span class="n">NXY</span> <span class="n">DYUCYIIREI</span> <span class="n">HY</span> <span class="n">UYNSEGIQIPYU</span> <span class="n">XR</span> <span class="n">NXY</span> <span class="n">JQERXY</span><span class="p">.</span>
+<span class="n">NYG</span> <span class="n">JURKCYEIG</span> <span class="n">GSEI</span> <span class="n">NSEIYEPG</span> <span class="n">DRU</span> <span class="n">XYG</span> <span class="n">YEQKCYG</span> <span class="n">DUYGYEIYG</span> <span class="n">HREG</span> <span class="n">XR</span> <span class="n">NXY</span> <span class="n">PGZ</span> <span class="n">FPY</span> <span class="n">MY</span> <span class="n">ASPG</span> <span class="n">RQ</span> <span class="n">RHUYGGYY</span><span class="p">.</span>
+<span class="n">DSPU</span> <span class="n">ASPG</span> <span class="n">RQHYT</span> <span class="n">HREG</span> <span class="n">X</span> <span class="n">YEFPYIY</span><span class="p">,</span> <span class="n">M</span> <span class="n">RQ</span> <span class="n">YKRXYCYEI</span> <span class="n">HQGGQCPXYU</span> <span class="n">XY</span> <span class="n">XQYP</span><span class="p">,</span> <span class="n">X</span> <span class="n">QHYEIQIY</span> <span class="n">YI</span> <span class="n">XY</span> <span class="n">EPCYUS</span> <span class="n">HY</span> <span class="n">IYXYDLSEY</span> <span class="n">HY</span> <span class="n">XR</span> <span class="n">DYUGSEEY</span> <span class="n">RAYN</span> <span class="n">FPQ</span> <span class="n">M</span> <span class="n">RARQG</span> <span class="n">UYEHYT</span> <span class="n">ASPG</span><span class="p">.</span>
+
+<span class="n">XR</span> <span class="n">NXY</span> <span class="n">PGZ</span> <span class="n">YGI</span> <span class="n">AYUUSPQXXYY</span> <span class="n">ASQNQ</span> <span class="n">XY</span> <span class="n">JXRK</span> <span class="n">DYUCYIIREI</span> <span class="n">HY</span> <span class="n">X</span> <span class="n">SPAUQU</span> <span class="n">SDYEILRIDREHSURZSB</span><span class="p">.</span>
+
+<span class="n">ESIY</span> <span class="p">:</span> <span class="n">NYNQ</span> <span class="n">YGI</span> <span class="n">XR</span> <span class="n">UYDSEGY</span> <span class="n">FPY</span> <span class="n">ASPG</span> <span class="n">HYAYT</span> <span class="n">HSEEYU</span> <span class="n">RP</span> <span class="n">MPKY</span><span class="p">,</span> <span class="n">NY</span> <span class="n">JXRK</span> <span class="n">DYUCYI</span> <span class="n">YKRXYCYEI</span> <span class="n">HY</span> <span class="n">HYAYUSPQXXYU</span> <span class="n">XY</span> <span class="n">JQNLQYU</span> <span class="n">TQD</span> <span class="n">PGZNSEIYEIG</span><span class="p">.</span>
+</pre></div>
+
+
+<p>La suite du fichier README nous explique comment fonctionne le chiffrement par substitution. Si vous ne savez pas ce que c'est je vous invite à lire <a href="http://bibmath.net/crypto/index.php?action=affiche&amp;quoi=substi/defsub">cet article</a>. 
+Ensuite est venue ma première erreur. Le document parle de chiffrement par décalage d'alphabet, j'ai évidemment pensé tout de suite au <a href="https://fr.wikipedia.org/wiki/Chiffrement_par_décalage">chiffre de César</a>.  </p>
+<p><strong>Petite astuce</strong> : pour cracker un code chiffré par décalage du type chiffre de César, de nombreux sites web permettent de "bruteforcer" le code. Vous pourrez par exemple prendre <a href="https://www.dcode.fr/chiffre-cesar">dcode.fr</a>.</p>
+<p>En testant le code crypté ci-dessus sur ces sites on ne trouve rien de cohérent, rien de lisible. C'est là que j'ai repéré mon erreur.</p>
+<h2>Deuxième analyse et implémentation</h2>
+<p>Comment faire pour cracker un code chiffré par substitution lorsqu'on ne connait par le nouvel alphabet ? C'est simple si le texte est assez long (et c'est le cas ici), on a juste besoin de connaitre la <a href="https://fr.wikipedia.org/wiki/Fr%C3%A9quence_d%27apparition_des_lettres_en_fran%C3%A7ais">fréquence d'apparition des lettres en français</a>.</p>
+<h3>Affichage</h3>
+<p>De manière naïve, le plus simple pour trouver un message est d'afficher graphiquement ce que l'on a déjà trouvé. Pour ce faire, on représentera les lettres que l'on a déjà trouvé. Les caractères spéciaux tels que l'espace, les apostrophes seront aussi représentés tels quels. Enfin les caractère que l'on ne connait pas seront remplacés par des <code>_</code>.</p>
+<p>Au point de vue code python cela donne ceci :</p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">affiche_decrypt</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">trouve</span><span class="o">=</span><span class="p">{}):</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">msg</span><span class="p">:</span>
+        <span class="c1"># Si on connait la traduction</span>
+        <span class="k">if</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">trouve</span><span class="p">:</span>
+            <span class="n">res</span> <span class="o">+=</span> <span class="n">trouve</span><span class="p">[</span><span class="n">char</span><span class="p">]</span>
+        <span class="c1"># Si le caractère fait partie des spéciaux</span>
+        <span class="k">elif</span> <span class="n">char</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="s2">&quot;,&quot;</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;:&quot;</span><span class="p">]:</span>
+            <span class="n">res</span> <span class="o">+=</span> <span class="n">char</span>
+        <span class="c1"># Sinon on ne le connait pas</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">res</span> <span class="o">+=</span> <span class="s2">&quot;_&quot;</span>
+    <span class="c1"># On retourne le texte formatté</span>
+    <span class="k">return</span> <span class="n">res</span>
+</pre></div>
+
+
+<p>On n'oublie juste pas de prendre en compte le fait que <code>trouve</code> est un dictionnaire dont chaque clé correspond à la lettre substituée.</p>
+<h3>Remplissage du dictionnaire</h3>
+<p>Pour savoir quelle lettre est la plus fréquente dans le message, on crée une petite fonction python :</p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">occurrences</span><span class="p">(</span><span class="n">msg</span><span class="p">):</span>
+    <span class="c1"># On crée le dictionnaire des occurences</span>
+    <span class="nb">dict</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="c1"># Pour chaque lettre dans le message</span>
+    <span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">msg</span><span class="p">:</span>
+        <span class="c1"># S&#39;il s&#39;agit bien d&#39;une lettre</span>
+        <span class="k">if</span> <span class="n">char</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="s2">&quot;,&quot;</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;:&quot;</span><span class="p">]:</span>
+            <span class="c1"># Si on a déjà crée une occurence</span>
+            <span class="k">if</span> <span class="n">char</span> <span class="ow">in</span> <span class="nb">dict</span><span class="p">:</span>
+                <span class="nb">dict</span><span class="p">[</span><span class="n">char</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="nb">dict</span><span class="p">[</span><span class="n">char</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+
+    <span class="c1"># On retourne les lettres triées par occurrences</span>
+    <span class="k">return</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">dict</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="nb">dict</span><span class="o">.</span><span class="n">get</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Par exemple pour le message crypté donné on obtient :<br />
+<code>['Y', 'R', 'U', 'G', 'X', 'Q', 'P', 'E', 'I', 'S', 'H', 'C', 'N', 'D', 'A', 'J', 'M', 'F', 'K', 'Z', 'L', 'T', 'B']</code></p>
+<p>Ainsi en essayant <code>Y=E</code>, <code>R=A</code>, <code>U=I</code>, <code>G=S</code>,<code>X=N</code> sur le message crypté on obtient : </p>
+<div class="highlight"><pre><span></span><span class="n">_IA__</span> <span class="n">__EIS</span> <span class="n">E___E_E_IS</span><span class="p">,</span> <span class="n">_E</span> <span class="n">____E</span> <span class="n">__E</span> <span class="n">_A</span> <span class="n">_A__NNE</span> <span class="n">A__</span> <span class="n">IE_SS_</span> <span class="n">ENNE</span> <span class="n">_E_E</span> <span class="n">A</span> <span class="n">_E_____IEI</span> <span class="n">_E</span> <span class="n">_ESSA_E</span><span class="p">,</span> <span class="n">_</span> <span class="n">ES_</span> <span class="n">___I____</span> <span class="n">_E</span> <span class="n">___S</span> <span class="n">_EN____E</span> <span class="n">_EIS___ENNE_E__</span><span class="p">.</span>
+
+<span class="n">_E</span> <span class="n">S__S</span> <span class="n">E__E_E</span><span class="p">,</span> <span class="n">_E</span> <span class="n">_E</span> <span class="n">_E__</span> <span class="n">_E___NEI</span> <span class="n">A</span> <span class="n">_A</span> <span class="n">_A__NNE</span> <span class="n">N</span> <span class="n">A__A_IE</span> <span class="n">S_I</span> <span class="n">NA__ENNE</span> <span class="n">_E</span> <span class="n">S__S</span><span class="p">.</span>
+<span class="n">_A_S</span> <span class="n">_E</span> <span class="n">S__S</span> <span class="n">A____I_</span> <span class="n">___</span> <span class="n">___A_A_NE</span> <span class="n">_E</span> <span class="n">_E</span> <span class="n">N__EIEI</span> <span class="n">_E</span> <span class="n">N</span> <span class="n">E__I___</span> <span class="n">__</span> <span class="n">_E</span> <span class="n">S__S</span><span class="p">.</span>
+<span class="n">___I</span> <span class="n">____A___IE</span> <span class="n">_A</span> <span class="n">_A__NNE</span> <span class="n">_E</span> <span class="n">_</span> <span class="n">A__EI</span> <span class="n">E_</span> <span class="n">_E</span> <span class="n">___A__EI</span> <span class="n">N</span> <span class="n">E___E_E</span> <span class="n">___I</span> <span class="n">_E</span> <span class="n">IE_I___EI</span><span class="p">,</span> <span class="n">_</span> <span class="n">A_</span> <span class="n">__SS___NEI</span> <span class="n">__A_IE</span> <span class="n">_IA__E__S</span> <span class="n">_E</span> <span class="n">_NE</span> <span class="n">_EI_E__A__</span> <span class="n">_E</span> <span class="n">IE___S____EI</span> <span class="n">NA</span> <span class="n">_NE</span> <span class="n">___ANE</span><span class="p">.</span>
+<span class="n">_ES</span> <span class="n">_IA__E__S</span> <span class="n">S___</span> <span class="n">____E__S</span> <span class="n">_AI</span> <span class="n">NES</span> <span class="n">E____ES</span> <span class="n">_IESE__ES</span> <span class="n">_A_S</span> <span class="n">NA</span> <span class="n">_NE</span> <span class="n">_S_</span> <span class="n">__E</span> <span class="n">_E</span> <span class="n">___S</span> <span class="n">A_</span> <span class="n">A_IESSEE</span><span class="p">.</span>
+<span class="n">___I</span> <span class="n">___S</span> <span class="n">A__E_</span> <span class="n">_A_S</span> <span class="n">N</span> <span class="n">E___E_E</span><span class="p">,</span> <span class="n">_</span> <span class="n">A_</span> <span class="n">E_ANE_E__</span> <span class="n">__SS___NEI</span> <span class="n">NE</span> <span class="n">N_E_</span><span class="p">,</span> <span class="n">N</span> <span class="n">__E____E</span> <span class="n">E_</span> <span class="n">NE</span> <span class="n">___EI_</span> <span class="n">_E</span> <span class="n">_ENE____E</span> <span class="n">_E</span> <span class="n">NA</span> <span class="n">_EIS___E</span> <span class="n">A_E_</span> <span class="n">___</span> <span class="n">_</span> <span class="n">A_A_S</span> <span class="n">IE__E_</span> <span class="n">___S</span><span class="p">.</span>
+
+<span class="n">NA</span> <span class="n">_NE</span> <span class="n">_S_</span> <span class="n">ES_</span> <span class="n">_EII___NNEE</span> <span class="n">_____</span> <span class="n">NE</span> <span class="n">_NA_</span> <span class="n">_EI_E__A__</span> <span class="n">_E</span> <span class="n">N</span> <span class="n">___I_I</span> <span class="n">__E___A__A___IA___</span><span class="p">.</span>
+
+<span class="n">___E</span> <span class="p">:</span> <span class="n">_E__</span> <span class="n">ES_</span> <span class="n">NA</span> <span class="n">IE___SE</span> <span class="n">__E</span> <span class="n">___S</span> <span class="n">_E_E_</span> <span class="n">____EI</span> <span class="n">A_</span> <span class="n">___E</span><span class="p">,</span> <span class="n">_E</span> <span class="n">_NA_</span> <span class="n">_EI_E_</span> <span class="n">E_ANE_E__</span> <span class="n">_E</span> <span class="n">_E_EI___NNEI</span> <span class="n">NE</span> <span class="n">_____EI</span> <span class="n">___</span> <span class="n">_S_____E__S</span><span class="p">.</span>
+</pre></div>
+
+
+<p>C'est effectivement un bon premier départ. Certes, cela ne marche pas pour toutes les lettres cependant on peut commencer à deviner les mots. De plus s'agissant d'une lettre on devine que le mot du dernier paragraphe <code>ESIY :</code> correspond à <code>NOTE :</code> en essayant petit à petit on arrive à remplir le dictionnaire :</p>
+<div class="highlight"><pre><span></span><span class="n">trouve</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Y&quot;</span><span class="p">:</span><span class="s2">&quot;E&quot;</span><span class="p">,</span> <span class="s2">&quot;R&quot;</span><span class="p">:</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;U&quot;</span><span class="p">:</span><span class="s2">&quot;R&quot;</span><span class="p">,</span> <span class="s2">&quot;G&quot;</span><span class="p">:</span><span class="s2">&quot;S&quot;</span><span class="p">,</span> <span class="s2">&quot;X&quot;</span><span class="p">:</span><span class="s2">&quot;L&quot;</span><span class="p">,</span> <span class="s2">&quot;E&quot;</span><span class="p">:</span><span class="s2">&quot;N&quot;</span><span class="p">,</span> <span class="s2">&quot;S&quot;</span><span class="p">:</span><span class="s2">&quot;O&quot;</span><span class="p">,</span> <span class="s2">&quot;I&quot;</span><span class="p">:</span><span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">:</span><span class="s2">&quot;M&quot;</span><span class="p">,</span> <span class="s2">&quot;D&quot;</span><span class="p">:</span><span class="s2">&quot;P&quot;</span><span class="p">,</span> <span class="s2">&quot;H&quot;</span><span class="p">:</span><span class="s2">&quot;D&quot;</span><span class="p">,</span> <span class="s2">&quot;P&quot;</span><span class="p">:</span><span class="s2">&quot;U&quot;</span><span class="p">,</span> <span class="s2">&quot;J&quot;</span><span class="p">:</span><span class="s2">&quot;F&quot;</span><span class="p">,</span> <span class="s2">&quot;Q&quot;</span><span class="p">:</span><span class="s2">&quot;I&quot;</span><span class="p">,</span> <span class="s2">&quot;N&quot;</span><span class="p">:</span><span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;F&quot;</span><span class="p">:</span><span class="s2">&quot;Q&quot;</span><span class="p">,</span> <span class="s2">&quot;A&quot;</span><span class="p">:</span><span class="s2">&quot;V&quot;</span><span class="p">,</span> <span class="s2">&quot;T&quot;</span><span class="p">:</span><span class="s2">&quot;Z&quot;</span><span class="p">,</span> <span class="s2">&quot;L&quot;</span><span class="p">:</span><span class="s2">&quot;H&quot;</span><span class="p">,</span> <span class="s2">&quot;K&quot;</span><span class="p">:</span><span class="s2">&quot;G&quot;</span><span class="p">,</span> <span class="s2">&quot;Z&quot;</span><span class="p">:</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;M&quot;</span><span class="p">:</span><span class="s2">&quot;J&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">:</span><span class="s2">&quot;X&quot;</span><span class="p">}</span>
+</pre></div>
+
+
+<p>Ce qui nous donne enfin le message décrypté : </p>
+<div class="highlight"><pre><span></span><span class="n">BRAVO</span> <span class="n">CHERS</span> <span class="n">ENQUETEURS</span><span class="p">,</span> <span class="n">JE</span> <span class="n">DOUTE</span> <span class="n">QUE</span> <span class="n">MA</span> <span class="n">FAMILLE</span> <span class="n">AIT</span> <span class="n">REUSSI</span> <span class="n">ELLE</span> <span class="n">MEME</span> <span class="n">A</span> <span class="n">DECHIFFRER</span> <span class="n">CE</span> <span class="n">MESSAGE</span><span class="p">,</span> <span class="k">C</span> <span class="n">EST</span> <span class="n">POURQUOI</span> <span class="n">JE</span> <span class="n">VOUS</span> <span class="n">FELICITE</span> <span class="n">PERSONNELLEMENT</span><span class="p">.</span>
+
+<span class="n">JE</span> <span class="n">SUIS</span> <span class="n">EMBETE</span><span class="p">,</span> <span class="n">JE</span> <span class="n">NE</span> <span class="n">PEUX</span> <span class="n">DEVOILER</span> <span class="n">A</span> <span class="n">MA</span> <span class="n">FAMILLE</span> <span class="n">L</span> <span class="n">AFFAIRE</span> <span class="n">SUR</span> <span class="n">LAQUELLE</span> <span class="n">JE</span> <span class="n">SUIS</span><span class="p">.</span>
+<span class="n">MAIS</span> <span class="n">JE</span> <span class="n">SUIS</span> <span class="n">AUJOURD</span> <span class="n">HUI</span> <span class="n">INCAPABLE</span> <span class="n">DE</span> <span class="n">ME</span> <span class="n">LIBERER</span> <span class="n">DE</span> <span class="n">L</span> <span class="n">ENDROIT</span> <span class="n">OU</span> <span class="n">JE</span> <span class="n">SUIS</span><span class="p">.</span>
+<span class="n">POUR</span> <span class="n">CONVAINCRE</span> <span class="n">MA</span> <span class="n">FAMILLE</span> <span class="n">DE</span> <span class="n">M</span> <span class="n">AIDER</span> <span class="n">ET</span> <span class="n">DE</span> <span class="n">FINANCER</span> <span class="n">L</span> <span class="n">ENQUETE</span> <span class="n">POUR</span> <span class="n">ME</span> <span class="n">RETROUVER</span><span class="p">,</span> <span class="n">J</span> <span class="n">AI</span> <span class="n">DISSIMULER</span> <span class="n">QUATRE</span> <span class="n">FRAGMENTS</span> <span class="n">DE</span> <span class="n">CLE</span> <span class="n">PERMETTANT</span> <span class="n">DE</span> <span class="n">RECONSTITUER</span> <span class="n">LA</span> <span class="n">CLE</span> <span class="n">FINALE</span><span class="p">.</span>
+<span class="n">CES</span> <span class="n">FRAGMENTS</span> <span class="n">SONT</span> <span class="n">CONTENUS</span> <span class="n">PAR</span> <span class="n">LES</span> <span class="n">ENIGMES</span> <span class="n">PRESENTES</span> <span class="n">DANS</span> <span class="n">LA</span> <span class="n">CLE</span> <span class="n">USB</span> <span class="n">QUE</span> <span class="n">JE</span> <span class="n">VOUS</span> <span class="n">AI</span> <span class="n">ADRESSEE</span><span class="p">.</span>
+<span class="n">POUR</span> <span class="n">VOUS</span> <span class="n">AIDEZ</span> <span class="n">DANS</span> <span class="n">L</span> <span class="n">ENQUETE</span><span class="p">,</span> <span class="n">J</span> <span class="n">AI</span> <span class="n">EGALEMENT</span> <span class="n">DISSIMULER</span> <span class="n">LE</span> <span class="n">LIEU</span><span class="p">,</span> <span class="n">L</span> <span class="n">IDENTITE</span> <span class="n">ET</span> <span class="n">LE</span> <span class="n">NUMERO</span> <span class="n">DE</span> <span class="n">TELEPHONE</span> <span class="n">DE</span> <span class="n">LA</span> <span class="n">PERSONNE</span> <span class="n">AVEC</span> <span class="n">QUI</span> <span class="n">J</span> <span class="n">AVAIS</span> <span class="n">RENDEZ</span> <span class="n">VOUS</span><span class="p">.</span>
+
+<span class="n">LA</span> <span class="n">CLE</span> <span class="n">USB</span> <span class="n">EST</span> <span class="n">VERROUILLEE</span> <span class="n">VOICI</span> <span class="n">LE</span> <span class="n">FLAG</span> <span class="n">PERMETTANT</span> <span class="n">DE</span> <span class="n">L</span> <span class="n">OUVRIR</span> <span class="n">OPENTHATPANDORABOX</span><span class="p">.</span>
+
+<span class="n">NOTE</span> <span class="p">:</span> <span class="n">CECI</span> <span class="n">EST</span> <span class="n">LA</span> <span class="n">REPONSE</span> <span class="n">QUE</span> <span class="n">VOUS</span> <span class="n">DEVEZ</span> <span class="n">DONNER</span> <span class="n">AU</span> <span class="n">JUGE</span><span class="p">,</span> <span class="n">CE</span> <span class="n">FLAG</span> <span class="n">PERMET</span> <span class="n">EGALEMENT</span> <span class="n">DE</span> <span class="n">DEVEROUILLER</span> <span class="n">LE</span> <span class="n">FICHIER</span> <span class="n">ZIP</span> <span class="n">USBCONTENTS</span><span class="p">.</span>
+</pre></div>
+
+
+<p>On récupère finalement le flag qui est <code>OPENTHATPANDORABOX</code>.</p>
+<h2>Conclusion</h2>
+<p>Ce challenge permettait de débloquer les 7 derniers de la compétition. Leur résolution était primoridiale. Le dossier <code>usb_contents</code> présent sur la clé se dévérouille ainsi avec le flag obtenu. <br />
+Les organisateurs ont finalement distribué le flag aux autres équipes en donnant un indice qui me fait penser encore que les combinaisons les plus simples sont malheureusement encore (trop) souvent utilisées dans les concours. Si vous remplacez "ABCDEFG..." par "AZERTYU..." vous obtenez le déchiffrage.<br />
+Mon erreur aura été ici d'avoir perdu trop de temps en pensant qu'il n'y avait pas de pattern possible pour la substitution. Je m'en souviendrais !</p>
+<p>PS : pour les flemmards voici une fonction python qui vous sort la prochaine lettre la plus fréquente en fonction du message et de ce que vous avez déjà deviné : </p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">prochaine_lettre</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">trouve</span><span class="p">):</span>
+    <span class="c1"># On recupere les occurences</span>
+    <span class="n">occ</span> <span class="o">=</span> <span class="n">occurrences</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+    <span class="c1"># Pour chaque lettre à partir de la plus récurrente</span>
+    <span class="k">for</span> <span class="n">lettre</span> <span class="ow">in</span> <span class="n">occ</span><span class="p">:</span>
+        <span class="c1"># Si la lettre n&#39;a pas été trouvée</span>
+        <span class="k">if</span> <span class="n">lettre</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">trouve</span><span class="p">:</span>
+            <span class="c1"># On retourne la lettre</span>
+            <span class="k">return</span> <span class="n">lettre</span>
+    <span class="c1"># Toutes les lettres ont été testées</span>
+    <span class="k">return</span> <span class="kc">None</span>
+</pre></div>
+
+
+<p>PPS: pour les plus flemmard vous pouvez retrouver le code au complet <a href="https://nightlyside.github.io/new/blog/files/BTC/pandora_box.py">ici</a>.</p>
+
+
+<!-- Footer -->
+<hr>
+<div class="container">
+    <div class="row justify-content-sm-center">
+        <p>© 2020 Alexandre Froehlich</p>
+    </div>
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

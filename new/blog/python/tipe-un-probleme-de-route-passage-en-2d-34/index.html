@@ -139,9 +139,11 @@
 <h2>Création de la route</h2>
 <p>On entame dès à présent une des parties des plus compliquées avec la création de la route. On définit la route comme étant l'ensemble des positions prises par un chemin pour aller d'un point $A$ à un point $B$.</p>
 <p><img alt="A vers B" class="center" height="200px" src="https://nightlyside.github.io/new/blog/images/TIPE/AtoB.jpg" /></p>
-<p _="%" endhighlight="endhighlight">En prenant les coordonnées de $A = (0,0)$ et $B = (2,2)$ alors le chemin correpondant sera :
-{% highlight python %}
-chemin = [(0, 0), (0, 1), (0, 2), (1, 2), (2, 2)]</p>
+<p>En prenant les coordonnées de $A = (0,0)$ et $B = (2,2)$ alors le chemin correpondant sera :</p>
+<div class="highlight"><pre><span></span><span class="n">chemin</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)]</span>
+</pre></div>
+
+
 <h3>Algorithme</h3>
 <p>Pour créer la route on initialise un tableau contenant les positions de chaque case. On commence par la case du début puis on choisis la prochaine de façon relativement simple, on sera probablement amené qu'à créer des droites ou des angles droits, il n'est donc pas nécessaire de se compliquer la tâche.
 Une fois qu'on est arrivée à la dernière case on retourne la liste crée.</p>
