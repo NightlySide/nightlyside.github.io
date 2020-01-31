@@ -105,10 +105,14 @@
 }
 
 .highlight {
-  padding: 1em;
-  border-radius: 0.5em;
+  padding: 0.5em;
   margin-bottom: 1em;
   border: 1px solid #aaa;
+  border-left-color: rgb(170, 170, 170);
+  border-left-style: solid;
+  border-left-width: 1px;
+  border-left: solid 5px
+  #747474;
 }
 
 .highlight pre {

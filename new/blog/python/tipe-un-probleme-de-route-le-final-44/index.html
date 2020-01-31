@@ -14,11 +14,10 @@
     <link rel="icon" type="image/png" href="https://nightlyside.github.io/new/blog/theme/favicon.png" />
 
     <!-- Browser Color -->
- <meta name="author" content="Alexandre Froehlich" />
-<meta name="description" content="Dernière ligne droite pour le modèle informatique. La dernière étape consiste à implémenter les carrefours, les déviations et les intersections. On se place toujours dans les hypothèses mises en place dans l’explication de la démarche. Mais leur implémentation n’est pas facile à se représenter. Durant la phase de développement, on a fait face à de nombreux problèmes, voici comment on les a résolu." />
-<meta name="keywords" content="concours, TIPE, python" />
+     <meta name="author" content="Alexandre Froehlich" />
+    <meta name="description" content="Site web portfolio de Alexandre Froehlich" />
 
-    <title>[TIPE] Un problème de route - Le final (4/4)
+    <title>[TIPE] Un problème de route - Le final (4/4) | Alexandre Froehlich
  | Alexandre Froehlich</title>
 
     <!-- CSS -->
@@ -31,18 +30,21 @@
     <script src="https://nightlyside.github.io/new/blog/theme/js/jquery.js"></script>
     <script src="https://nightlyside.github.io/new/blog/theme/js/bootstrap.js"></script>
     <script src="https://nightlyside.github.io/new/blog/theme/js/fontawesome.js"></script>
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="https://nightlyside.github.io/new/blog/theme/js/zooming.min.js"></script>
+    
     <script>
         MathJax = {
             tex: {
-                inlineMath: [['$', '$'], ['\\(', '\\)']]
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
             },
             svg: {
                 fontCache: 'global'
             }
         };
     </script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 
 <body>
@@ -60,7 +62,7 @@
             <div class="about col-sm-12 col-md-3 col-lg-2">
                 <nav class="navbar navbar-fixed-side sticky-top row">
                     <img src="https://nightlyside.github.io/new/blog/images/avatar.png" alt="Alexandre Froehlich" />
-                    <h2 class="col-sm-12"><a href="https://nightlyside.github.io/new/blog/">Alexandre Froehlich</a></h2>
+                    <h2 class="col-sm-12"><a href="https://nightlyside.github.io/new/blog">Alexandre Froehlich</a></h2>
                     <p class="col-sm-12">
                         Hobbyist programmer. Petit développeur indépendant (aka.
                         Nightlyside) dont le rêve est d’être capable de publier un projet
@@ -70,7 +72,7 @@
                     <!-- Navigation -->
                     <ul class="nav-list">
                         <li class="nav-item">
-                            <span class="nav-item-separator">//</span><a href="https://nightlyside.github.io/new/blog/">Accueil</a>
+                            <span class="nav-item-separator">//</span><a href="https://nightlyside.github.io/new/blog">Accueil</a>
                         </li>
                         <li class="nav-item">
                             <span class="nav-item-separator">//</span><a href="https://nightlyside.github.io/new/blog/files/cv.pdf">CV</a>
@@ -82,7 +84,7 @@
                             <span class="nav-item-separator">//</span><a href="https://nightlyside.github.io/new/blog/archives">Archives</a>
                         </li>
                         <li class="nav-item">
-                            <span class="nav-item-separator">//</span><a href="#">À propos</a>
+                            <span class="nav-item-separator">//</span><a href="https://nightlyside.github.io/new/blog">À propos</a>
                         </li>
                     </ul>
 
@@ -105,150 +107,127 @@
             </div>
             <!-- Main content -->
             <div class="col-sm-12 col-md-9 col-lg-10 main">
-<img class="featured_image" src="https://nightlyside.github.io/new/blog/images/TIPE/final_front.jpg" alt="Image de l'article">
-                <div class="container content">
+    <img class="featured_image" src="/images/TIPE/final_front.jpg" alt="Image de l'article">
+                 <div class="container content">
                     <!-- Insert content here -->
-
 <h1 class="title">[TIPE] Un problème de route - Le final (4/4)</h1>
 <p class="sous-titre">
-    <span class="date-poste">Posté le sam. 09 décembre 2017 dans <a href="https://nightlyside.github.io/new/blog/category/python.html">python</a></span> <br>
-    <span class="temps-lecture">Temps de lecture : 5 minutes</span>
+    <span class="date-poste">Posté le sam. 09 décembre 2017 dans <a href="category/python.html">python</a></span> <br>
+    <span class="temps-lecture">Temps de lecture : 3 minutes</span>
 </p>
-
 <hr>
-<p>Dernière ligne droite pour le modèle informatique. La dernière étape consiste à implémenter les carrefours, les déviations et les intersections. On se place toujours dans les hypothèses mises en place dans l’explication de la démarche. Mais leur implémentation n’est pas facile à se représenter. Durant la phase de développement, on a fait face à de nombreux problèmes, voici comment on les a résolu.</p>
-
-
-<h2>Réécriture des représentations des voitures, chemins et de la grille</h2>
-<p>L’ancienne représentation (à l’aide de tableau) n’est probablement pas la meilleure solution à considérer pour la compréhension et la lisibilité de l’algorithme. Pour cela on utilisera les classes (notion hors programme de PSI en CPGE), pour plus d’information <a href="https://openclassrooms.com/courses/apprenez-a-programmer-en-python/premiere-approche-des-classes">ce cours publié sur OpenClassroom</a> explique mieux ce concept que je ne pourrais le faire.</p>
-<h3>Les voitures</h3>
-<p>Une des raisons pour lesquelles nous allons utiliser les classes est que cela facilite la compréhension. En effet pour récupérer la vitesse d’une voiture avant il fallait récupérer une entrée d’un tableau correspondant à ladite voiture. En utilisant les classes on utilise maintenant la méthode <code>voiture.getPosition(t)</code>.
-Ainsi, on crée chaque voiture en lui donnant le nombre d’itérations que la simulation va calculer afin de stocker toutes les positions et vitesses pour les analyser. On lui donne le chemin sur lequel elle va évoluer ainsi que sa position initiale et la vitesse maximale à laquelle et pourra circuler. Le reste sera géré par la simulation.</p>
+<p>Derni&egrave;re ligne droite pour le mod&egrave;le informatique. La derni&egrave;re &eacute;tape consiste &agrave; impl&eacute;menter les carrefours, les d&eacute;viations et les intersections. On se place toujours dans les hypoth&egrave;ses mises en place dans l&rsquo;explication de la d&eacute;marche. Mais leur impl&eacute;mentation n&rsquo;est pas facile &agrave; se repr&eacute;senter. Durant la phase de d&eacute;veloppement, on a fait face &agrave; de nombreux probl&egrave;mes, voici comment on les a r&eacute;solu.</p>
+<h2 id="reecriture des representations des voitures, chemins et de la grille">R&eacute;&eacute;criture des repr&eacute;sentations des voitures, chemins et de la grille</h2>
+<p>L&rsquo;ancienne repr&eacute;sentation (&agrave; l&rsquo;aide de tableau) n&rsquo;est probablement pas la meilleure solution &agrave; consid&eacute;rer pour la compr&eacute;hension et la lisibilit&eacute; de l&rsquo;algorithme. Pour cela on utilisera les classes (notion hors programme de PSI en CPGE), pour plus d&rsquo;information <a href="https://openclassrooms.com/courses/apprenez-a-programmer-en-python/premiere-approche-des-classes">ce cours publi&eacute; sur OpenClassroom</a> explique mieux ce concept que je ne pourrais le faire.</p>
+<h3 id="les voitures">Les voitures</h3>
+<p>Une des raisons pour lesquelles nous allons utiliser les classes est que cela facilite la compr&eacute;hension. En effet pour r&eacute;cup&eacute;rer la vitesse d&rsquo;une voiture avant il fallait r&eacute;cup&eacute;rer une entr&eacute;e d&rsquo;un tableau correspondant &agrave; ladite voiture. En utilisant les classes on utilise maintenant la m&eacute;thode <code>voiture.getPosition(t)</code>. Ainsi, on cr&eacute;e chaque voiture en lui donnant le nombre d&rsquo;it&eacute;rations que la simulation va calculer afin de stocker toutes les positions et vitesses pour les analyser. On lui donne le chemin sur lequel elle va &eacute;voluer ainsi que sa position initiale et la vitesse maximale &agrave; laquelle et pourra circuler. Le reste sera g&eacute;r&eacute; par la simulation.</p>
 <div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Voiture</span><span class="p">:</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nbTemps</span><span class="p">,</span> <span class="n">chemin</span><span class="p">,</span> <span class="n">carte</span><span class="p">,</span> <span class="n">position</span><span class="p">,</span> <span class="n">vmax</span><span class="p">,</span> <span class="n">facteur</span><span class="p">):</span>
-        <span class="c1"># On définit les attributs de la voiture</span>
+        <span class="c1"># On d&eacute;finit les attributs de la voiture</span>
 
     <span class="k">def</span> <span class="nf">setPosition</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">position</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">getPosition</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">getVitesse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">maj_vitesse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
-        <span class="c1"># On adapte ici le code de la simulation précédente</span>
+        <span class="c1"># On adapte ici le code de la simulation pr&eacute;c&eacute;dente</span>
 </pre></div>
-
-
-<h3>La carte et ses routes</h3>
-<p>De même on retranscrit le code précédent en quelque chose de plus exploitable. En effet, il est plus simple d’écrire <code>carte.placerVoiture(t, voiture)</code> pour modifier la carte en ajoutant une voiture à l’instant <em>t</em>.</p>
+<h3 id="la carte et ses routes">La carte et ses routes</h3>
+<p>De m&ecirc;me on retranscrit le code pr&eacute;c&eacute;dent en quelque chose de plus exploitable. En effet, il est plus simple d&rsquo;&eacute;crire <code>carte.placerVoiture(t, voiture)</code> pour modifier la carte en ajoutant une voiture &agrave; l&rsquo;instant <em>t</em>.</p>
 <div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Carte</span><span class="p">:</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hauteur</span><span class="p">,</span> <span class="n">largeur</span><span class="p">,</span> <span class="n">nbTemps</span><span class="p">,</span> <span class="n">aleatoire</span><span class="p">):</span>
-        <span class="c1"># On définit les attributs de la carte</span>
+        <span class="c1"># On d&eacute;finit les attributs de la carte</span>
 
     <span class="k">def</span> <span class="nf">elementALaPosition</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">position</span><span class="p">):</span>
-        <span class="c1"># Retourne l&#39;élément de la carte se trouvant à une certaine position</span>
+        <span class="c1"># Retourne l'&eacute;l&eacute;ment de la carte se trouvant &agrave; une certaine position</span>
     <span class="k">def</span> <span class="nf">creerGrille</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hauteur</span><span class="p">,</span> <span class="n">largeur</span><span class="p">,</span> <span class="n">nbTemps</span><span class="p">,</span> <span class="n">aleatoire</span><span class="p">)</span>
-        <span class="c1"># Permet d&#39;initialiser la grille pour la simulation</span>
+        <span class="c1"># Permet d'initialiser la grille pour la simulation</span>
     <span class="k">def</span> <span class="nf">represente</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">taille</span><span class="p">):</span>
-        <span class="c1"># Retourne une représentation de la carte à l&#39;instant t</span>
+        <span class="c1"># Retourne une repr&eacute;sentation de la carte &agrave; l'instant t</span>
         <span class="c1"># Et ce, taille fois plus grand</span>
     <span class="k">def</span> <span class="nf">placerVoiture</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">voiture</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">placerRoute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">route</span><span class="p">)</span>
 </pre></div>
-
-
-<p>De même pour les routes :</p>
+<p>De m&ecirc;me pour les routes :</p>
 <div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Chemin</span><span class="p">:</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">carte</span><span class="p">,</span> <span class="o">*</span><span class="n">positions</span><span class="p">):</span>
-        <span class="c1"># On initialise la route à partir des positions par lesquelles</span>
+        <span class="c1"># On initialise la route &agrave; partir des positions par lesquelles</span>
         <span class="c1"># elle passera</span>
 
     <span class="k">def</span> <span class="nf">creerCheminSimple</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos_i</span><span class="p">,</span> <span class="n">pos_f</span><span class="p">):</span>
-        <span class="c1"># Permet de créer un chemin simple entre 2 points</span>
+        <span class="c1"># Permet de cr&eacute;er un chemin simple entre 2 points</span>
     <span class="k">def</span> <span class="nf">creerCheminComplexe</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">positions</span><span class="p">):</span>
-        <span class="c1"># Permet de créer un chemin complexe passant par un ensemble de positions</span>
+        <span class="c1"># Permet de cr&eacute;er un chemin complexe passant par un ensemble de positions</span>
     <span class="k">def</span> <span class="nf">additionneChemins</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
-        <span class="c1"># Permet d&#39;additionner le chemin c à l&#39;actuel</span>
+        <span class="c1"># Permet d'additionner le chemin c &agrave; l'actuel</span>
     <span class="k">def</span> <span class="nf">estSurChemin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos</span><span class="p">):</span>
-        <span class="c1"># Vérifie si une position se trouve sur le chemin</span>
+        <span class="c1"># V&eacute;rifie si une position se trouve sur le chemin</span>
     <span class="k">def</span> <span class="nf">voisins</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">position</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">voisin_suivant</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">position</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">distance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos1</span><span class="p">,</span> <span class="n">pos2</span><span class="p">):</span>
         <span class="c1"># Retourner la distance en nombre de cases entre les deux positions</span>
 </pre></div>
-
-
-<h2>Le problème de l'ancienne simulation</h2>
-<p>L’ancienne simulation fonctionnait bien lorsqu’il n’y avait qu’une seule voiture sur la route. Cependant, la voiture, face à une bifurcation va choisir aléatoirement une route ou l’autre. Nous l’avions codé de cette manière, mais nous voulons que la circulation ne se fasse que dans un sens pour pouvoir analyser la vitesse et la densité des voitures.</p>
-<p><img alt="Problème" class="center" height="200px" src="https://nightlyside.github.io/new/blog/images/TIPE/probleme.gif" /></p>
-<p>Pour résoudre ce problème, une solution (celle que j’ai choisi), est de numéroter chaque case de la route, ainsi le sens de circulation sera donné par des indices de case croissants. C’est à dire que le chemin du post précédent devient maintenant :</p>
+<h2 id="le probleme de l'ancienne simulation_1">Le probl&egrave;me de l'ancienne simulation</h2>
+<p>L&rsquo;ancienne simulation fonctionnait bien lorsqu&rsquo;il n&rsquo;y avait qu&rsquo;une seule voiture sur la route. Cependant, la voiture, face &agrave; une bifurcation va choisir al&eacute;atoirement une route ou l&rsquo;autre. Nous l&rsquo;avions cod&eacute; de cette mani&egrave;re, mais nous voulons que la circulation ne se fasse que dans un sens pour pouvoir analyser la vitesse et la densit&eacute; des voitures.</p>
+<p><img alt="Probl&egrave;me" class="center img-zoomable" height="200px" src="https://nightlyside.github.io/new/blog/images/TIPE/probleme.gif"/></p>
+<p>Pour r&eacute;soudre ce probl&egrave;me, une solution (celle que j&rsquo;ai choisi), est de num&eacute;roter chaque case de la route, ainsi le sens de circulation sera donn&eacute; par des indices de case croissants. C&rsquo;est &agrave; dire que le chemin du post pr&eacute;c&eacute;dent devient maintenant :</p>
 <div class="highlight"><pre><span></span><span class="n">chemin</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)],</span> 
           <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)],</span> 
           <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)],</span> 
           <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)],</span> 
           <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)]]</span>
 </pre></div>
-
-
-<h2>Utilisation du nouveau code</h2>
-<h3>Quelques procédures et fonctions bien utiles</h3>
-<p>Depuis le début de ces posts, je vous ai présenté des images, du texte, correspondant au résultats des simulations mais je ne vous ai pas encore expliqué comment cela se fait. Voici quelques fonctions bien utiles que j’ai utilisé entre autre afin d’exporte la carte à un instant donné, comment j’ai transformé une vitesse en cases par unité de temps en km/h, etc.</p>
-<p>La fonction suivante permet de récupérer une distance cartésienne entre deux points (il s’agit de la norme de la distance à ces points).</p>
+<h2 id="utilisation du nouveau code">Utilisation du nouveau code</h2>
+<h3 id="quelques procedures et fonctions bien utiles">Quelques proc&eacute;dures et fonctions bien utiles</h3>
+<p>Depuis le d&eacute;but de ces posts, je vous ai pr&eacute;sent&eacute; des images, du texte, correspondant au r&eacute;sultats des simulations mais je ne vous ai pas encore expliqu&eacute; comment cela se fait. Voici quelques fonctions bien utiles que j&rsquo;ai utilis&eacute; entre autre afin d&rsquo;exporte la carte &agrave; un instant donn&eacute;, comment j&rsquo;ai transform&eacute; une vitesse en cases par unit&eacute; de temps en km/h, etc.</p>
+<p>La fonction suivante permet de r&eacute;cup&eacute;rer une distance cart&eacute;sienne entre deux points (il s&rsquo;agit de la norme de la distance &agrave; ces points).</p>
 <div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">distancePos</span><span class="p">(</span><span class="n">pos_i</span><span class="p">,</span> <span class="n">pos_f</span><span class="p">):</span>
     <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">pos_i</span>
     <span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="o">=</span> <span class="n">pos_f</span>
     <span class="k">return</span> <span class="p">((</span><span class="n">x</span> <span class="o">-</span> <span class="n">i</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="n">j</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> 
 </pre></div>
-
-
-<p>Voici une autre fonction très utile que je traîne avec moi depuis quelques années et qui me sert pour numéroter des images d’une simulation afin qu’elles soient acceptée par certains logiciels. Elle permet entre autre de transformer <code>98</code> et <code>6</code> en <code>00098</code> et <code>00006</code>.</p>
+<p>Voici une autre fonction tr&egrave;s utile que je tra&icirc;ne avec moi depuis quelques ann&eacute;es et qui me sert pour num&eacute;roter des images d&rsquo;une simulation afin qu&rsquo;elles soient accept&eacute;e par certains logiciels. Elle permet entre autre de transformer <code>98</code> et <code>6</code> en <code>00098</code> et <code>00006</code>.</p>
 <div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">ajoutezeros</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">nombrezeros</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Prends le nombre n et rajoute le nombre de zéros nécessaires</span>
-<span class="sd">    à sa représentation en chaine de charactère</span>
-<span class="sd">    Retourne une chaine de charactères</span>
-<span class="sd">    ex : on veut un nombre à 3 chiffres : ajoutezeros(3, 5) = &quot;003&quot;</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="sd">"""</span>
+<span class="sd">    Prends le nombre n et rajoute le nombre de z&eacute;ros n&eacute;cessaires</span>
+<span class="sd">    &agrave; sa repr&eacute;sentation en chaine de charact&egrave;re</span>
+<span class="sd">    Retourne une chaine de charact&egrave;res</span>
+<span class="sd">    ex : on veut un nombre &agrave; 3 chiffres : ajoutezeros(3, 5) = "003"</span>
+<span class="sd">    """</span>
     <span class="n">nb</span> <span class="o">=</span> <span class="n">nombrezeros</span><span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
     <span class="k">if</span> <span class="n">nb</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="k">return</span> <span class="s2">&quot;0&quot;</span><span class="o">*</span><span class="n">nb</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+        <span class="k">return</span> <span class="s2">"0"</span><span class="o">*</span><span class="n">nb</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
     <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>  
 </pre></div>
-
-
-<p>Le code suivant permet d’afficher la carte à l’instant <em>t</em>. J’ai décidé de laisser tomber matplotlib pour pylab qui à l’avantage de supporter un raffraichissement de l’image plus fréquent (et par conséquent le support des animations).</p>
+<p>Le code suivant permet d&rsquo;afficher la carte &agrave; l&rsquo;instant t. J&rsquo;ai d&eacute;cid&eacute; de laisser tomber matplotlib pour pylab qui &agrave; l&rsquo;avantage de supporter un raffraichissement de l&rsquo;image plus fr&eacute;quent (et par cons&eacute;quent le support des animations).</p>
 <div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">affiche_grille</span><span class="p">(</span><span class="n">carte</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
     <span class="n">pylab</span><span class="o">.</span><span class="n">ion</span><span class="p">()</span>
     <span class="n">tabplot</span> <span class="o">=</span> <span class="n">pylab</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">carte</span><span class="o">.</span><span class="n">represente</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">taille</span><span class="o">=</span><span class="mi">10</span><span class="p">),</span> \
-                    <span class="n">cmap</span><span class="o">=</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">colors</span><span class="o">.</span><span class="n">ListedColormap</span><span class="p">([</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="s1">&#39;palegreen&#39;</span><span class="p">,</span> <span class="s1">&#39;antiquewhite&#39;</span><span class="p">]))</span>
+                    <span class="n">cmap</span><span class="o">=</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">colors</span><span class="o">.</span><span class="n">ListedColormap</span><span class="p">([</span><span class="s1">'white'</span><span class="p">,</span> <span class="s1">'palegreen'</span><span class="p">,</span> <span class="s1">'antiquewhite'</span><span class="p">]))</span>
 </pre></div>
-
-
-<p>Voici une des plus grandes avancées de mon code depuis la première version (en linéaire) il sert à jouer l’animation sans pour autant l’exporter en fichiers. Cela reste plutot lent et le paramètre qui permet de contrôle le nombre d’images par secondes (FPS en anglais) est homéopathique.</p>
+<p>Voici une des plus grandes avanc&eacute;es de mon code depuis la premi&egrave;re version (en lin&eacute;aire) il sert &agrave; jouer l&rsquo;animation sans pour autant l&rsquo;exporter en fichiers. Cela reste plutot lent et le param&egrave;tre qui permet de contr&ocirc;le le nombre d&rsquo;images par secondes (FPS en anglais) est hom&eacute;opathique.</p>
 <div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">affiche_simulation</span><span class="p">(</span><span class="n">carte</span><span class="p">,</span> <span class="n">fps</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">tmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">tmax</span><span class="o">=</span><span class="n">nbTemps</span><span class="p">):</span>
     <span class="n">pylab</span><span class="o">.</span><span class="n">ion</span><span class="p">()</span>
     <span class="n">tabplot</span> <span class="o">=</span> <span class="n">pylab</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">carte</span><span class="o">.</span><span class="n">represente</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">taille</span><span class="o">=</span><span class="mi">10</span><span class="p">),</span> \ 
-        <span class="n">cmap</span><span class="o">=</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">colors</span><span class="o">.</span><span class="n">ListedColormap</span><span class="p">([</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="s1">&#39;palegreen&#39;</span><span class="p">,</span> <span class="s1">&#39;antiquewhite&#39;</span><span class="p">]))</span>
+        <span class="n">cmap</span><span class="o">=</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">colors</span><span class="o">.</span><span class="n">ListedColormap</span><span class="p">([</span><span class="s1">'white'</span><span class="p">,</span> <span class="s1">'palegreen'</span><span class="p">,</span> <span class="s1">'antiquewhite'</span><span class="p">]))</span>
     <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">tmin</span><span class="p">,</span> <span class="n">tmax</span><span class="p">):</span>
         <span class="n">tabplot</span><span class="o">.</span><span class="n">set_data</span><span class="p">(</span><span class="n">carte</span><span class="o">.</span><span class="n">represente</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">taille</span><span class="o">=</span><span class="mi">10</span><span class="p">))</span>
         <span class="n">pylab</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
         <span class="n">xx</span> <span class="o">=</span> <span class="n">pylab</span><span class="o">.</span><span class="n">waitforbuttonpress</span><span class="p">(</span><span class="n">timeout</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="n">fps</span><span class="p">)</span>
 </pre></div>
-
-
-<h3>Création de la simulation</h3>
-<p>Le code précédent s’est bien raccourci grâce aux classes et possède une certaine compréhension quand à son initialisation.</p>
-<div class="highlight"><pre><span></span><span class="c1"># on crée la carte</span>
+<h3 id="creation de la simulation">Cr&eacute;ation de la simulation</h3>
+<p>Le code pr&eacute;c&eacute;dent s&rsquo;est bien raccourci gr&acirc;ce aux classes et poss&egrave;de une certaine compr&eacute;hension quand &agrave; son initialisation.</p>
+<div class="highlight"><pre><span></span><span class="c1"># on cr&eacute;e la carte</span>
 <span class="n">carte</span> <span class="o">=</span> <span class="n">Carte</span><span class="p">(</span><span class="n">W</span><span class="p">,</span> <span class="n">H</span><span class="p">,</span> <span class="n">nbTemps</span><span class="p">)</span>
-<span class="c1"># on crée la route</span>
+<span class="c1"># on cr&eacute;e la route</span>
 <span class="n">route</span> <span class="o">=</span> <span class="n">Chemin</span><span class="p">(</span><span class="n">carte</span><span class="p">,</span> <span class="p">(</span><span class="mi">74</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">74</span><span class="p">,</span> <span class="mi">54</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">54</span><span class="p">))</span>
-<span class="c1"># on crée la seconde route</span>
+<span class="c1"># on cr&eacute;e la seconde route</span>
 <span class="n">route2</span> <span class="o">=</span> <span class="n">Chemin</span><span class="p">(</span><span class="n">carte</span><span class="p">,</span> <span class="p">(</span><span class="mi">74</span><span class="p">,</span> <span class="mi">45</span><span class="p">),</span> <span class="p">(</span><span class="mi">54</span><span class="p">,</span> <span class="mi">45</span><span class="p">),</span> <span class="p">(</span><span class="mi">54</span><span class="p">,</span> <span class="mi">29</span><span class="p">),</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">29</span><span class="p">),</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">54</span><span class="p">))</span>
-<span class="c1"># on indique l&#39;endroit où les routes vont se rejoindre</span>
+<span class="c1"># on indique l'endroit o&ugrave; les routes vont se rejoindre</span>
 <span class="n">route</span><span class="o">.</span><span class="n">deviation</span><span class="p">(</span><span class="n">route2</span><span class="p">,</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">54</span><span class="p">))</span>    
 <span class="c1"># On place la route</span>
 <span class="n">carte</span><span class="o">.</span><span class="n">placerChemin</span><span class="p">(</span><span class="n">route</span><span class="p">)</span>
 </pre></div>
-
-
-<p>On a ainsi crée la carte sur laquelle la simulation va se dérouler, crée la route principale avec une déviation. Maintenant on doit crée les voitures. Pour se faire rien de plus simple on utilise la classe du dessus pour crée autant d’instances que de voitures. On utilise le code suivant, notez bien la structure particulière qui est presque transparente.</p>
+<p>On a ainsi cr&eacute;e la carte sur laquelle la simulation va se d&eacute;rouler, cr&eacute;e la route principale avec une d&eacute;viation. Maintenant on doit cr&eacute;e les voitures. Pour se faire rien de plus simple on utilise la classe du dessus pour cr&eacute;e autant d&rsquo;instances que de voitures. On utilise le code suivant, notez bien la structure particuli&egrave;re qui est presque transparente.</p>
 <div class="highlight"><pre><span></span><span class="n">voitures</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nbVoitures</span><span class="p">):</span>
     <span class="n">voiture</span> <span class="o">=</span> <span class="n">Voiture</span><span class="p">(</span><span class="n">nbTemps</span><span class="p">,</span> <span class="n">route</span><span class="p">,</span> <span class="n">carte</span><span class="p">,</span> <span class="n">vitessemax</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="n">random</span><span class="p">())</span>
@@ -257,37 +236,40 @@ Ainsi, on crée chaque voiture en lui donnant le nombre d’itérations que la s
     <span class="n">voiture</span><span class="o">.</span><span class="n">setPosition</span><span class="p">(</span><span class="n">t</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">position</span><span class="p">)</span>
     <span class="n">carte</span><span class="o">.</span><span class="n">placerVoiture</span><span class="p">(</span><span class="n">t</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">voiture</span><span class="p">)</span>
 </pre></div>
-
-
-<p>On vient de créer toutes les voitures et on les a placées à leur première position c’est à dire pour à $t=0$. Il ne reste plus qu’à calculer la vitesse de chaque voiture pour chaque temps et les déplacer en conséquence. On commence à $t=1$ puisque la situation initiale à déjà été définie.</p>
+<p>On vient de cr&eacute;er toutes les voitures et on les a plac&eacute;es &agrave; leur premi&egrave;re position c&rsquo;est &agrave; dire pour &agrave; $t=0$. Il ne reste plus qu&rsquo;&agrave; calculer la vitesse de chaque voiture pour chaque temps et les d&eacute;placer en cons&eacute;quence. On commence &agrave; $t=1$ puisque la situation initiale &agrave; d&eacute;j&agrave; &eacute;t&eacute; d&eacute;finie.</p>
 <div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">nbTemps</span><span class="p">):</span>
     <span class="c1"># Pour chacune des voitures</span>
     <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">voitures</span><span class="p">)):</span>
         <span class="c1"># On fait avancer les voitures et on change leur vitesse</span>
         <span class="n">voitures</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">setPosition</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">voitures</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">avance</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">voitures</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">getPosition</span><span class="p">(</span><span class="n">t</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="n">voitures</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">vitesse</span><span class="p">[</span><span class="n">t</span><span class="o">-</span><span class="mi">1</span><span class="p">])[</span><span class="mi">0</span><span class="p">])</span>
         <span class="n">voitures</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">maj_vitesse</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
-        <span class="c1"># On replace la voiture sur la grille de l&#39;instant t</span>
+        <span class="c1"># On replace la voiture sur la grille de l'instant t</span>
         <span class="n">carte</span><span class="o">.</span><span class="n">placerVoiture</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">voitures</span><span class="p">[</span><span class="n">k</span><span class="p">])</span>
 </pre></div>
+<h2 id="l'animation finale_1">L'animation finale</h2>
+<p>Ca y est ! On touche &agrave; la fin. Normalement tout fonctionne maintenant et on se retrouve avec une carte contenant la position de toutes les voitures &agrave; tout instant de la simulation. Il ne reste plus qu&rsquo;&agrave; traiter ce tableau afin d&rsquo;afficher la simulation. On obtient finalement quelque chose qui ressemble &agrave; l&rsquo;animation ci-dessous.</p>
+<p><img alt="Probl&egrave;me" class="center img-zoomable" height="200px" src="https://nightlyside.github.io/new/blog/images/TIPE/anim_finale.gif"/></p>
+<p>Le mod&egrave;le informatique est d&egrave;s &agrave; pr&eacute;sent termin&eacute;. La prochaine &eacute;tape consiste &agrave; construire une maquette mod&eacute;lisant la circulation et de tout comparer &agrave; la r&eacute;alit&eacute;.</p>
 
-
-<h3>L'animation finale</h3>
-<p>Ca y est ! On touche à la fin. Normalement tout fonctionne maintenant et on se retrouve avec une carte contenant la position de toutes les voitures à tout instant de la simulation. Il ne reste plus qu’à traiter ce tableau afin d’afficher la simulation. On obtient finalement quelque chose qui ressemble à l’animation ci-dessous.</p>
-<p><img alt="Animation finale" class="center" height="400px" src="https://nightlyside.github.io/new/blog/images/TIPE/anim_finale.gif" /></p>
-<p>Le modèle informatique est dès à présent terminé. La prochaine étape consiste à construire une maquette modélisant la circulation et de tout comparer à la réalité.</p>
-
-
-<!-- Footer -->
-<hr>
-<div class="container">
-    <div class="row justify-content-sm-center">
-        <p>© 2020 Alexandre Froehlich</p>
-    </div>
-</div>
-                </div>
+                    <!-- Footer -->
+                    <hr>
+                    <div class="container">
+                        <div class="row justify-content-sm-center">
+                            <p>© 2020 Alexandre Froehlich</p>
+                        </div>
+                    </div>
+                 </div>
             </div>
         </div>
     </div>
+    <script>
+      // Listen to images after DOM content is fully loaded
+      document.addEventListener('DOMContentLoaded', function () {
+        new Zooming({
+          // options...
+        }).listen('.img-zoomable')
+      })
+    </script>
 </body>
 
 </html>

@@ -29,18 +29,21 @@
     <script src="https://nightlyside.github.io/new/blog/theme/js/jquery.js"></script>
     <script src="https://nightlyside.github.io/new/blog/theme/js/bootstrap.js"></script>
     <script src="https://nightlyside.github.io/new/blog/theme/js/fontawesome.js"></script>
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="https://nightlyside.github.io/new/blog/theme/js/zooming.min.js"></script>
+    
     <script>
         MathJax = {
             tex: {
-                inlineMath: [['$', '$'], ['\\(', '\\)']]
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
             },
             svg: {
                 fontCache: 'global'
             }
         };
     </script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 
 <body>
@@ -58,7 +61,7 @@
             <div class="about col-sm-12 col-md-3 col-lg-2">
                 <nav class="navbar navbar-fixed-side sticky-top row">
                     <img src="https://nightlyside.github.io/new/blog/images/avatar.png" alt="Alexandre Froehlich" />
-                    <h2 class="col-sm-12"><a href="https://nightlyside.github.io/new/blog/">Alexandre Froehlich</a></h2>
+                    <h2 class="col-sm-12"><a href="https://nightlyside.github.io/new/blog">Alexandre Froehlich</a></h2>
                     <p class="col-sm-12">
                         Hobbyist programmer. Petit développeur indépendant (aka.
                         Nightlyside) dont le rêve est d’être capable de publier un projet
@@ -68,7 +71,7 @@
                     <!-- Navigation -->
                     <ul class="nav-list">
                         <li class="nav-item">
-                            <span class="nav-item-separator">//</span><a href="https://nightlyside.github.io/new/blog/">Accueil</a>
+                            <span class="nav-item-separator">//</span><a href="https://nightlyside.github.io/new/blog">Accueil</a>
                         </li>
                         <li class="nav-item">
                             <span class="nav-item-separator">//</span><a href="https://nightlyside.github.io/new/blog/files/cv.pdf">CV</a>
@@ -80,7 +83,7 @@
                             <span class="nav-item-separator">//</span><a href="https://nightlyside.github.io/new/blog/archives">Archives</a>
                         </li>
                         <li class="nav-item">
-                            <span class="nav-item-separator">//</span><a href="#">À propos</a>
+                            <span class="nav-item-separator">//</span><a href="https://nightlyside.github.io/new/blog">À propos</a>
                         </li>
                     </ul>
 
@@ -109,88 +112,90 @@
 <h1>python</h1>
 <p class="sous-titre">5 article(s) publié(s) dans la catégorie.</p>
 <!-- On rappelle le contenu de départ -->
- <!-- A post -->
-<div class="row post">
-  <div class="col-sm-12 col-md-2">
-    <img src="https://nightlyside.github.io/new/blog/images/TIPE/sim_vitesse_front.jpg" class="img-fluid rounded" />
-  </div>
-  <div class="col-sm-12 col-md-10">
-    <h2><a href="https://nightlyside.github.io/new/blog/python/tipe-un-probleme-de-route-bonus/">[TIPE] Un problème de route - Bonus</a></h2>
-    <span class="sous-titre">Posté le mer. 21 mars 2018 dans <a href="https://nightlyside.github.io/new/blog/category/python.html">python</a></span>
-    <p class="description">
-      <p>Un petit bonus pour ce projet. Je cherche maintenant à représenter la vitesse de chaque véhicule afin d’avoir une idée plus précise sur la fluidité du trafic routier. Il y a certe peu de modifications à faire, mais cela en vaut le coup.</p>
+        <!-- A post -->
+        <div class="row post">
+        <div class="col-sm-12 col-md-2">
+            <img src="https://nightlyside.github.io/new/blog//images/TIPE/sim_vitesse_front.jpg" class="img-fluid rounded" />
+        </div>
+        <div class="col-sm-12 col-md-10">
+            <h2><a href="https://nightlyside.github.io/new/blog/python/tipe-un-probleme-de-route-bonus/">[TIPE] Un problème de route - Bonus</a></h2>
+            <span class="sous-titre">Posté le mer. 21 mars 2018 dans <a href="https://nightlyside.github.io/new/blog/category/python.html">python</a></span>
+            <p class="description">
+<p>Un petit bonus pour ce projet. Je cherche maintenant à représenter la vitesse de chaque véhicule afin d’avoir une idée plus précise sur la fluidité du trafic routier. Il y a certe peu de modifications à faire, mais cela en vaut le coup.
+</p></p>
+            <a href="https://nightlyside.github.io/new/blog/python/tipe-un-probleme-de-route-bonus/">>> Lire la suite</a>
+        </div>
+        </div>
+        <!-- A post -->
+        <div class="row post">
+        <div class="col-sm-12 col-md-2">
+            <img src="https://nightlyside.github.io/new/blog//images/TIPE/final_front.jpg" class="img-fluid rounded" />
+        </div>
+        <div class="col-sm-12 col-md-10">
+            <h2><a href="https://nightlyside.github.io/new/blog/python/tipe-un-probleme-de-route-le-final-44/">[TIPE] Un problème de route - Le final (4/4)</a></h2>
+            <span class="sous-titre">Posté le sam. 09 décembre 2017 dans <a href="https://nightlyside.github.io/new/blog/category/python.html">python</a></span>
+            <p class="description"><p>Derni&egrave;re ligne droite pour le mod&egrave;le informatique. La derni&egrave;re &eacute;tape consiste &agrave; impl&eacute;menter les carrefours, les d&eacute;viations et les intersections. On se place toujours dans les hypoth&egrave;ses mises en place dans l&rsquo;explication de la d&eacute;marche. Mais leur impl&eacute;mentation n&rsquo;est pas facile &agrave; se repr&eacute;senter. Durant la phase de …</p></p>
+            <a href="https://nightlyside.github.io/new/blog/python/tipe-un-probleme-de-route-le-final-44/">>> Lire la suite</a>
+        </div>
+        </div>
+        <!-- A post -->
+        <div class="row post">
+        <div class="col-sm-12 col-md-2">
+            <img src="https://nightlyside.github.io/new/blog//images/TIPE/random_front.jpg" class="img-fluid rounded" />
+        </div>
+        <div class="col-sm-12 col-md-10">
+            <h2><a href="https://nightlyside.github.io/new/blog/python/tipe-un-probleme-de-route-passage-en-2d-34/">[TIPE] Un problème de route - Passage en 2D (3/4)</a></h2>
+            <span class="sous-titre">Posté le sam. 02 décembre 2017 dans <a href="https://nightlyside.github.io/new/blog/category/python.html">python</a></span>
+            <p class="description"><p>La deuxi&egrave;me &eacute;tape consiste &agrave; passer la simulation &agrave; deux dimensions en vue d'impl&eacute;menter les d&eacute;viations et intersections. On peut encore s&eacute;parer cette &eacute;tape en plusieurs sous-&eacute;tapes : cr&eacute;ation d'une grille qui va accueillir la route, &agrave; la mani&egrave;re d'un plateau contenant des cartes ou des jetons, puis cr&eacute;ation de la …</p></p>
+            <a href="https://nightlyside.github.io/new/blog/python/tipe-un-probleme-de-route-passage-en-2d-34/">>> Lire la suite</a>
+        </div>
+        </div>
+        <!-- A post -->
+        <div class="row post">
+        <div class="col-sm-12 col-md-2">
+            <img src="https://nightlyside.github.io/new/blog//images/TIPE/sim_lineaire.jpg" class="img-fluid rounded" />
+        </div>
+        <div class="col-sm-12 col-md-10">
+            <h2><a href="https://nightlyside.github.io/new/blog/python/tipe-un-probleme-de-route-le-modele-informatique-24/">[TIPE] Un problème de route - Le modèle informatique (2/4)</a></h2>
+            <span class="sous-titre">Posté le ven. 01 décembre 2017 dans <a href="https://nightlyside.github.io/new/blog/category/python.html">python</a></span>
+            <p class="description"><p>Nous allons maintenant mod&eacute;liser le trafic routier pour une portion de route, en respectant les hypoth&egrave;ses donn&eacute;es et d&eacute;crites dans le dernier post. Pour cela on proc&egrave;de en 3 &eacute;tapes : on cr&eacute;e un mod&egrave;le basique &agrave; une dimension, puis on l&rsquo;&eacute;tend &agrave; 2 dimensions et on ajoute en derni&egrave;re …</p></p>
+            <a href="https://nightlyside.github.io/new/blog/python/tipe-un-probleme-de-route-le-modele-informatique-24/">>> Lire la suite</a>
+        </div>
+        </div>
+        <!-- A post -->
+        <div class="row post">
+        <div class="col-sm-12 col-md-2">
+            <img src="https://nightlyside.github.io/new/blog//images/TIPE/demarche_front.jpg" class="img-fluid rounded" />
+        </div>
+        <div class="col-sm-12 col-md-10">
+            <h2><a href="https://nightlyside.github.io/new/blog/python/tipe-un-probleme-de-route-la-demarche-14/">[TIPE] Un problème de route - La démarche (1/4)</a></h2>
+            <span class="sous-titre">Posté le mer. 29 novembre 2017 dans <a href="https://nightlyside.github.io/new/blog/category/python.html">python</a></span>
+            <p class="description"><p>Le trafic routier est probablement l&rsquo;un des plus grands fl&eacute;aux du quotidien. Nous faisant perdre un temps consid&eacute;rable, r&eacute;duisant la productivit&eacute; et poussant &agrave; des comportements dangereux, les embouteillages repr&eacute;sentent un facteur d&eacute;terminant dans les accidents de la route. Alors qu&rsquo;ils se produisent presque quotidiennement chaque jour sur …</p></p>
+            <a href="https://nightlyside.github.io/new/blog/python/tipe-un-probleme-de-route-la-demarche-14/">>> Lire la suite</a>
+        </div>
+        </div>
 
-    </p>
-    <a href="https://nightlyside.github.io/new/blog/python/tipe-un-probleme-de-route-bonus/">>> Lire la suite</a>
-  </div>
-</div>
-<!-- A post -->
-<div class="row post">
-  <div class="col-sm-12 col-md-2">
-    <img src="https://nightlyside.github.io/new/blog/images/TIPE/final_front.jpg" class="img-fluid rounded" />
-  </div>
-  <div class="col-sm-12 col-md-10">
-    <h2><a href="https://nightlyside.github.io/new/blog/python/tipe-un-probleme-de-route-le-final-44/">[TIPE] Un problème de route - Le final (4/4)</a></h2>
-    <span class="sous-titre">Posté le sam. 09 décembre 2017 dans <a href="https://nightlyside.github.io/new/blog/category/python.html">python</a></span>
-    <p class="description">
-      <p>Dernière ligne droite pour le modèle informatique. La dernière étape consiste à implémenter les carrefours, les déviations et les intersections. On se place toujours dans les hypothèses mises en place dans l’explication de la démarche. Mais leur implémentation n’est pas facile à se représenter. Durant la phase de développement, on a fait face à de nombreux problèmes, voici comment on les a résolu.</p>
 
-    </p>
-    <a href="https://nightlyside.github.io/new/blog/python/tipe-un-probleme-de-route-le-final-44/">>> Lire la suite</a>
-  </div>
-</div>
-<!-- A post -->
-<div class="row post">
-  <div class="col-sm-12 col-md-2">
-    <img src="https://nightlyside.github.io/new/blog/images/TIPE/random_front.jpg" class="img-fluid rounded" />
-  </div>
-  <div class="col-sm-12 col-md-10">
-    <h2><a href="https://nightlyside.github.io/new/blog/python/tipe-un-probleme-de-route-passage-en-2d-34/">[TIPE] Un problème de route - Passage en 2D (3/4)</a></h2>
-    <span class="sous-titre">Posté le sam. 02 décembre 2017 dans <a href="https://nightlyside.github.io/new/blog/category/python.html">python</a></span>
-    <p class="description">
-      <p>La deuxième étape consiste à passer la simulation à deux dimensions en vue d'implémenter les déviations et intersections. On peut encore séparer cette étape en plusieurs sous-étapes : création d'une grille qui va accueillir la route, à la manière d'un plateau contenant des cartes ou des jetons, puis création de la route et finalement adaptation des véhicules au nouveau système de route en 2 dimensions.</p>
 
-    </p>
-    <a href="https://nightlyside.github.io/new/blog/python/tipe-un-probleme-de-route-passage-en-2d-34/">>> Lire la suite</a>
-  </div>
-</div>
-<!-- A post -->
-<div class="row post">
-  <div class="col-sm-12 col-md-2">
-    <img src="https://nightlyside.github.io/new/blog/images/TIPE/sim_lineaire.jpg" class="img-fluid rounded" />
-  </div>
-  <div class="col-sm-12 col-md-10">
-    <h2><a href="https://nightlyside.github.io/new/blog/python/tipe-un-probleme-de-route-le-modele-informatique-24/">[TIPE] Un problème de route - Le modèle informatique (2/4)</a></h2>
-    <span class="sous-titre">Posté le ven. 01 décembre 2017 dans <a href="https://nightlyside.github.io/new/blog/category/python.html">python</a></span>
-    <p class="description">
-      <p>Nous allons maintenant modéliser le trafic routier pour une portion de route, en respectant les hypothèses données et décrites dans le dernier post.
-Pour cela on procède en 3 étapes : on crée un modèle basique à une dimension, puis on l’étend à 2 dimensions et on ajoute en dernière étape les déviations et intersections. Ce post correspond à la première phase.</p>
-
-    </p>
-    <a href="https://nightlyside.github.io/new/blog/python/tipe-un-probleme-de-route-le-modele-informatique-24/">>> Lire la suite</a>
-  </div>
-</div>
-<!-- A post -->
-<div class="row post">
-  <div class="col-sm-12 col-md-2">
-    <img src="https://nightlyside.github.io/new/blog/images/TIPE/demarche_front.jpg" class="img-fluid rounded" />
-  </div>
-  <div class="col-sm-12 col-md-10">
-    <h2><a href="https://nightlyside.github.io/new/blog/python/tipe-un-probleme-de-route-la-demarche-14/">[TIPE] Un problème de route - La démarche (1/4)</a></h2>
-    <span class="sous-titre">Posté le mer. 29 novembre 2017 dans <a href="https://nightlyside.github.io/new/blog/category/python.html">python</a></span>
-    <p class="description">
-      <p>Le trafic routier est probablement l’un des plus grands fléaux du quotidien. Nous faisant perdre un temps considérable, réduisant la productivité et poussant à des comportements dangereux, les embouteillages représentent un facteur déterminant dans les accidents de la route. Alors qu’ils se produisent presque quotidiennement chaque jour sur certaines routes, et ce depuis des décennies, il serait enfin temps d’envisager une solution pour s’en débarrasser.</p>
-
-    </p>
-    <a href="https://nightlyside.github.io/new/blog/python/tipe-un-probleme-de-route-la-demarche-14/">>> Lire la suite</a>
-  </div>
-</div>
- 
-
-                </div>
+                    <!-- Footer -->
+                    <hr>
+                    <div class="container">
+                        <div class="row justify-content-sm-center">
+                            <p>© 2020 Alexandre Froehlich</p>
+                        </div>
+                    </div>
+                 </div>
             </div>
         </div>
     </div>
+    <script>
+      // Listen to images after DOM content is fully loaded
+      document.addEventListener('DOMContentLoaded', function () {
+        new Zooming({
+          // options...
+        }).listen('.img-zoomable')
+      })
+    </script>
 </body>
 
 </html>

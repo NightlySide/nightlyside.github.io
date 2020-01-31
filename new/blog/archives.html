@@ -29,18 +29,21 @@
     <script src="https://nightlyside.github.io/new/blog/theme/js/jquery.js"></script>
     <script src="https://nightlyside.github.io/new/blog/theme/js/bootstrap.js"></script>
     <script src="https://nightlyside.github.io/new/blog/theme/js/fontawesome.js"></script>
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="https://nightlyside.github.io/new/blog/theme/js/zooming.min.js"></script>
+    
     <script>
         MathJax = {
             tex: {
-                inlineMath: [['$', '$'], ['\\(', '\\)']]
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
             },
             svg: {
                 fontCache: 'global'
             }
         };
     </script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 
 <body>
@@ -58,7 +61,7 @@
             <div class="about col-sm-12 col-md-3 col-lg-2">
                 <nav class="navbar navbar-fixed-side sticky-top row">
                     <img src="https://nightlyside.github.io/new/blog/images/avatar.png" alt="Alexandre Froehlich" />
-                    <h2 class="col-sm-12"><a href="https://nightlyside.github.io/new/blog/">Alexandre Froehlich</a></h2>
+                    <h2 class="col-sm-12"><a href="https://nightlyside.github.io/new/blog">Alexandre Froehlich</a></h2>
                     <p class="col-sm-12">
                         Hobbyist programmer. Petit développeur indépendant (aka.
                         Nightlyside) dont le rêve est d’être capable de publier un projet
@@ -68,7 +71,7 @@
                     <!-- Navigation -->
                     <ul class="nav-list">
                         <li class="nav-item">
-                            <span class="nav-item-separator">//</span><a href="https://nightlyside.github.io/new/blog/">Accueil</a>
+                            <span class="nav-item-separator">//</span><a href="https://nightlyside.github.io/new/blog">Accueil</a>
                         </li>
                         <li class="nav-item">
                             <span class="nav-item-separator">//</span><a href="https://nightlyside.github.io/new/blog/files/cv.pdf">CV</a>
@@ -80,7 +83,7 @@
                             <span class="nav-item-separator">//</span><a href="https://nightlyside.github.io/new/blog/archives">Archives</a>
                         </li>
                         <li class="nav-item">
-                            <span class="nav-item-separator">//</span><a href="#">À propos</a>
+                            <span class="nav-item-separator">//</span><a href="https://nightlyside.github.io/new/blog">À propos</a>
                         </li>
                     </ul>
 
@@ -107,27 +110,43 @@
                     <!-- Insert content here -->
 <h1>Archives</h1>
 <dl>
-    <dt>dim. 05 janvier 2020</dt>
-    <dd><a href="https://nightlyside.github.io/new/blog/writeups/btc-warm-up-writeup/">[BTC] Warm Up - WriteUp</a></dd>
-    <dt>mer. 01 janvier 2020</dt>
-    <dd><a href="https://nightlyside.github.io/new/blog/writeups/btc-nombre-heureux-writeup/">[BTC] Nombre heureux - WriteUp</a></dd>
-    <dt>mer. 01 janvier 2020</dt>
-    <dd><a href="https://nightlyside.github.io/new/blog/writeups/btc-lhistoire-sans-fin-writeup/">[BTC] L'Histoire sans fin - WriteUp</a></dd>
-    <dt>mer. 21 mars 2018</dt>
-    <dd><a href="https://nightlyside.github.io/new/blog/python/tipe-un-probleme-de-route-bonus/">[TIPE] Un problème de route - Bonus</a></dd>
-    <dt>sam. 09 décembre 2017</dt>
-    <dd><a href="https://nightlyside.github.io/new/blog/python/tipe-un-probleme-de-route-le-final-44/">[TIPE] Un problème de route - Le final (4/4)</a></dd>
-    <dt>sam. 02 décembre 2017</dt>
-    <dd><a href="https://nightlyside.github.io/new/blog/python/tipe-un-probleme-de-route-passage-en-2d-34/">[TIPE] Un problème de route - Passage en 2D (3/4)</a></dd>
-    <dt>ven. 01 décembre 2017</dt>
-    <dd><a href="https://nightlyside.github.io/new/blog/python/tipe-un-probleme-de-route-le-modele-informatique-24/">[TIPE] Un problème de route - Le modèle informatique (2/4)</a></dd>
-    <dt>mer. 29 novembre 2017</dt>
-    <dd><a href="https://nightlyside.github.io/new/blog/python/tipe-un-probleme-de-route-la-demarche-14/">[TIPE] Un problème de route - La démarche (1/4)</a></dd>
+            <dt>dim. 05 janvier 2020</dt>
+        <dd><a href="https://nightlyside.github.io/new/blog/writeups/btc-warm-up-writeup/">[BTC] Warm Up - WriteUp</a></dd>
+            <dt>mer. 01 janvier 2020</dt>
+        <dd><a href="https://nightlyside.github.io/new/blog/writeups/btc-lhistoire-sans-fin-writeup/">[BTC] L'Histoire sans fin - WriteUp</a></dd>
+            <dt>mer. 01 janvier 2020</dt>
+        <dd><a href="https://nightlyside.github.io/new/blog/writeups/btc-nombre-heureux-writeup/">[BTC] Nombre heureux - WriteUp</a></dd>
+            <dt>mer. 21 mars 2018</dt>
+        <dd><a href="https://nightlyside.github.io/new/blog/python/tipe-un-probleme-de-route-bonus/">[TIPE] Un problème de route - Bonus</a></dd>
+            <dt>sam. 09 décembre 2017</dt>
+        <dd><a href="https://nightlyside.github.io/new/blog/python/tipe-un-probleme-de-route-le-final-44/">[TIPE] Un problème de route - Le final (4/4)</a></dd>
+            <dt>sam. 02 décembre 2017</dt>
+        <dd><a href="https://nightlyside.github.io/new/blog/python/tipe-un-probleme-de-route-passage-en-2d-34/">[TIPE] Un problème de route - Passage en 2D (3/4)</a></dd>
+            <dt>ven. 01 décembre 2017</dt>
+        <dd><a href="https://nightlyside.github.io/new/blog/python/tipe-un-probleme-de-route-le-modele-informatique-24/">[TIPE] Un problème de route - Le modèle informatique (2/4)</a></dd>
+            <dt>mer. 29 novembre 2017</dt>
+        <dd><a href="https://nightlyside.github.io/new/blog/python/tipe-un-probleme-de-route-la-demarche-14/">[TIPE] Un problème de route - La démarche (1/4)</a></dd>
 </dl>
-                </div>
+
+                    <!-- Footer -->
+                    <hr>
+                    <div class="container">
+                        <div class="row justify-content-sm-center">
+                            <p>© 2020 Alexandre Froehlich</p>
+                        </div>
+                    </div>
+                 </div>
             </div>
         </div>
     </div>
+    <script>
+      // Listen to images after DOM content is fully loaded
+      document.addEventListener('DOMContentLoaded', function () {
+        new Zooming({
+          // options...
+        }).listen('.img-zoomable')
+      })
+    </script>
 </body>
 
 </html>
