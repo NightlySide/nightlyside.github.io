@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="" />
+
+    <!-- Favicon -->
+    <link rel="icon" href="https://nightlyside.github.io/new/blog/theme/favicon.ico" />
+    <link rel="icon" type="image/png" href="https://nightlyside.github.io/new/blog/theme/favicon.png" />
+
+    <!-- Browser Color -->
+     <meta name="author" content="Alexandre Froehlich" />
+    <meta name="description" content="Site web portfolio de Alexandre Froehlich" />
+
+    <title>[TIPE] Un problème de route - Bonus | Alexandre Froehlich
+ | Alexandre Froehlich</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="https://nightlyside.github.io/new/blog/theme/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="https://nightlyside.github.io/new/blog/theme/css/fontawesome.css" />
+    <link rel="stylesheet" type="text/css" href="https://nightlyside.github.io/new/blog/theme/css/pygments/default.css">
+    <link rel="stylesheet" type="text/css" href="https://nightlyside.github.io/new/blog/theme/css/blog.css" />
+
+    <!-- Javascript -->
+    <script src="https://nightlyside.github.io/new/blog/theme/js/jquery.js"></script>
+    <script src="https://nightlyside.github.io/new/blog/theme/js/bootstrap.js"></script>
+    <script src="https://nightlyside.github.io/new/blog/theme/js/fontawesome.js"></script>
+    <script src="https://nightlyside.github.io/new/blog/theme/js/zooming.min.js"></script>
+    
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+    <!--
+  _   _ _       _     _   _           _     _      
+ | \ | (_) __ _| |__ | |_| |_   _ ___(_) __| | ___ 
+ |  \| | |/ _` | '_ \| __| | | | / __| |/ _` |/ _ \
+ | |\  | | (_| | | | | |_| | |_| \__ \ | (_| |  __/
+ |_| \_|_|\__, |_| |_|\__|_|\__, |___/_|\__,_|\___|
+          |___/             |___/                  
+-->
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Fixed nav section -->
+            <div class="about col-sm-12 col-md-3 col-lg-2">
+                <nav class="navbar navbar-fixed-side sticky-top row">
+                    <img src="https://nightlyside.github.io/new/blog/images/avatar.png" alt="Alexandre Froehlich" />
+                    <h2 class="col-sm-12"><a href="https://nightlyside.github.io/new/blog">Alexandre Froehlich</a></h2>
+                    <p class="col-sm-12">
+                        Hobbyist programmer. Petit développeur indépendant (aka.
+                        Nightlyside) dont le rêve est d’être capable de publier un projet
+                        terminé. Actuellement étudiant à l'ENSTA Bretagne
+                    </p>
+
+                    <!-- Navigation -->
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <span class="nav-item-separator">//</span><a href="https://nightlyside.github.io/new/blog">Accueil</a>
+                        </li>
+                        <li class="nav-item">
+                            <span class="nav-item-separator">//</span><a href="https://nightlyside.github.io/new/blog/files/cv.pdf">CV</a>
+                        </li>
+                        <li class="nav-item">
+                            <span class="nav-item-separator">//</span><a href="https://nightlyside.github.io/new/blog/categories">Catégories</a>
+                        </li>
+                        <li class="nav-item">
+                            <span class="nav-item-separator">//</span><a href="https://nightlyside.github.io/new/blog/archives">Archives</a>
+                        </li>
+                        <li class="nav-item">
+                            <span class="nav-item-separator">//</span><a href="https://nightlyside.github.io/new/blog">À propos</a>
+                        </li>
+                    </ul>
+
+                    <!-- Social links -->
+                    <ul class="social">
+                        <a href="https://github.com/nightlyside">
+                            <li><i class="fab fa-github-square"></i></li>
+                        </a>
+                        <a href="https://www.linkedin.com/in/alexandre-f-1102298a">
+                            <li><i class="fab fa-linkedin"></i></li>
+                        </a>
+                        <a href="https://twitter.com/froalexandre">
+                            <li><i class="fab fa-twitter-square"></i></li>
+                        </a>
+                        <a href="https://reddit.com/u/nightlyside">
+                            <li><i class="fab fa-reddit-square"></i></li>
+                        </a>
+                    </ul>
+                </nav>
+            </div>
+            <!-- Main content -->
+            <div class="col-sm-12 col-md-9 col-lg-10 main">
+    <img class="featured_image" src="/images/TIPE/sim_vitesse_front.jpg" alt="Image de l'article">
+                 <div class="container content">
+                    <!-- Insert content here -->
+<h1 class="title">[TIPE] Un problème de route - Bonus</h1>
+<p class="sous-titre">
+    <span class="date-poste">Posté le mer. 21 mars 2018 dans <a href="category/python.html">python</a></span> <br>
+    <span class="temps-lecture">Temps de lecture : 3 minutes</span>
+</p>
+<hr>
+
+<p>Un petit bonus pour ce projet. Je cherche maintenant &agrave; repr&eacute;senter la vitesse de chaque v&eacute;hicule afin d&rsquo;avoir une id&eacute;e plus pr&eacute;cise sur la fluidit&eacute; du trafic routier. Il y a certe peu de modifications &agrave; faire, mais cela en vaut le coup.
+</p>
+<h2 id="pourquoi une telle representation">Pourquoi une telle repr&eacute;sentation</h2>
+<p>L&rsquo;id&eacute;e m&rsquo;est venue en lisant des articles sur la repr&eacute;sentation de Nagel-Schreckenberg. Apr&egrave;s avoir fl&acirc;n&eacute; quelques temps sur wikip&eacute;dia, j&rsquo;ai d&eacute;cid&eacute; de changer la langue de la page afin de voir si d&rsquo;autres contributeurs non francophones avaient &eacute;toff&eacute;s leur page plus que &ccedil;a n&rsquo;est le cas sur celle fran&ccedil;aise.</p>
+<p>A ma grande surprise, la <a href="https://de.wikipedia.org/wiki/Nagel-Schreckenberg-Modell">page allemande du model de Nagel Schreckenberg</a> montre une repr&eacute;sentation du model plut&ocirc;t ing&eacute;nieuse : donner une couleur par v&eacute;hicule en fonction de la vitesse de circulation de celui-ci. (voir figure ci-dessous)</p>
+<p><img alt="Repr&eacute;sentation" class="center img-zoomable" height="200px" src="https://nightlyside.github.io/new/blog/images/TIPE/NaSch.png"/></p>
+<p>Maintenant on va modifier le code source de notre &eacute;tude afin d&rsquo;y impl&eacute;menter cette nouvelle fonctionalit&eacute;.</p>
+<h2 id="implementation">Impl&eacute;mentation</h2>
+<p>La premi&egrave;re &eacute;tape est de modifier la fonction qui place les v&eacute;hicules. En effet, pr&eacute;cedemment, pour placer une voiture sur la carte, la simulation ajoutait un *2 sur la case correspondante.</p>
+<p>Maintenant nous allons remplacer la fonction placerVoiture de la classe Carte par le bout de code suivant : </p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">placerVoiture</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">voiture</span><span class="p">):</span>
+    <span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="o">=</span> <span class="n">voiture</span><span class="o">.</span><span class="n">getPosition</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">grille</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">voiture</span><span class="o">.</span><span class="n">getVitesse</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+</code></pre></div>
+<p>La seule grande diff&eacute;rence est que l&rsquo;on calcule la valeur de la case par <code>2 + vitesse de la voiture</code>.</p>
+<p>Cela nous am&egrave;ne &agrave; notre seconde modification, en effet, pour d&eacute;tecter la pr&eacute;sence d&rsquo;une voiture, on r&eacute;cup&eacute;rait la valeur d&rsquo;une case de la carte que l&rsquo;on comparait &agrave; 2. On remplace alors toutes les occurence par $\geq 2$ ce qui permettera de d&eacute;tecter la pr&eacute;sence d&rsquo;une voiture quelque soit sa vitesse.</p>
+<h2 id="affichage">Affichage</h2>
+<p>On a maintenant l&rsquo;ajout des vitesses des voitures sur la carte, il est grand temps de les afficher ! Pour cela on change l&eacute;g&egrave;rement la liste des couleurs de matplotlib.pyplot par :</p>
+<div class="highlight"><pre><span></span><code><span class="p">[</span><span class="s1">'white'</span><span class="p">,</span> <span class="s1">'palegreen'</span><span class="p">,</span> <span class="s1">'antiquewhite'</span><span class="p">,</span> <span class="s1">'yellow'</span><span class="p">,</span> <span class="s1">'orange'</span><span class="p">,</span> <span class="s1">'orangered'</span><span class="p">,</span> <span class="s1">'firebrick'</span><span class="p">,</span> <span class="s1">'darkred'</span><span class="p">,</span> <span class="s1">'black'</span><span class="p">]</span>
+</code></pre></div>
+<p>Ainsi une voiture &agrave; l&rsquo;arr&ecirc;t sera de couleur jaune et tendra vers le rouge en acc&eacute;l&eacute;rant, puis sera noire &agrave; vitesse maximale. Le seul probl&egrave;me avec matplotlib est que si il n&rsquo;y a pas au moins une occurence de chaque couleur, il n&rsquo;affichera pas correctement la couleur de la route et des v&eacute;hicules. On ajoute alors &agrave; la repr&eacute;sentation de la carte une unique ligne de pixels contenant toutes les valeurs de la vitesse afin quelles soient toutes repr&eacute;sent&eacute;es :</p>
+<div class="highlight"><pre><span></span><code><span class="n">tableau</span> <span class="o">=</span> <span class="n">tableau</span> <span class="o">+</span> <span class="p">[</span> <span class="p">[</span><span class="n">k</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">+</span><span class="nb">int</span><span class="p">(</span><span class="n">vmax</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)]</span> <span class="o">+</span> <span class="p">[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">tableau</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">-</span> <span class="p">(</span><span class="mi">2</span><span class="o">+</span><span class="nb">int</span><span class="p">(</span><span class="n">vmax</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">))]</span> <span class="p">]</span>
+</code></pre></div>
+<p>C&rsquo;est tout ce qu&rsquo;il y avait &agrave; faire !! (oui j&rsquo;ai pass&eacute; pr&egrave;s de 2 heures sur ces modifications) Le r&eacute;sultat est vraiment satisfaisant par contre.</p>
+<p><img alt="Vitesses" class="center img-zoomable" height="400px" src="https://nightlyside.github.io/new/blog/images/TIPE/sim_vitesse.png"/></p>
+
+                    <!-- Footer -->
+                    <hr>
+                    <div class="container">
+                        <div class="row justify-content-sm-center">
+                            <p>© 2020 Alexandre Froehlich</p>
+                        </div>
+                    </div>
+                 </div>
+            </div>
+        </div>
+    </div>
+    <script>
+      // Listen to images after DOM content is fully loaded
+      document.addEventListener('DOMContentLoaded', function () {
+        new Zooming({
+          // options...
+        }).listen('.img-zoomable')
+      })
+    </script>
+</body>
+
+</html>
