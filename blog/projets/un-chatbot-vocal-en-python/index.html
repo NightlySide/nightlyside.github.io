@@ -120,7 +120,7 @@
 <p>Les chatbots commerciaux sont de plus en plus pr&eacute;sents sur les sites de grande distribution ou de services &agrave; grande &eacute;chelle. Je me suis demand&eacute; &agrave; quel point il &eacute;tait facile de concevoir un chatbox vocal en utilisant python et <a href="https://dialogflow.cloud.google.com">Dialogflow</a>.
 </p>
 <blockquote>
-<p>Le code du projet est disponible sur github : ici</p>
+<p>Le code du projet est disponible sur github : <a href="https://github.com/NightlySide/ChatBox-Vocal">https://github.com/NightlySide/ChatBox-Vocal</a></p>
 </blockquote>
 <p>Comme tout projet, il faut pouvoir trouver un point d'entr&eacute;e afin de ne pas se perdre. Je d&eacute;cide donc de commencer par traduire du fran&ccedil;ais oral en texte.</p>
 <h2 id="le speech to text">Le speech to text</h2>
@@ -150,23 +150,26 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">r</span> <span class="o">=</span> <span class="n">sr</span><span class="o">.</span><span class="n">Recognizer</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">m</span> <span class="o">=</span> <span class="n">sr</span><span class="o">.</span><span class="n">Microphone</span><span class="p">()</span>
 
+        <span class="c1"># On cr&eacute;e la fonction d'arr&ecirc;t</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_stop_listening</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="nf">start_listening</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">callback</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">""" Permet de lancer l'&eacute;coute du micro en arri&egrave;re-plan</span>
+<span class="sd">        """</span>
         <span class="c1"># On ajuste au bruit ambiant</span>
         <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">m</span> <span class="k">as</span> <span class="n">source</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">r</span><span class="o">.</span><span class="n">adjust_for_ambient_noise</span><span class="p">(</span><span class="n">source</span><span class="p">)</span>
 
-        <span class="c1"># On cr&eacute;e la fonction d'arr&ecirc;t</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_stop_listening</span> <span class="o">=</span> <span class="kc">None</span>
-
-    <span class="k">def</span> <span class="nf">start_listening</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">""" Permet de lancer l'&eacute;coute du micro en arri&egrave;re-plan</span>
-<span class="sd">        """</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_stop_listening</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">r</span><span class="o">.</span><span class="n">listen_in_background</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">m</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_listening_callback</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">callback</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">callback</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_listening_callback</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_stop_listening</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">r</span><span class="o">.</span><span class="n">listen_in_background</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">m</span><span class="p">,</span> <span class="n">callback</span><span class="p">)</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">"Je vous &eacute;coute"</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">stop_listening</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">""" Permet d'arr&ecirc;ter l'&eacute;coute du micro en arri&egrave;re-plan</span>
 <span class="sd">        """</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_stop_listening</span><span class="p">(</span><span class="n">wait_for_stop</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"Arr&ecirc;t de l'&eacute;coute en arri&egrave;re plan"</span><span class="p">)</span>
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">_listening_callback</span><span class="p">(</span><span class="n">recognizer</span><span class="p">,</span> <span class="n">audio</span><span class="p">):</span>
