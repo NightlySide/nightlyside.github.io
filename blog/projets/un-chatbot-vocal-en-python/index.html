@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="" />
+
+    <!-- Favicon -->
+    <link rel="icon" href="https://nightlyside.github.io/blog/theme/favicon.ico" />
+    <link rel="icon" type="image/png" href="https://nightlyside.github.io/blog/theme/favicon.png" />
+
+    <!-- Browser Color -->
+     <meta name="author" content="Alexandre Froehlich" />
+    <meta name="description" content="Site web portfolio de Alexandre Froehlich" />
+
+    <title>Un chatbot vocal en python | Alexandre Froehlich
+ | Alexandre Froehlich</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="https://nightlyside.github.io/blog/theme/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="https://nightlyside.github.io/blog/theme/css/fontawesome.css" />
+    <link rel="stylesheet" type="text/css" href="https://nightlyside.github.io/blog/theme/css/pygments/default.css">
+    <link rel="stylesheet" type="text/css" href="https://nightlyside.github.io/blog/theme/css/blog.css" />
+
+    <!-- Javascript -->
+    <script src="https://nightlyside.github.io/blog/theme/js/jquery.js"></script>
+    <script src="https://nightlyside.github.io/blog/theme/js/bootstrap.js"></script>
+    <script src="https://nightlyside.github.io/blog/theme/js/fontawesome.js"></script>
+    <script src="https://nightlyside.github.io/blog/theme/js/zooming.min.js"></script>
+    
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+    <!--
+  _   _ _       _     _   _           _     _      
+ | \ | (_) __ _| |__ | |_| |_   _ ___(_) __| | ___ 
+ |  \| | |/ _` | '_ \| __| | | | / __| |/ _` |/ _ \
+ | |\  | | (_| | | | | |_| | |_| \__ \ | (_| |  __/
+ |_| \_|_|\__, |_| |_|\__|_|\__, |___/_|\__,_|\___|
+          |___/             |___/                  
+-->
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Fixed nav section -->
+            <div class="about col-sm-12 col-md-3 col-lg-2">
+                <nav class="navbar navbar-fixed-side sticky-top row">
+                    <img src="https://nightlyside.github.io/blog/images/avatar.png" alt="Alexandre Froehlich" />
+                    <h2 class="col-sm-12"><a href="https://nightlyside.github.io/blog">Alexandre Froehlich</a></h2>
+                    <p class="col-sm-12">
+                        Hobbyist programmer. Petit développeur indépendant (aka.
+                        Nightlyside) dont le rêve est d’être capable de publier un projet
+                        terminé. Actuellement étudiant à l'ENSTA Bretagne
+                    </p>
+
+                    <!-- Navigation -->
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <span class="nav-item-separator">//</span><a href="https://nightlyside.github.io/blog">Accueil</a>
+                        </li>
+                        <li class="nav-item">
+                            <span class="nav-item-separator">//</span><a href="https://nightlyside.github.io/blog/files/cv.pdf">CV</a>
+                        </li>
+                        <li class="nav-item">
+                            <span class="nav-item-separator">//</span><a href="https://nightlyside.github.io/blog/categories">Catégories</a>
+                        </li>
+                        <li class="nav-item">
+                            <span class="nav-item-separator">//</span><a href="https://nightlyside.github.io/blog/archives">Archives</a>
+                        </li>
+                        <li class="nav-item">
+                            <span class="nav-item-separator">//</span><a href="https://nightlyside.github.io/blog">À propos</a>
+                        </li>
+                    </ul>
+
+                    <!-- Social links -->
+                    <ul class="social">
+                        <a href="https://github.com/nightlyside">
+                            <li><i class="fab fa-github-square"></i></li>
+                        </a>
+                        <a href="https://www.linkedin.com/in/alexandre-f-1102298a">
+                            <li><i class="fab fa-linkedin"></i></li>
+                        </a>
+                        <a href="https://twitter.com/froalexandre">
+                            <li><i class="fab fa-twitter-square"></i></li>
+                        </a>
+                        <a href="https://reddit.com/u/nightlyside">
+                            <li><i class="fab fa-reddit-square"></i></li>
+                        </a>
+                    </ul>
+                </nav>
+            </div>
+            <!-- Main content -->
+            <div class="col-sm-12 col-md-9 col-lg-10 main">
+    <img class="featured_image" src="https://nightlyside.github.io/blog//images/projets/vocal-chatbot/micro.jpg" alt="Image de l'article">
+                 <div class="container content">
+                    <!-- Insert content here -->
+<h1 class="title">Un chatbot vocal en python</h1>
+<p class="sous-titre">
+    <span class="date-poste">Posté le ven. 26 juin 2020 dans <a href="category/projets.html">projets</a></span> <br>
+    <span class="temps-lecture">Temps de lecture : 3 minutes</span>
+</p>
+<hr>
+
+<p>Les chatbots commerciaux sont de plus en plus pr&eacute;sents sur les sites de grande distribution ou de services &agrave; grande &eacute;chelle. Je me suis demand&eacute; &agrave; quel point il &eacute;tait facile de concevoir un chatbox vocal en utilisant python et <a href="https://dialogflow.cloud.google.com">Dialogflow</a>.
+</p>
+<blockquote>
+<p>Le code du projet est disponible sur github : ici</p>
+</blockquote>
+<p>Comme tout projet, il faut pouvoir trouver un point d'entr&eacute;e afin de ne pas se perdre. Je d&eacute;cide donc de commencer par traduire du fran&ccedil;ais oral en texte.</p>
+<h2 id="le speech to text">Le speech to text</h2>
+<p>Python &eacute;tant tr&egrave;s versatile et surtout tr&egrave;s populaire, il existe une multitude de biblioth&egrave;ques pour faire de la traduction de vocal vers texte. N'en connaissant aucun, j'ai cherch&eacute; &agrave; savoir parmi toutes ces biblioth&egrave;ques, lesquelles fonctionnaient pour une traduction en fran&ccedil;ais. Je me suis arr&ecirc;t&eacute; sur <a href="https://pypi.org/project/SpeechRecognition/">Speech-Recognition</a> qui me semble bien fourni en documentation, qui fonctionne avec diverses API de reconnaissance de texte, mais surtout qui comprend bien le fran&ccedil;ais !</p>
+<p>Un premier script permet d'essayer cette fonctionnalit&eacute; en &eacute;coutant puis en traduisant ce qui a &eacute;t&eacute; dit :</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">speech_recognition</span> <span class="k">as</span> <span class="nn">sr</span>
+
+<span class="c1"># On enregistre l'audio</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">sr</span><span class="o">.</span><span class="n">Recognizer</span><span class="p">()</span>
+<span class="k">with</span> <span class="n">sr</span><span class="o">.</span><span class="n">Microphone</span><span class="p">()</span> <span class="k">as</span> <span class="n">source</span><span class="p">:</span>
+    <span class="c1"># On ecoute une seconde pour calibrer le bruit ambiant du micro</span>
+    <span class="n">r</span><span class="o">.</span><span class="n">adjust_for_ambient_noise</span><span class="p">(</span><span class="n">source</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Je vous &eacute;coute"</span><span class="p">)</span>
+    <span class="n">audio</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="n">source</span><span class="p">)</span>
+
+<span class="c1"># On essaie de comprendre ce qui a &eacute;t&eacute; dit</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Tu as dit : "</span> <span class="o">+</span> <span class="n">r</span><span class="o">.</span><span class="n">recognize_google</span><span class="p">(</span><span class="n">audio</span><span class="p">,</span> <span class="n">language</span><span class="o">=</span><span class="s2">"fr-FR"</span><span class="p">))</span>
+<span class="k">except</span> <span class="n">sr</span><span class="o">.</span><span class="n">UnknownValueError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"L'audio n'a pas pu &ecirc;tre compris"</span><span class="p">)</span>
+<span class="k">except</span> <span class="n">sr</span><span class="o">.</span><span class="n">RequestError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Impossible d'envoyer la requ&ecirc;te. Erreur : </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</code></pre></div>
+<p>Il ne reste plus qu'&agrave; tout mettre dans une fonction, ou plutot dans une classe en ajoutant les fonctions d'&eacute;coute en arri&egrave;re plan avec une fonction "callback". Le code final pour cette classe est le suivant : </p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">SpeechRecognition</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">r</span> <span class="o">=</span> <span class="n">sr</span><span class="o">.</span><span class="n">Recognizer</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">m</span> <span class="o">=</span> <span class="n">sr</span><span class="o">.</span><span class="n">Microphone</span><span class="p">()</span>
+
+        <span class="c1"># On ajuste au bruit ambiant</span>
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">m</span> <span class="k">as</span> <span class="n">source</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">r</span><span class="o">.</span><span class="n">adjust_for_ambient_noise</span><span class="p">(</span><span class="n">source</span><span class="p">)</span>
+
+        <span class="c1"># On cr&eacute;e la fonction d'arr&ecirc;t</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_stop_listening</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="nf">start_listening</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">""" Permet de lancer l'&eacute;coute du micro en arri&egrave;re-plan</span>
+<span class="sd">        """</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_stop_listening</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">r</span><span class="o">.</span><span class="n">listen_in_background</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">m</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_listening_callback</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"Je vous &eacute;coute"</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">stop_listening</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">""" Permet d'arr&ecirc;ter l'&eacute;coute du micro en arri&egrave;re-plan</span>
+<span class="sd">        """</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_stop_listening</span><span class="p">(</span><span class="n">wait_for_stop</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_listening_callback</span><span class="p">(</span><span class="n">recognizer</span><span class="p">,</span> <span class="n">audio</span><span class="p">):</span>
+        <span class="sd">""" Fonction appell&eacute;e en arri&egrave;re plan dans un thread &agrave; part</span>
+<span class="sd">        """</span>
+        <span class="c1"># On a r&eacute;cup&eacute;r&eacute; des donn&eacute;es on va essayer de le traduire</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">"Vous avez dit : "</span> <span class="o">+</span> <span class="n">recognizer</span><span class="o">.</span><span class="n">recognize_google</span><span class="p">(</span><span class="n">audio</span> <span class="p">,</span> <span class="n">language</span><span class="o">=</span><span class="s2">"fr-FR"</span><span class="p">))</span>
+        <span class="k">except</span> <span class="n">sr</span><span class="o">.</span><span class="n">UnknownValueError</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">"L'audio n'a pas pu &ecirc;tre compris"</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">sr</span><span class="o">.</span><span class="n">RequestError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Impossible d'envoyer la requ&ecirc;te. Erreur : </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</code></pre></div>
+<p>Maintenant le programme est capable d'&eacute;couter en arri&egrave;re plan, de d&eacute;tecter une phrase et de la convertir en texte, ici gr&acirc;ce &agrave; l'API de google.</p>
+<h2 id="le text to speech">Le text to speech</h2>
+<p>Afin de pouvoir parler de chatbot vocal, il est int&eacute;ressant de faire "parler" la machine. De m&ecirc;me je vais chercher une biblioth&egrave;que capable de parler en fran&ccedil;ais pour des raisons &eacute;videntes.
+Pour commencer j'ai d&eacute;cid&eacute; d'utiliser <a href="https://pypi.org/project/gTTS/">Google Text-to-speech</a> par sa simplicit&eacute; et sa popularit&eacute;. Plus tard il serait int&eacute;ressant d'enregistrer moi m&ecirc;me les phrases surtout si le chatbot vocal poss&egrave;de une quantit&eacute; r&eacute;duite de mots.<br/>
+Pour jouer le son je voulais au d&eacute;part utiliser PyAudio, j'ai choisi sur une biblioth&egrave;que bien plus simple &agrave; utiliser : <a href="https://pypi.org/project/playsound/">playsound</a> qui est en plus cross platform !</p>
+<p>Le code simple pour faire une phrase est le suivant :</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">os</span>
+
+<span class="kn">from</span> <span class="nn">gtts</span> <span class="kn">import</span> <span class="n">gTTS</span>
+<span class="kn">from</span> <span class="nn">playsound</span> <span class="kn">import</span> <span class="n">playsound</span>
+
+<span class="n">texte</span> <span class="o">=</span> <span class="s2">"Bonjour &agrave; tous! Aujourd'hui les amis on va parler ensemble ..."</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Getting voice output"</span><span class="p">)</span>
+<span class="n">myobj</span> <span class="o">=</span> <span class="n">gTTS</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="n">texte</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="s2">"fr"</span><span class="p">,</span> <span class="n">slow</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">myobj</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">"temp.mp3"</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Playing sound"</span><span class="p">)</span>
+<span class="n">playsound</span><span class="p">(</span><span class="s2">"temp.mp3"</span><span class="p">)</span>
+<span class="n">os</span><span class="o">.</span><span class="n">unlink</span><span class="p">(</span><span class="s2">"temp.mp3"</span><span class="p">)</span>
+</code></pre></div>
+<blockquote>
+<p>Il est bien mieux d'utiliser <code>os.unlink("file.mp3")</code> pour supprimer un fichier que <code>os.system("rm file.mp3")</code></p>
+</blockquote>
+<p>Il ne reste plus qu'&agrave; cr&eacute;er la fonction correspondante, pas besoin de cr&eacute;er une classe ici. Finalement la fonction devient la suivante : </p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">speak</span><span class="p">(</span><span class="n">texte</span><span class="p">):</span>
+    <span class="n">filename</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">uuid4</span><span class="p">())</span> <span class="o">+</span> <span class="s2">".mp3"</span>
+    <span class="n">myobj</span> <span class="o">=</span> <span class="n">gTTS</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="n">texte</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="s2">"fr"</span><span class="p">,</span> <span class="n">slow</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">myobj</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+    <span class="n">playsound</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">unlink</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+</code></pre></div>
+<p>J'en ai profit&eacute; pour ajouter un nom de fichier al&eacute;atoire pour &eacute;viter le cas ou la fonction est appel&eacute;e plusieurs fois en m&ecirc;me temps, &agrave; l'aide d'un <a href="https://fr.wikipedia.org/wiki/Universal_Unique_Identifier">UUID</a>.</p>
+<h2 id="la conversation">La conversation</h2>
+<p>Pour cr&eacute;er un chatbot un minimum intelligent, on peut s'amuser &agrave; coder une sorte d'intelligence artificielle qui comprends le fond de la phrase puis est capable de r&eacute;pondre en cons&eacute;quences. Cependant le travail n&eacute;cessaire pour mettre en place ce concept m&eacute;rite son sujet et son projet s&eacute;par&eacute;. Afin de pouvoir continuer ce projet, de nombreuses entreprises ont d&eacute;j&agrave; une telle interface accessible depuis une API.</p>
+<p>J'ai d&eacute;cid&eacute; de partir sur <a href="https://dialogflow.cloud.google.com/">Dialogflow</a> et je vais essayer d'expliquer simplement son fonctionnement.</p>
+<p>Apr&egrave;s s'&ecirc;tre connect&eacute; et cr&eacute;e un projet, google nous pr&eacute;sente deux exemples pour comprendre comment le syst&egrave;me fonctionne.
+Du c&ocirc;t&eacute; du code, j'ai repris l'exemple donn&eacute; sur un <a href="https://medium.com/swlh/working-with-dialogflow-using-python-client-cb2196d579a4">article de Medium</a> qui permet d'acc&egrave;der aux requ&ecirc;tes avec une cl&eacute; priv&eacute;e.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">dialogflow</span>
+<span class="kn">from</span> <span class="nn">google.api_core.exceptions</span> <span class="kn">import</span> <span class="n">InvalidArgument</span>
+
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">"GOOGLE_APPLICATION_CREDENTIALS"</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'private_key.json'</span>
+
+<span class="n">DIALOGFLOW_PROJECT_ID</span> <span class="o">=</span> <span class="s1">'[PROJECT_ID]'</span>
+<span class="n">DIALOGFLOW_LANGUAGE_CODE</span> <span class="o">=</span> <span class="s1">'fr'</span>
+<span class="n">SESSION_ID</span> <span class="o">=</span> <span class="s1">'me'</span>
+
+<span class="n">text_to_be_analyzed</span> <span class="o">=</span> <span class="s2">"Bonjour"</span>
+
+<span class="n">session_client</span> <span class="o">=</span> <span class="n">dialogflow</span><span class="o">.</span><span class="n">SessionsClient</span><span class="p">()</span>
+<span class="n">session</span> <span class="o">=</span> <span class="n">session_client</span><span class="o">.</span><span class="n">session_path</span><span class="p">(</span><span class="n">DIALOGFLOW_PROJECT_ID</span><span class="p">,</span> <span class="n">SESSION_ID</span><span class="p">)</span>
+<span class="n">text_input</span> <span class="o">=</span> <span class="n">dialogflow</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">TextInput</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="n">text_to_be_analyzed</span><span class="p">,</span> <span class="n">language_code</span><span class="o">=</span><span class="n">DIALOGFLOW_LANGUAGE_CODE</span><span class="p">)</span>
+<span class="n">query_input</span> <span class="o">=</span> <span class="n">dialogflow</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">QueryInput</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="n">text_input</span><span class="p">)</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">session_client</span><span class="o">.</span><span class="n">detect_intent</span><span class="p">(</span><span class="n">session</span><span class="o">=</span><span class="n">session</span><span class="p">,</span> <span class="n">query_input</span><span class="o">=</span><span class="n">query_input</span><span class="p">)</span>
+<span class="k">except</span> <span class="n">InvalidArgument</span><span class="p">:</span>
+    <span class="k">raise</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Query text:"</span><span class="p">,</span> <span class="n">response</span><span class="o">.</span><span class="n">query_result</span><span class="o">.</span><span class="n">query_text</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Detected intent:"</span><span class="p">,</span> <span class="n">response</span><span class="o">.</span><span class="n">query_result</span><span class="o">.</span><span class="n">intent</span><span class="o">.</span><span class="n">display_name</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Detected intent confidence:"</span><span class="p">,</span> <span class="n">response</span><span class="o">.</span><span class="n">query_result</span><span class="o">.</span><span class="n">intent_detection_confidence</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Fulfillment text:"</span><span class="p">,</span> <span class="n">response</span><span class="o">.</span><span class="n">query_result</span><span class="o">.</span><span class="n">fulfillment_text</span><span class="p">)</span>
+</code></pre></div>
+<p>On obtient alors comme sortie : </p>
+<div class="highlight"><pre><span></span><code>Query text: Bonjour
+Detected intent: smalltalk.greetings.hello
+Detected intent confidence: <span class="m">1</span>.0
+Fulfillment text: Salut &agrave; toi&nbsp;!
+</code></pre></div>
+<p>Ca fonctionne parfaitement ! Encore une fois il ne reste plus qu'&agrave; cr&eacute;er une fonction correspondante et &agrave; tout connecter.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Ce projet assez simple et assez court est tr&egrave;s int&eacute;ressant pour voir comment utiliser plusieurs API dans un m&ecirc;me projet afin de pouvoir concevoir un pseudo assistant virtuel.<br/>
+Cependant on pourrait aller plus loin et j'imagine d&eacute;j&agrave; les pistes suivantes : </p>
+<ul>
+<li>remplacer la synth&egrave;se vocale par des phrases que j'ai enregistr&eacute;</li>
+<li>lier des actions aux r&eacute;ponses de la machine (ex: ouvrir firefox etc ...)</li>
+<li>trouver une solution offline pour le r&eacute;aliser</li>
+<li>le connecter &agrave; d'autres applications que j'ai d&eacute;velopp&eacute;es, comme par exemple : <a href="https://nightlyside.github.io/blog/drafts/a-chef-in-the-fridge.html">a Chef in the fridge</a> pour chercher automatiquement une recette</li>
+</ul>
+
+                    <!-- Footer -->
+                    <hr>
+                    <div class="container">
+                        <div class="row justify-content-sm-center">
+                            <p>© 2020 Alexandre Froehlich</p>
+                        </div>
+                    </div>
+                 </div>
+            </div>
+        </div>
+    </div>
+    <script>
+      // Listen to images after DOM content is fully loaded
+      document.addEventListener('DOMContentLoaded', function () {
+        new Zooming({
+          // options...
+        }).listen('.img-zoomable')
+      })
+    </script>
+</body>
+
+</html>

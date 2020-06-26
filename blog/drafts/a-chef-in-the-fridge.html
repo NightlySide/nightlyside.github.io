@@ -17,7 +17,8 @@
      <meta name="author" content="Alexandre Froehlich" />
     <meta name="description" content="Site web portfolio de Alexandre Froehlich" />
 
-    <title> projets  | Alexandre Froehlich</title>
+    <title>A Chef in the fridge | Alexandre Froehlich
+ | Alexandre Froehlich</title>
 
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="https://nightlyside.github.io/blog/theme/css/bootstrap.css" />
@@ -106,43 +107,49 @@
             </div>
             <!-- Main content -->
             <div class="col-sm-12 col-md-9 col-lg-10 main">
+    <img class="featured_image" src="https://nightlyside.github.io/blog//images/projets/a-chef-in-the-fridge/logo.png" alt="Image de l'article">
                  <div class="container content">
                     <!-- Insert content here -->
-
-<h1>projets</h1>
-<p class="sous-titre">2 article(s) publié(s) dans la catégorie.</p>
-<!-- On rappelle le contenu de départ -->
-        <!-- A post -->
-        <div class="row post">
-        <div class="col-sm-12 col-md-2">
-            <img src="https://nightlyside.github.io/blog//images/projets/vocal-chatbot/micro.jpg" class="img-fluid rounded" />
-        </div>
-        <div class="col-sm-12 col-md-10">
-            <h2><a href="https://nightlyside.github.io/blog/projets/un-chatbot-vocal-en-python/">Un chatbot vocal en python</a></h2>
-            <span class="sous-titre">Posté le ven. 26 juin 2020 dans <a href="https://nightlyside.github.io/blog/category/projets.html">projets</a></span>
-            <p class="description">
-<p>Les chatbots commerciaux sont de plus en plus présents sur les sites de grande distribution ou de services à grande échelle. Je me suis demandé à quel point il était facile de concevoir un chatbox vocal en utilisant python et <a href="https://dialogflow.cloud.google.com">Dialogflow</a>.
-</p></p>
-            <a href="https://nightlyside.github.io/blog/projets/un-chatbot-vocal-en-python/">>> Lire la suite</a>
-        </div>
-        </div>
-        <!-- A post -->
-        <div class="row post">
-        <div class="col-sm-12 col-md-2">
-            <img src="https://nightlyside.github.io/blog//images/projets/bataille-brestoise/logo.png" class="img-fluid rounded" />
-        </div>
-        <div class="col-sm-12 col-md-10">
-            <h2><a href="https://nightlyside.github.io/blog/projets/la-bataille-brestoise/">La Bataille Brestoise</a></h2>
-            <span class="sous-titre">Posté le lun. 15 juin 2020 dans <a href="https://nightlyside.github.io/blog/category/projets.html">projets</a></span>
-            <p class="description">
-<p>Dans le cadre de mes études d'ingénieur à l'<a href="https://www.ensta-bretagne.fr">ENSTA Bretagne</a>, j'ai réalisé à l'aide de mon binôme un projet de fin de cycle en python avec pour objectif d'y intégrer de la programmation orientée objet ainsi que de l'interface homme machine.<br/>
-"La bataille brestoise" est le projet que nous avons codé sur près de 3 mois. Il s'agit d'un jeu en réseau de bataille navale en temps réel basé sur la rade de Brest ainsi que sur les bâtiments de la Marine Nationale.
-</p></p>
-            <a href="https://nightlyside.github.io/blog/projets/la-bataille-brestoise/">>> Lire la suite</a>
-        </div>
-        </div>
-
-
+<h1 class="title">A Chef in the fridge</h1>
+<p class="sous-titre">
+    <span class="date-poste">Posté le dim. 21 juin 2020 dans <a href="category/projets.html">projets</a></span> <br>
+    <span class="temps-lecture">Temps de lecture : 3 minutes</span>
+</p>
+<hr>
+<!--STARTSUM-->
+<p>Souhaitant manger de fa&ccedil;on plus &eacute;quilibr&eacute;e et ne sachant pas toujours quelle recette faire avec les ingr&eacute;dients pr&eacute;sents dans mon frigo, j'ai d&eacute;cid&eacute; de concevoir une application qui r&eacute;sout ce probl&egrave;me.
+<!--ENDSUM--></p>
+<hr/>
+<blockquote>
+<p>L'application est disponible publiquement ici : <a href="https://a-chef-in-the-fridge.herokuapp.com/">https://a-chef-in-the-fridge.herokuapp.com/</a><br/>
+Le code source est disponible sur mon repo github : <a href="https://github.com/NightlySide/AChefInTheFridge">https://github.com/NightlySide/AChefInTheFridge</a></p>
+</blockquote>
+<h2 id="le cahier des charges">Le cahier des charges</h2>
+<p>Je souhaite que cette application r&eacute;ponde &agrave; plusieurs besoins. Voici la liste succincte :  </p>
+<ul>
+<li>Proposer une recette en fonction des ingr&eacute;dients pr&eacute;sents dans mon frigo</li>
+<li>Pouvoir pr&eacute;parer les menus pour une semaine<ul>
+<li>Afficher un semainier avec la liste des recettes disponibles</li>
+<li>Imprimer (en PDF) la liste de courses &agrave; faire</li>
+</ul>
+</li>
+<li>Afficher les informations compl&eacute;mentaires sur la qualit&eacute; des recettes</li>
+</ul>
+<h2 id="un grand livre de recettes numerique">Un grand livre de recettes num&eacute;rique</h2>
+<p>Toute l'application se base sur des ingr&eacute;dients et des recettes enregistr&eacute;es par les utilisateurs. Pour les stocker, je suis tout d'abord pass&eacute; par un stockage fichier en utilisant le format JSON. Cependant, apr&egrave;s avoir d&eacute;ploy&eacute; l'application sur la plateforme Heroku, qui recharge les fichiers &agrave; l'original d&egrave;s lors que la plateforme n'est plus utilis&eacute;e, les recettes sont perdues.</p>
+<p>La solution ? Une base de donn&eacute;es MySQL sur un autre serveur.</p>
+<p>Ainsi, j'ai une base de donn&eacute;es contenant une table des recettes et une table des ingr&eacute;dients. L'avantage de cette structure est que les donn&eacute;es sont accessibles depuis n'importe quelle plateforme pouvant faire des requ&ecirc;tes SQL, et de pouvoir plus tard impl&eacute;menter la gestion des utilisateurs et des &eacute;diteurs sur la plateforme.</p>
+<h2 id="affichage des recettes">Affichage des recettes</h2>
+<p>Pour pouvoir remplir le premier point de mon cahier des charges, j'ai besoin de cr&eacute;er une interface permettant d'ajouter les ingr&eacute;dients pr&eacute;sents dans son frigo.</p>
+<p><img alt="Ajout d'un ingr&eacute;dient" class="center img-zoomable" height="300px" src="https://nightlyside.github.io/blog/images/projets/a-chef-in-the-fridge/ajout_ingredient.png"/></p>
+<p>L'auto-compl&eacute;tion est r&eacute;alis&eacute;e en effectuant une requ&ecirc;te AJAX au changement du contenu de la zone d'ajout de l'ingr&eacute;dient.</p>
+<h3 id="calcul du score">Calcul du score</h3>
+<p>Le plus important avec cette application est de pouvoir trouver la recette dans laquelle il manque le moins possible d'ingr&eacute;dients. Pour se faire, j'ai cr&eacute;e un score pour chaque recette qui d&eacute;pends directement des ingr&eacute;dients ajout&eacute;s par l'utilisateur.</p>
+<p><img alt="Score des recettes" class="center img-zoomable" height="300px" src="https://nightlyside.github.io/blog/images/projets/a-chef-in-the-fridge/recettes_score.png"/></p>
+<p>Afin que le score soit coh&eacute;rent, la recette indique la quantit&eacute; n&eacute;cessaire pour chaque ingr&eacute;dients. par exemple pour un plat de p&acirc;tes, avoir dans son frigo les 200g n&eacute;cessaire de p&acirc;tes donnera un plus grand score que juste la pinc&eacute;e de sel pour assaisonner le plat.</p>
+<p>J'ai donc mis en place un syst&egrave;me de "poids universel". Lors de l'&eacute;dition d'une recette l'utilisateur est invit&eacute; &agrave; choisir le type de quantit&eacute;. Cette derni&egrave;re est normalis&eacute;e pour le calcul du poids.</p>
+<h2 id="edition des recettes et des ingredients_1">Edition des recettes et des ingr&eacute;dients</h2>
+<p>M&ecirc;me si les premi&egrave;re recettes ont k:</p>
 
                     <!-- Footer -->
                     <hr>
