@@ -1,5 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Alexandre Froehlich</title><link href="https://nightlyside.github.io/blog/" rel="alternate"></link><link href="https://nightlyside.github.io/blog/feeds/all.atom.xml" rel="self"></link><id>https://nightlyside.github.io/blog/</id><updated>2020-06-26T00:00:00+02:00</updated><entry><title>Un chatbot vocal en python</title><link href="https://nightlyside.github.io/blog/projets/un-chatbot-vocal-en-python/" rel="alternate"></link><published>2020-06-26T00:00:00+02:00</published><updated>2020-06-26T00:00:00+02:00</updated><author><name>Alexandre Froehlich</name></author><id>tag:nightlyside.github.io,2020-06-26:/blog/projets/un-chatbot-vocal-en-python/</id><summary type="html">
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Alexandre Froehlich</title><link href="https://nightlyside.github.io/blog/" rel="alternate"></link><link href="https://nightlyside.github.io/blog/feeds/all.atom.xml" rel="self"></link><id>https://nightlyside.github.io/blog/</id><updated>2020-06-29T00:00:00+02:00</updated><entry><title>Comment créer un compte GitHub</title><link href="https://nightlyside.github.io/blog/eportfolio/comment-creer-un-compte-github/" rel="alternate"></link><published>2020-06-29T00:00:00+02:00</published><updated>2020-06-29T00:00:00+02:00</updated><author><name>Alexandre Froehlich</name></author><id>tag:nightlyside.github.io,2020-06-29:/blog/eportfolio/comment-creer-un-compte-github/</id><summary type="html">
+&lt;p&gt;&lt;a href="https://github.com/"&gt;GitHub&lt;/a&gt; est devenu très rapidement la référence en logiciel de gestion de développement. Aujourd'hui les projets open-source sont très nombreux sur la plateforme et de plus en plus d'entreprises demande aux candidats de leur fournir en plus de leur CV, leur compte github afin de voir les projets du candidat ainsi que ses contributions au monde open-source.
+&lt;/p&gt;</summary><content type="html">
+&lt;p&gt;&lt;a href="https://github.com/"&gt;GitHub&lt;/a&gt; est devenu tr&amp;egrave;s rapidement la r&amp;eacute;f&amp;eacute;rence en logiciel de gestion de d&amp;eacute;veloppement. Aujourd'hui les projets open-source sont tr&amp;egrave;s nombreux sur la plateforme et de plus en plus d'entreprises demande aux candidats de leur fournir en plus de leur CV, leur compte github afin de voir les projets du candidat ainsi que ses contributions au monde open-source.
+&lt;/p&gt;
+&lt;hr/&gt;
+&lt;h2 id="creer un compte sur github"&gt;Cr&amp;eacute;er un compte sur github&lt;/h2&gt;
+&lt;p&gt;Tout d'abord, il faut savoir que GitHub est gratuit. La fonctionnalit&amp;eacute; "Pro" ajoute certes quelques &amp;eacute;l&amp;eacute;ments int&amp;eacute;ressants mais qui ne sont pas utiles au jeune d&amp;eacute;veloppeur.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Si vous &amp;ecirc;tes &amp;eacute;tudiant vous pouvez obtenir un compte pro en passant par &lt;a href="https://education.github.com/"&gt;le pack &amp;eacute;ducation&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Pour cr&amp;eacute;er un compte il suffit d'aller sur le site &lt;a href="https://github.com/"&gt;https://github.com/&lt;/a&gt; et de renseigner les champs suivants.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Page inscription github" class="center img-zoomable" height="400px" src="https://nightlyside.github.io/blog/images/eportfolio/inscription_github_1.jpg"/&gt;&lt;/p&gt;
+&lt;h2 id="valider le compte"&gt;Valider le compte&lt;/h2&gt;
+&lt;p&gt;Comme la plateforme est s&amp;eacute;rieuse et que le contenu publi&amp;eacute; est important pour les d&amp;eacute;veloppeurs, il est n&amp;eacute;cessaire d'activer son compte avant de pouvoir continuer.&lt;br/&gt;
+Il s'agit donc de r&amp;eacute;soudre un petit puzzle pour valider le compte (surtout que vous n'&amp;ecirc;tes pas un robot).&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Page inscription github" class="center img-zoomable" height="400px" src="https://nightlyside.github.io/blog/images/eportfolio/inscription_github_2.jpg"/&gt;
+Enfin, cliquez sur &lt;em&gt;join a free plan&lt;/em&gt;.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;N'oubliez pas de regarder vos mails pour activer votre compte.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id="quelques infos sur votre profil"&gt;Quelques infos sur votre profil&lt;/h2&gt;
+&lt;p&gt;Pour pouvoir remplir un profil de base, l'&amp;eacute;tape suivante est de donner quelques d&amp;eacute;tails sur votre formation de programmeur.&lt;br/&gt;
+Entre autres : le type de travail, l'exp&amp;eacute;rience en programmation et l'utilisation pr&amp;eacute;vue de GitHub.  &lt;/p&gt;
+&lt;p&gt;Personnellement &amp;eacute;tant un &amp;eacute;tudiant avec de l'&amp;eacute;xp&amp;eacute;rience en programmation je coche : &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Student : I go to school&lt;/li&gt;
+&lt;li&gt;A lot : I'm very experienced&lt;/li&gt;
+&lt;li&gt;Host a project (repository), Create a website with GitHub Pages, School work and student projects&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Enfin dans mes int&amp;eacute;r&amp;ecirc;ts j'indique comme langage (pour ma part) python, html, php, javascript.  &lt;/p&gt;
+&lt;p&gt;Cliquez sur &lt;em&gt;Complete Setup&lt;/em&gt;.&lt;/p&gt;
+&lt;h2 id="les prochaines etapes"&gt;Les prochaines &amp;eacute;tapes&lt;/h2&gt;
+&lt;p&gt;Maintenant que vous avez un compte github, voici quelques &amp;eacute;tapes que vous pouvez faire : &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;cr&amp;eacute;er un repository et commencer un projet&lt;/li&gt;
+&lt;li&gt;collaborer sur un projet en commun&lt;/li&gt;
+&lt;li&gt;changer votre nom et votre avatar&lt;/li&gt;
+&lt;li&gt;cr&amp;eacute;er un site web avec GitHub Pages
+&lt;!--* &lt;a href="https://nightlyside.github.io/blog/drafts/comment-creer-un-site-web-simple-avec-github.html"&gt;créer un site web avec GitHub Pages&lt;/a&gt;--&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><category term="eportfolio"></category><category term="web"></category><category term="github"></category><category term="portfolio"></category></entry><entry><title>Un chatbot vocal en python</title><link href="https://nightlyside.github.io/blog/projets/un-chatbot-vocal-en-python/" rel="alternate"></link><published>2020-06-26T00:00:00+02:00</published><updated>2020-06-26T00:00:00+02:00</updated><author><name>Alexandre Froehlich</name></author><id>tag:nightlyside.github.io,2020-06-26:/blog/projets/un-chatbot-vocal-en-python/</id><summary type="html">
 &lt;p&gt;Les chatbots commerciaux sont de plus en plus présents sur les sites de grande distribution ou de services à grande échelle. Je me suis demandé à quel point il était facile de concevoir un chatbox vocal en utilisant python et &lt;a href="https://dialogflow.cloud.google.com"&gt;Dialogflow&lt;/a&gt;.
 &lt;/p&gt;</summary><content type="html">
 &lt;p&gt;Les chatbots commerciaux sont de plus en plus pr&amp;eacute;sents sur les sites de grande distribution ou de services &amp;agrave; grande &amp;eacute;chelle. Je me suis demand&amp;eacute; &amp;agrave; quel point il &amp;eacute;tait facile de concevoir un chatbox vocal en utilisant python et &lt;a href="https://dialogflow.cloud.google.com"&gt;Dialogflow&lt;/a&gt;.
