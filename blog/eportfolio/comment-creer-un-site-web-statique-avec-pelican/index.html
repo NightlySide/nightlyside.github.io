@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="" />
+
+    <!-- Favicon -->
+    <link rel="icon" href="https://nightlyside.github.io/blog/theme/favicon.ico" />
+    <link rel="icon" type="image/png" href="https://nightlyside.github.io/blog/theme/favicon.png" />
+
+    <!-- Browser Color -->
+     <meta name="author" content="Alexandre Froehlich" />
+    <meta name="description" content="Site web portfolio de Alexandre Froehlich" />
+
+    <title>Comment créer un site web statique avec Pelican | Alexandre Froehlich
+ | Alexandre Froehlich</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="https://nightlyside.github.io/blog/theme/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="https://nightlyside.github.io/blog/theme/css/fontawesome.css" />
+    <link rel="stylesheet" type="text/css" href="https://nightlyside.github.io/blog/theme/css/pygments/default.css">
+    <link rel="stylesheet" type="text/css" href="https://nightlyside.github.io/blog/theme/css/blog.css" />
+
+    <!-- Javascript -->
+    <script src="https://nightlyside.github.io/blog/theme/js/jquery.js"></script>
+    <script src="https://nightlyside.github.io/blog/theme/js/bootstrap.js"></script>
+    <script src="https://nightlyside.github.io/blog/theme/js/fontawesome.js"></script>
+    <script src="https://nightlyside.github.io/blog/theme/js/zooming.min.js"></script>
+    
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+    <!--
+  _   _ _       _     _   _           _     _      
+ | \ | (_) __ _| |__ | |_| |_   _ ___(_) __| | ___ 
+ |  \| | |/ _` | '_ \| __| | | | / __| |/ _` |/ _ \
+ | |\  | | (_| | | | | |_| | |_| \__ \ | (_| |  __/
+ |_| \_|_|\__, |_| |_|\__|_|\__, |___/_|\__,_|\___|
+          |___/             |___/                  
+-->
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Fixed nav section -->
+            <div class="about col-sm-12 col-md-3 col-lg-2">
+                <nav class="navbar navbar-fixed-side sticky-top row">
+                    <img src="https://nightlyside.github.io/blog/images/avatar.png" alt="Alexandre Froehlich" />
+                    <h2 class="col-sm-12"><a href="https://nightlyside.github.io/blog">Alexandre Froehlich</a></h2>
+                    <p class="col-sm-12">
+                        Hobbyist programmer. Petit développeur indépendant (aka.
+                        Nightlyside) dont le rêve est d’être capable de publier un projet
+                        terminé. Actuellement étudiant à l'ENSTA Bretagne
+                    </p>
+
+                    <!-- Navigation -->
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <span class="nav-item-separator">//</span><a href="https://nightlyside.github.io/blog">Accueil</a>
+                        </li>
+                        <li class="nav-item">
+                            <span class="nav-item-separator">//</span><a href="https://nightlyside.github.io/blog/files/cv.pdf">CV</a>
+                        </li>
+                        <li class="nav-item">
+                            <span class="nav-item-separator">//</span><a href="https://nightlyside.github.io/blog/categories">Catégories</a>
+                        </li>
+                        <li class="nav-item">
+                            <span class="nav-item-separator">//</span><a href="https://nightlyside.github.io/blog/archives">Archives</a>
+                        </li>
+                        <li class="nav-item">
+                            <span class="nav-item-separator">//</span><a href="https://nightlyside.github.io/blog">À propos</a>
+                        </li>
+                    </ul>
+
+                    <!-- Social links -->
+                    <ul class="social">
+                        <a href="https://github.com/nightlyside">
+                            <li><i class="fab fa-github-square"></i></li>
+                        </a>
+                        <a href="https://www.linkedin.com/in/alexandre-f-1102298a">
+                            <li><i class="fab fa-linkedin"></i></li>
+                        </a>
+                        <a href="https://twitter.com/froalexandre">
+                            <li><i class="fab fa-twitter-square"></i></li>
+                        </a>
+                        <a href="https://reddit.com/u/nightlyside">
+                            <li><i class="fab fa-reddit-square"></i></li>
+                        </a>
+                    </ul>
+                </nav>
+            </div>
+            <!-- Main content -->
+            <div class="col-sm-12 col-md-9 col-lg-10 main">
+    <img class="featured_image" src="https://nightlyside.github.io/blog//images/eportfolio/pelican_logo.jpg" alt="Image de l'article">
+                 <div class="container content">
+                    <!-- Insert content here -->
+<h1 class="title">Comment créer un site web statique avec Pelican</h1>
+<p class="sous-titre">
+    <span class="date-poste">Posté le jeu. 02 juillet 2020 dans <a href="category/eportfolio.html">eportfolio</a></span> <br>
+    <span class="temps-lecture">Temps de lecture : 3 minutes</span>
+</p>
+<hr>
+
+<p>Je l'ai d&eacute;j&agrave; &eacute;crit mais avoir un site web pour se mettre en avant est n&eacute;cessaire aujourd'hui. Les g&eacute;n&eacute;rateurs de contenu statique repr&eacute;sentant le futur du web, nous allons voir comment concevoir un site web statique avec <a href="https://docs.getpelican.com">Pelican</a>, un module pour python et l'int&eacute;grer dans GitHub Pages.
+</p>
+<hr/>
+<blockquote>
+<p>Ce site web est con&ccedil;ut avec Pelican pour vous donner une id&eacute;e du r&eacute;sultat</p>
+</blockquote>
+<h2 id="introduction">Introduction</h2>
+<p>Pour cr&eacute;er un site web il existe pleins de moyens diff&eacute;rents. Pour les novices, des services graphiques sont propos&eacute;s pour concevoir des sites web en 1 pages, pour les plus curieux il existe des <a href="https://fr.wikipedia.org/wiki/Syst%C3%A8me_de_gestion_de_contenu">CMS</a> (Content Management System) qui permettent de de r&eacute;diger des articles et de g&eacute;rer le contenu. Cependant cette derni&egrave;re solution est souvent lourde (ex: Wordpress) et peut potentiellement pr&eacute;senter des failles.  </p>
+<p>Un nouveau syst&egrave;me est cependant en train de monter en puissance : les g&eacute;n&eacute;rateurs de contenus statiques. <a href="https://docs.getpelican.com/en/stable/">Pelican</a> est l'un d'entre eux. On pourrait aussi citer par exemple <a href="https://gohugo.io/">Hugo</a> (en Go) et <a href="https://jekyllrb.com/">Jekyll</a> (en Ruby). Pour cet article je vais me concentrer sur Pelican.</p>
+<h2 id="qu'est-ce que pelican ?">Qu'est-ce que Pelican ?</h2>
+<p>&laquo; <em>Pelican est un g&eacute;n&eacute;rateur de site statique, &eacute;crit en Python</em> &raquo;</p>
+<p>Pour ceux qui ne savent pas ce qu'est un g&eacute;n&eacute;rateur de site statique voici le fonctionnement simplifi&eacute; de la r&eacute;daction d'un article :</p>
+<ul>
+<li>Le contenu de l'article est r&eacute;dig&eacute; en <a href="https://fr.wikipedia.org/wiki/Markdown">Markdown</a></li>
+<li>Pelican r&eacute;cup&egrave;re ces fichiers et les transforme en page web en se basant sur des templates</li>
+<li>Le site web complet est disponible dans le dossier <em>output</em></li>
+</ul>
+<p>Une fois les templates con&ccedil;ut, il est alors tr&egrave;s simple de rajouter un article ou une page sur le site ! C'est la toute la puissance de ces g&eacute;n&eacute;rateurs : le contenu est compil&eacute; et statique donc l'acc&egrave;s au site est tr&egrave;s rapide et il n'y a pas de failles car le code source du site (les fichiers markdown et la configuration) ne sont pas directement accessibles.</p>
+<p>Aussi est-ce que je vous ai parl&eacute; des plugins ? Pelican peut &ecirc;tre am&eacute;lior&eacute; en fonctions gr&acirc;ce aux plugins <a href="https://github.com/getpelican/pelican-plugins">disponibles ici</a> (vous m&ecirc;me pouvez cr&eacute;er un plugin assez facilement)</p>
+<h2 id="creation du projet">Cr&eacute;ation du projet</h2>
+<p>Tout d'abord il faut installer Pelican. Je suppose que vous avez d&eacute;j&agrave; python 3 install&eacute; sur votre machine avec <em>pip</em>. Pour installer Pelican il suffit de lancer la commande (avec support pour les fichiers Markdown): </p>
+<div class="highlight"><pre><span></span><code>pip install pelican<span class="o">[</span>Markdown<span class="o">]</span>
+</code></pre></div>
+<p>Ensuite cr&eacute;er un dossier qui contiendra votre site web et entrez dedans.<br/>
+On va maintenant cr&eacute;er le squelette du site &agrave; l'aide de la commande <code>pelican-quickstart</code>.</p>
+<p><img alt="Pelican quickstart" class="center img-zoomable" height="400px" src="https://nightlyside.github.io/blog/images/eportfolio/pelican_quickstart.jpg"/></p>
+<p>Renseignez tous les champs demand&eacute;. Pour information ce qui est renseign&eacute; entre les crochets est la valeur par d&eacute;faut si vous n'entrez rien.<br/>
+<strong>Attention :</strong> n'oubliez pas de dire oui &agrave; la question sur GitHub Pages en pr&eacute;cisant qu'il s'agit de votre page personnelle. N'oubliez pas de dire oui &agrave; la cr&eacute;ation d'un fichier <em>Makefile</em>. Ces parties vont nous simplifier le travail par la suite.</p>
+<p>Vous devriez vous retrouver avec les fichiers suivants : </p>
+<ul>
+<li><em>Makefile</em> : fichier permettant de compiler le site web</li>
+<li><em>content</em> : le dossier qui contient les fichiers source</li>
+<li><em>output</em> : le dossier qui contient le site web compil&eacute;</li>
+<li><em>pelicanconf.py</em> : fichier de configuration de base de Pelican (on va revenir dessus)</li>
+<li><em>publishconf.py</em> : fichier de configuration lors de la compilation pour la publication (ex: avec l'URL de github pages)</li>
+<li><em>tasks.py</em> : fichier des t&acirc;ches pour publier sur github pages (on y touche pas du tout)</li>
+</ul>
+<h2 id="ecrire un article">&Eacute;crire un article</h2>
+<p>Les fichiers de base sont bien cr&eacute;es et pour l'instant la configuration de base est suffisante pour commencer &agrave; r&eacute;diger des articles. On s'occupera de la publication dans la section d'apr&egrave;s.</p>
+<p>Pour le premier article il faut cr&eacute;er un fichier. Pour la nomenclature des noms j'aime bien cr&eacute;er un dossier par cat&eacute;gorie puis pr&eacute;ciser chaque ficher sous la forme suivante : <code>ann&eacute;e-mois-jour-titre-de-l-article.md</code>.</p>
+<p>Pour cet exemple je vais cr&eacute;er dans un dossier <code>news</code> l'article <code>2020-07-02-hello-world.md</code> avec le contenu suivant :</p>
+<div class="highlight"><pre><span></span><code><span class="nn">---</span>
+<span class="nt">title</span><span class="p">:</span>      <span class="l l-Scalar l-Scalar-Plain">Hello world!</span>
+<span class="nt">date</span><span class="p">:</span>       <span class="l l-Scalar l-Scalar-Plain">07-02-2020</span>
+<span class="nt">category</span><span class="p">:</span>   <span class="l l-Scalar l-Scalar-Plain">news</span>
+<span class="nt">tags</span><span class="p">:</span>       <span class="l l-Scalar l-Scalar-Plain">hello,world,pelican</span>
+<span class="nt">status</span><span class="p">:</span>     <span class="l l-Scalar l-Scalar-Plain">published</span>
+<span class="nn">---</span>
+
+<span class="c1">## Hello world</span>
+
+<span class="l l-Scalar l-Scalar-Plain">Ceci est mon premier article ! [Pelican](https://docs.getpelican.com/en/stable/) fonctionne bien !</span>
+</code></pre></div>
+<p>Entre les tirets on a ce qu'on appelle les m&eacute;ta-donn&eacute;es de l'article. C'est la partie description technique de l'article. On y retrouve le titre qui sera affich&eacute;, la date, la cat&eacute;gorie et le statut de publication par exemple. En dessous on a le contenu de l'article au format markdown.</p>
+<p>Il ne reste plus qu'&agrave; compiler. Pour cela il suffit de faire : </p>
+<div class="highlight"><pre><span></span><code>make devserver
+</code></pre></div>
+<p><img alt="Pelican devserver" class="center img-zoomable" height="200px" src="https://nightlyside.github.io/blog/images/eportfolio/pelican_devserver.jpg"/></p>
+<p>Puis d'aller sur l'adresse : <a href="http://localhost:8000">http://localhost:8000</a> pour visualiser le r&eacute;sultat. Si aucune erreur ne s'affiche vous devriez avoir le r&eacute;sultat suivant avec votre article :</p>
+<p><img alt="Pelican homepage" class="center img-zoomable" height="400px" src="https://nightlyside.github.io/blog/images/eportfolio/pelican_home.jpg"/></p>
+<p>F&eacute;liciations ! vous avez &agrave; pr&eacute;sent un site web fonctionnel et qui se g&eacute;n&egrave;re &agrave; partir de fichiers &eacute;crits en markdown.</p>
+<h2 id="deployer sur github pages">D&eacute;ployer sur GitHub Pages</h2>
+<p>La premi&egrave;re &eacute;tape est d'&eacute;diter la configuration du fichier <code>publishconf.py</code> afin de changer la ligne suivante : </p>
+<div class="highlight"><pre><span></span><code><span class="n">SITEURL</span> <span class="o">=</span> <span class="s1">'https://skycrawler67.github.io'</span>
+</code></pre></div>
+<blockquote>
+<p>L'adresse du site est celle fournie par GitHub Pages : voir l'article <a href="https://nightlyside.github.io/blog/eportfolio/comment-heberger-un-site-web-simple-avec-github-pages/">comment h&eacute;berger un site avec GitHub Pages</a></p>
+</blockquote>
+<p>Il faut bien penser &agrave; pr&eacute;ciser le https ici car github pages est r&eacute;gl&eacute; par d&eacute;faut avec le protocol s&eacute;curis&eacute;.</p>
+<p>Ensuite on recompile pour v&eacute;rifier que tout fonctionne correctement mais cette fois-ci avec la configuration de publication :</p>
+<div class="highlight"><pre><span></span><code>make publish
+</code></pre></div>
+<p>Enfin pour d&eacute;ployer votre site vous pouvez soit utiliser la commande <code>make github</code> qui automatise tout si vous avez bien param&eacute;tr&eacute; votre projet.</p>
+<p>L'autre solution plus facile est de copier le contenu du dossier <em>output</em> et de le coller dans le dossier correspondant &agrave; votre repository.</p>
+<p>C'est tout ! Attendez quelques secondes et votre site est alors correctement d&eacute;ploy&eacute; sur github pages !</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Vous avez maintenant toutes les cartes en main pour cr&eacute;er votre propre site en y r&eacute;digeant son contenu.  </p>
+<p>Si vous souhaitez aller plus loin voici quelques pistes :</p>
+<ul>
+<li>Cr&eacute;er un th&egrave;me pour p&eacute;lican (celui par d&eacute;faut n'est pas tr&egrave;s personnel)</li>
+<li>&Eacute;crire des articles</li>
+<li>Ajouter des plugins &agrave; Pelican</li>
+<li>Ajouter un section de commentaires avec <a href="https://disqus.com/">Disqus</a></li>
+</ul>
+
+                    <!-- Footer -->
+                    <hr>
+                    <div class="container">
+                        <div class="row justify-content-sm-center">
+                            <p>© 2020 Alexandre Froehlich</p>
+                        </div>
+                    </div>
+                 </div>
+            </div>
+        </div>
+    </div>
+    <script>
+      // Listen to images after DOM content is fully loaded
+      document.addEventListener('DOMContentLoaded', function () {
+        new Zooming({
+          // options...
+        }).listen('.img-zoomable')
+      })
+    </script>
+</body>
+
+</html>

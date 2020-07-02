@@ -1,5 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Alexandre Froehlich</title><link href="https://nightlyside.github.io/blog/" rel="alternate"></link><link href="https://nightlyside.github.io/blog/feeds/all.atom.xml" rel="self"></link><id>https://nightlyside.github.io/blog/</id><updated>2020-07-01T00:00:00+02:00</updated><entry><title>Comment héberger un site web (simple) avec GitHub Pages</title><link href="https://nightlyside.github.io/blog/eportfolio/comment-heberger-un-site-web-simple-avec-github-pages/" rel="alternate"></link><published>2020-07-01T00:00:00+02:00</published><updated>2020-07-01T00:00:00+02:00</updated><author><name>Alexandre Froehlich</name></author><id>tag:nightlyside.github.io,2020-07-01:/blog/eportfolio/comment-heberger-un-site-web-simple-avec-github-pages/</id><summary type="html">
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Alexandre Froehlich</title><link href="https://nightlyside.github.io/blog/" rel="alternate"></link><link href="https://nightlyside.github.io/blog/feeds/all.atom.xml" rel="self"></link><id>https://nightlyside.github.io/blog/</id><updated>2020-07-02T00:00:00+02:00</updated><entry><title>Comment créer un site web statique avec Pelican</title><link href="https://nightlyside.github.io/blog/eportfolio/comment-creer-un-site-web-statique-avec-pelican/" rel="alternate"></link><published>2020-07-02T00:00:00+02:00</published><updated>2020-07-02T00:00:00+02:00</updated><author><name>Alexandre Froehlich</name></author><id>tag:nightlyside.github.io,2020-07-02:/blog/eportfolio/comment-creer-un-site-web-statique-avec-pelican/</id><summary type="html">
+&lt;p&gt;Je l'ai déjà écrit mais avoir un site web pour se mettre en avant est nécessaire aujourd'hui. Les générateurs de contenu statique représentant le futur du web, nous allons voir comment concevoir un site web statique avec &lt;a href="https://docs.getpelican.com"&gt;Pelican&lt;/a&gt;, un module pour python et l'intégrer dans GitHub Pages.
+&lt;/p&gt;</summary><content type="html">
+&lt;p&gt;Je l'ai d&amp;eacute;j&amp;agrave; &amp;eacute;crit mais avoir un site web pour se mettre en avant est n&amp;eacute;cessaire aujourd'hui. Les g&amp;eacute;n&amp;eacute;rateurs de contenu statique repr&amp;eacute;sentant le futur du web, nous allons voir comment concevoir un site web statique avec &lt;a href="https://docs.getpelican.com"&gt;Pelican&lt;/a&gt;, un module pour python et l'int&amp;eacute;grer dans GitHub Pages.
+&lt;/p&gt;
+&lt;hr/&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Ce site web est con&amp;ccedil;ut avec Pelican pour vous donner une id&amp;eacute;e du r&amp;eacute;sultat&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id="introduction"&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;Pour cr&amp;eacute;er un site web il existe pleins de moyens diff&amp;eacute;rents. Pour les novices, des services graphiques sont propos&amp;eacute;s pour concevoir des sites web en 1 pages, pour les plus curieux il existe des &lt;a href="https://fr.wikipedia.org/wiki/Syst%C3%A8me_de_gestion_de_contenu"&gt;CMS&lt;/a&gt; (Content Management System) qui permettent de de r&amp;eacute;diger des articles et de g&amp;eacute;rer le contenu. Cependant cette derni&amp;egrave;re solution est souvent lourde (ex: Wordpress) et peut potentiellement pr&amp;eacute;senter des failles.  &lt;/p&gt;
+&lt;p&gt;Un nouveau syst&amp;egrave;me est cependant en train de monter en puissance : les g&amp;eacute;n&amp;eacute;rateurs de contenus statiques. &lt;a href="https://docs.getpelican.com/en/stable/"&gt;Pelican&lt;/a&gt; est l'un d'entre eux. On pourrait aussi citer par exemple &lt;a href="https://gohugo.io/"&gt;Hugo&lt;/a&gt; (en Go) et &lt;a href="https://jekyllrb.com/"&gt;Jekyll&lt;/a&gt; (en Ruby). Pour cet article je vais me concentrer sur Pelican.&lt;/p&gt;
+&lt;h2 id="qu'est-ce que pelican ?"&gt;Qu'est-ce que Pelican ?&lt;/h2&gt;
+&lt;p&gt;&amp;laquo; &lt;em&gt;Pelican est un g&amp;eacute;n&amp;eacute;rateur de site statique, &amp;eacute;crit en Python&lt;/em&gt; &amp;raquo;&lt;/p&gt;
+&lt;p&gt;Pour ceux qui ne savent pas ce qu'est un g&amp;eacute;n&amp;eacute;rateur de site statique voici le fonctionnement simplifi&amp;eacute; de la r&amp;eacute;daction d'un article :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Le contenu de l'article est r&amp;eacute;dig&amp;eacute; en &lt;a href="https://fr.wikipedia.org/wiki/Markdown"&gt;Markdown&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Pelican r&amp;eacute;cup&amp;egrave;re ces fichiers et les transforme en page web en se basant sur des templates&lt;/li&gt;
+&lt;li&gt;Le site web complet est disponible dans le dossier &lt;em&gt;output&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Une fois les templates con&amp;ccedil;ut, il est alors tr&amp;egrave;s simple de rajouter un article ou une page sur le site ! C'est la toute la puissance de ces g&amp;eacute;n&amp;eacute;rateurs : le contenu est compil&amp;eacute; et statique donc l'acc&amp;egrave;s au site est tr&amp;egrave;s rapide et il n'y a pas de failles car le code source du site (les fichiers markdown et la configuration) ne sont pas directement accessibles.&lt;/p&gt;
+&lt;p&gt;Aussi est-ce que je vous ai parl&amp;eacute; des plugins ? Pelican peut &amp;ecirc;tre am&amp;eacute;lior&amp;eacute; en fonctions gr&amp;acirc;ce aux plugins &lt;a href="https://github.com/getpelican/pelican-plugins"&gt;disponibles ici&lt;/a&gt; (vous m&amp;ecirc;me pouvez cr&amp;eacute;er un plugin assez facilement)&lt;/p&gt;
+&lt;h2 id="creation du projet"&gt;Cr&amp;eacute;ation du projet&lt;/h2&gt;
+&lt;p&gt;Tout d'abord il faut installer Pelican. Je suppose que vous avez d&amp;eacute;j&amp;agrave; python 3 install&amp;eacute; sur votre machine avec &lt;em&gt;pip&lt;/em&gt;. Pour installer Pelican il suffit de lancer la commande (avec support pour les fichiers Markdown): &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;pip install pelican&lt;span class="o"&gt;[&lt;/span&gt;Markdown&lt;span class="o"&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Ensuite cr&amp;eacute;er un dossier qui contiendra votre site web et entrez dedans.&lt;br/&gt;
+On va maintenant cr&amp;eacute;er le squelette du site &amp;agrave; l'aide de la commande &lt;code&gt;pelican-quickstart&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Pelican quickstart" class="center img-zoomable" height="400px" src="https://nightlyside.github.io/blog/images/eportfolio/pelican_quickstart.jpg"/&gt;&lt;/p&gt;
+&lt;p&gt;Renseignez tous les champs demand&amp;eacute;. Pour information ce qui est renseign&amp;eacute; entre les crochets est la valeur par d&amp;eacute;faut si vous n'entrez rien.&lt;br/&gt;
+&lt;strong&gt;Attention :&lt;/strong&gt; n'oubliez pas de dire oui &amp;agrave; la question sur GitHub Pages en pr&amp;eacute;cisant qu'il s'agit de votre page personnelle. N'oubliez pas de dire oui &amp;agrave; la cr&amp;eacute;ation d'un fichier &lt;em&gt;Makefile&lt;/em&gt;. Ces parties vont nous simplifier le travail par la suite.&lt;/p&gt;
+&lt;p&gt;Vous devriez vous retrouver avec les fichiers suivants : &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;Makefile&lt;/em&gt; : fichier permettant de compiler le site web&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;content&lt;/em&gt; : le dossier qui contient les fichiers source&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;output&lt;/em&gt; : le dossier qui contient le site web compil&amp;eacute;&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;pelicanconf.py&lt;/em&gt; : fichier de configuration de base de Pelican (on va revenir dessus)&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;publishconf.py&lt;/em&gt; : fichier de configuration lors de la compilation pour la publication (ex: avec l'URL de github pages)&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;tasks.py&lt;/em&gt; : fichier des t&amp;acirc;ches pour publier sur github pages (on y touche pas du tout)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="ecrire un article"&gt;&amp;Eacute;crire un article&lt;/h2&gt;
+&lt;p&gt;Les fichiers de base sont bien cr&amp;eacute;es et pour l'instant la configuration de base est suffisante pour commencer &amp;agrave; r&amp;eacute;diger des articles. On s'occupera de la publication dans la section d'apr&amp;egrave;s.&lt;/p&gt;
+&lt;p&gt;Pour le premier article il faut cr&amp;eacute;er un fichier. Pour la nomenclature des noms j'aime bien cr&amp;eacute;er un dossier par cat&amp;eacute;gorie puis pr&amp;eacute;ciser chaque ficher sous la forme suivante : &lt;code&gt;ann&amp;eacute;e-mois-jour-titre-de-l-article.md&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Pour cet exemple je vais cr&amp;eacute;er dans un dossier &lt;code&gt;news&lt;/code&gt; l'article &lt;code&gt;2020-07-02-hello-world.md&lt;/code&gt; avec le contenu suivant :&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nn"&gt;---&lt;/span&gt;
+&lt;span class="nt"&gt;title&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;      &lt;span class="l l-Scalar l-Scalar-Plain"&gt;Hello world!&lt;/span&gt;
+&lt;span class="nt"&gt;date&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;       &lt;span class="l l-Scalar l-Scalar-Plain"&gt;07-02-2020&lt;/span&gt;
+&lt;span class="nt"&gt;category&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;   &lt;span class="l l-Scalar l-Scalar-Plain"&gt;news&lt;/span&gt;
+&lt;span class="nt"&gt;tags&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;       &lt;span class="l l-Scalar l-Scalar-Plain"&gt;hello,world,pelican&lt;/span&gt;
+&lt;span class="nt"&gt;status&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;     &lt;span class="l l-Scalar l-Scalar-Plain"&gt;published&lt;/span&gt;
+&lt;span class="nn"&gt;---&lt;/span&gt;
+
+&lt;span class="c1"&gt;## Hello world&lt;/span&gt;
+
+&lt;span class="l l-Scalar l-Scalar-Plain"&gt;Ceci est mon premier article ! [Pelican](https://docs.getpelican.com/en/stable/) fonctionne bien !&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Entre les tirets on a ce qu'on appelle les m&amp;eacute;ta-donn&amp;eacute;es de l'article. C'est la partie description technique de l'article. On y retrouve le titre qui sera affich&amp;eacute;, la date, la cat&amp;eacute;gorie et le statut de publication par exemple. En dessous on a le contenu de l'article au format markdown.&lt;/p&gt;
+&lt;p&gt;Il ne reste plus qu'&amp;agrave; compiler. Pour cela il suffit de faire : &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;make devserver
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;img alt="Pelican devserver" class="center img-zoomable" height="200px" src="https://nightlyside.github.io/blog/images/eportfolio/pelican_devserver.jpg"/&gt;&lt;/p&gt;
+&lt;p&gt;Puis d'aller sur l'adresse : &lt;a href="http://localhost:8000"&gt;http://localhost:8000&lt;/a&gt; pour visualiser le r&amp;eacute;sultat. Si aucune erreur ne s'affiche vous devriez avoir le r&amp;eacute;sultat suivant avec votre article :&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Pelican homepage" class="center img-zoomable" height="400px" src="https://nightlyside.github.io/blog/images/eportfolio/pelican_home.jpg"/&gt;&lt;/p&gt;
+&lt;p&gt;F&amp;eacute;liciations ! vous avez &amp;agrave; pr&amp;eacute;sent un site web fonctionnel et qui se g&amp;eacute;n&amp;egrave;re &amp;agrave; partir de fichiers &amp;eacute;crits en markdown.&lt;/p&gt;
+&lt;h2 id="deployer sur github pages"&gt;D&amp;eacute;ployer sur GitHub Pages&lt;/h2&gt;
+&lt;p&gt;La premi&amp;egrave;re &amp;eacute;tape est d'&amp;eacute;diter la configuration du fichier &lt;code&gt;publishconf.py&lt;/code&gt; afin de changer la ligne suivante : &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;SITEURL&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'https://skycrawler67.github.io'&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;blockquote&gt;
+&lt;p&gt;L'adresse du site est celle fournie par GitHub Pages : voir l'article &lt;a href="https://nightlyside.github.io/blog/eportfolio/comment-heberger-un-site-web-simple-avec-github-pages/"&gt;comment h&amp;eacute;berger un site avec GitHub Pages&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Il faut bien penser &amp;agrave; pr&amp;eacute;ciser le https ici car github pages est r&amp;eacute;gl&amp;eacute; par d&amp;eacute;faut avec le protocol s&amp;eacute;curis&amp;eacute;.&lt;/p&gt;
+&lt;p&gt;Ensuite on recompile pour v&amp;eacute;rifier que tout fonctionne correctement mais cette fois-ci avec la configuration de publication :&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;make publish
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Enfin pour d&amp;eacute;ployer votre site vous pouvez soit utiliser la commande &lt;code&gt;make github&lt;/code&gt; qui automatise tout si vous avez bien param&amp;eacute;tr&amp;eacute; votre projet.&lt;/p&gt;
+&lt;p&gt;L'autre solution plus facile est de copier le contenu du dossier &lt;em&gt;output&lt;/em&gt; et de le coller dans le dossier correspondant &amp;agrave; votre repository.&lt;/p&gt;
+&lt;p&gt;C'est tout ! Attendez quelques secondes et votre site est alors correctement d&amp;eacute;ploy&amp;eacute; sur github pages !&lt;/p&gt;
+&lt;h2 id="conclusion"&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;Vous avez maintenant toutes les cartes en main pour cr&amp;eacute;er votre propre site en y r&amp;eacute;digeant son contenu.  &lt;/p&gt;
+&lt;p&gt;Si vous souhaitez aller plus loin voici quelques pistes :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Cr&amp;eacute;er un th&amp;egrave;me pour p&amp;eacute;lican (celui par d&amp;eacute;faut n'est pas tr&amp;egrave;s personnel)&lt;/li&gt;
+&lt;li&gt;&amp;Eacute;crire des articles&lt;/li&gt;
+&lt;li&gt;Ajouter des plugins &amp;agrave; Pelican&lt;/li&gt;
+&lt;li&gt;Ajouter un section de commentaires avec &lt;a href="https://disqus.com/"&gt;Disqus&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><category term="eportfolio"></category><category term="web"></category><category term="portfolio"></category><category term="python"></category></entry><entry><title>Comment héberger un site web (simple) avec GitHub Pages</title><link href="https://nightlyside.github.io/blog/eportfolio/comment-heberger-un-site-web-simple-avec-github-pages/" rel="alternate"></link><published>2020-07-01T00:00:00+02:00</published><updated>2020-07-01T00:00:00+02:00</updated><author><name>Alexandre Froehlich</name></author><id>tag:nightlyside.github.io,2020-07-01:/blog/eportfolio/comment-heberger-un-site-web-simple-avec-github-pages/</id><summary type="html">
 &lt;p&gt;Avoir un site web à son nom est non seulement un gros plus dans le monde du numérique, mais il peut même être nécessaire pour décrocher certains emplois.
 Grâce à GitHub Pages il est facile de créer un site statique et de l'héberger sur leurs serveurs, c'est ce que nous allons voir dans cet article.
 &lt;/p&gt;</summary><content type="html">
