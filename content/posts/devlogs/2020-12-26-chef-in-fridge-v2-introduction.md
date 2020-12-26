@@ -26,15 +26,15 @@ L'application peut très vite devenir large et je risque fortement de me perdre 
 
 Pour trouver ces exigences on peut commencer par la phrase "_L'application doit_" :
 
-1. permettre à un utilisateur de donner les ingrédients qu'il a et retourner des recettes en conséquences
+1. permettre à un utilisateur de donner les ingrédients qu'il a et retourner des recettes en conséquence
 2. enregistrer et afficher des recettes tirées d'internet ou enregistrées par les utilisateurs
-3. être accessible sur un navigateur web (et pourquoi par une application mobile) à n'importe quel moment
+3. être accessible sur un navigateur web (et pourquoi pas une application mobile) à n'importe quel moment
 
 ### Structure
 
 Pour répondre à ces exigences il faut penser à la façon dont le projet va s'articuler. Quelles sont les briques nécessaires à la réalisation de ce projet ?
 
-Faisons la liste des élements nécessaires. On va pouvoir ensuite les mettres sur un schéma qui donnera leurs relations respectives.
+Faisons la liste des élements nécessaires. On va pouvoir ensuite les mettre sur un schéma qui donnera leurs relations respectives.
 
 Il nous faut :
 
