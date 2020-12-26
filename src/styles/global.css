@@ -1,0 +1,51 @@
+:root {
+  @apply dark;
+}
+
+* {
+  font-family: Inter, sans-serif;
+  transition: background-color 1s ease;
+  transition: color 0.5s ease;
+}
+
+.dark {
+  --color-bg-primary: #23252a;
+  --color-bg-secondary: #1c2024;
+  --color-bg-navbar: #15181b;
+  --color-bg-code: #0f1113;
+  --color-text-primary: #fbfefc;
+  --color-text-secondary: #ebf5ed;
+  --color-text-accent: #60c65e;
+}
+
+.light {
+  --color-bg-primary: #fbfefc;
+  --color-bg-secondary: #ebf5ed;
+  --color-bg-navbar: #15181b;
+  --color-bg-code: #e8e8ea;
+  --color-text-primary: #23252a;
+  --color-text-secondary: #3a3d46;
+  --color-text-accent: #2bb038;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto&family=Inter&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fira+Mono&display=swap");
+
+@font-face {
+  font-family: "Roboto";
+  src: url("/fonts/Roboto-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Open Sans";
+  src: url("/fonts/OpenSans-Regular.ttf") format("truetype");
+}
+
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+.smallcaps {
+  font-variant: small-caps;
+}

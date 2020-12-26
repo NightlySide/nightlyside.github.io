@@ -1,0 +1,17 @@
+.title-underline {
+  border-bottom: 0.4rem solid var(--color-text-accent);
+}
+
+.bg-showcard {
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)), var(--color-bg-primary);
+}
+
+.underline-on-hover:hover .to-underline {
+  text-decoration: underline;
+}
+
+@media (max-height: 700px) {
+  .navbar-socials {
+    display: none !important;
+  }
+}
