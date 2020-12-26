@@ -39,7 +39,7 @@ Faisons la liste des élements nécessaires. On va pouvoir ensuite les mettre su
 Il nous faut :
 
 -   Un moyen d'enregistrer des données (pour les recettes et les ingrédients) -> exigence 1
--   Un moyen de traiter les données, d'y accèder, de chercher des recettes à partir d'ingrédients et d'enregistrer des recettes -> exigence 2
+-   Un moyen de traiter les données, d'y accéder, de chercher des recettes à partir d'ingrédients et d'enregistrer des recettes -> exigence 2
 -   Une interface utilisateur pour accéder à ces données et les modifier -> exigence 3
 
 Maintenant que ces éléments sont listés, je dessine le schéma :
