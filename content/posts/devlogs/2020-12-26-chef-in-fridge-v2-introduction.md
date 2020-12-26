@@ -58,7 +58,7 @@ Pour le serveur backend je pense utiliser python avec comme bibliothèque [Flask
 
 ![Illustration de firebase](../../assets/posts/devlogs/flask_python.jpg)
 
-Enfin pour le frontend ou plutôt l'interface utilisateur j'hésitais entre [React](https://fr.reactjs.org/) et [Svelte](https://svelte.dev/), ce dernier étant tout récent et pour l'instant moins populaire, je vais très probablement partir sur une interface réalisée avec React. 
+Enfin pour le frontend ou plutôt l'interface utilisateur j'hésitais entre [React](https://fr.reactjs.org/) et [Svelte](https://svelte.dev/), ce dernier étant tout récent et pour l'instant moins populaire, je vais très probablement partir sur une interface réalisée avec React.
 
 ![Illustration de firebase](../../assets/posts/devlogs/react.jpg)
 
@@ -66,7 +66,6 @@ Pour l'application mobile, utilisant React, le choix logique est de passer par R
 
 ## Conclusion
 
-Cette courte introduction est le point de départ vers ce nouveau projet.  Je posterais de nouveaux articles au fur et à mesure de mon avancée sur ce projet. 
+Cette courte introduction est le point de départ vers ce nouveau projet. Je posterais de nouveaux articles au fur et à mesure de mon avancée sur ce projet.
 
 Mon objectif est de voir toutes les facettes du développement logiciel et ce, en utilisant des technologies modernes tout en pensant à la **performance** et à **l'accessibilité**.
-
