@@ -43,17 +43,29 @@
 */
 
 .prose pre * {
-  @apply text-base !important;
+	@apply text-base !important;
 }
 
 .prose blockquote {
-  @apply py-2 pr-2;
+	@apply py-2 pr-2;
 }
 
 .prose .anchor {
-  @apply text-accent fill-current mt-2 pr-2;
+	@apply text-accent fill-current mt-2 pr-2;
 }
 
 .prose blockquote p:first-of-type::before {
-  content: none !important;
+	content: none !important;
+}
+
+.prose code {
+	@apply px-2 text-sm !important;
+}
+
+.prose code::before {
+	content: none !important;
+}
+
+.prose code::after {
+	content: none !important;
 }
