@@ -62,10 +62,18 @@
 	@apply px-2 text-sm !important;
 }
 
+.prose pre code {
+	@apply px-0 !important;
+}
+
 .prose code::before {
 	content: none !important;
 }
 
 .prose code::after {
 	content: none !important;
+}
+
+.prose img {
+	@apply mx-auto;
 }
