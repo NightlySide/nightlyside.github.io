@@ -45,7 +45,7 @@ L'exemple précédent permet d'additionner les valeurs contenues dans les regist
 
 **Comment écrire une instruction à seulement 2 arguments ?**
 
-On garde la même structure de données sauf que cette fois-ci on prend les 2 derniers caractères que l'on considère être 1 seul argument 👍
+On garde la même structure de données sauf que cette fois-ci on prend les 2 derniers caractères que l'on considère être 1 seul argument :
 
 ![Structure instruction à 2 arguments](../../assets/posts/python/instruction-2-args.drawio.png)
 
