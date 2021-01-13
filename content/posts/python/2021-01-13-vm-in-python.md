@@ -117,7 +117,7 @@ Prenons un exemple :
 # On a ainsi récupéré le numéro d'instruction
 (2015 & 0xF000) >> 12 = 2
 # Idem pour l'adresse de registre 1
-(2015 & 0xF00) >> 8 = 2
+(2015 & 0xF00) >> 8 = 0
 ```
 
 > 📝 **A retenir** : Un masque est une opération binaire en tout ou rien. En hexadécimal les valeurs vont de `0` à `F`. Ainsi si on souhaite conserver un bit on met `F` sur le masque sinon `0`.
