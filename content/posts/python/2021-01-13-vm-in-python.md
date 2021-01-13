@@ -61,18 +61,18 @@ Python étant un langage orienté objet, ma machine virtuelle sera donc un objet
 
 ```python
 class VM:
-  def __init__(self, num_reg=4):
-    # initialisation de tous les registres
-    self.reg = [0 for _ in range(num_reg)]
-    # compteur du programme
-    # pour savoir quelle instruction appeler
-    self.pc = 0
-    # le programme à exécuter
-    self.prog = None
-    # les argumens d'instruction
-    self.reg1 = self.reg2 = self.reg3 = self.imm = None
-    # Variable d'exécution
-    self.running = False
+    def __init__(self, num_reg=4):
+        # initialisation de tous les registres
+        self.reg = [0 for _ in range(num_reg)]
+        # compteur du programme
+        # pour savoir quelle instruction appeler
+        self.pc = 0
+        # le programme à exécuter
+        self.prog = None
+        # les argumens d'instruction
+        self.reg1 = self.reg2 = self.reg3 = self.imm = None
+        # Variable d'exécution
+        self.running = False
 ```
 
 Maintenant on peut coder chacune des étapes de la simulation comme étant des méthodes de la classe `VM`.
@@ -81,22 +81,22 @@ On commence par la récupération de la prochaine instruction à exécuter :
 
 ```python
 def fetch(self):
-  instruction = self.prog[self.pc]
-  # on incrémente le compteur
-  self.pc += 1
-  return instruction
+    instruction = self.prog[self.pc]
+    # on incrémente le compteur
+    self.pc += 1
+    return instruction
 ```
 
 Ensuite on va décoder l'instruction pour récupérer les arguments de la même manière que vu dans le point précédent :
 
 ```python
 def decode(self, instr):
-  instrNum  = (instr & 0xF000) >> 12
-  self.reg2 = (instr & 0xF0  ) >>  4;
-  self.reg1 = (instr & 0xF00 ) >>  8;
-  self.reg3 = (instr & 0xF   )
-  self.imm  = (instr & 0xFF  )
-  return instrNum
+    instrNum  = (instr & 0xF000) >> 12
+    self.reg1 = (instr & 0xF00 ) >>  8;
+    self.reg2 = (instr & 0xF0  ) >>  4;
+    self.reg3 = (instr & 0xF   )
+    self.imm  = (instr & 0xFF  )
+    return instrNum
 ```
 
 Ce qu'on vient de faire est assez simple mais peut paraître un peu compliqué à comprendre à cause des opérations binaires effectuées sur l'instruction.
@@ -115,6 +115,9 @@ Prenons un exemple :
 # On décale pour récupérer le numéro
 2000 >> 12 = 2
 # On a ainsi récupéré le numéro d'instruction
+(2015 & 0xF000) >> 12 = 2
+# Idem pour l'adresse de registre 1
+(2015 & 0xF00) >> 8 = 2
 ```
 
 > 📝 **A retenir** : Un masque est une opération binaire en tout ou rien. En hexadécimal les valeurs vont de `0` à `F`. Ainsi si on souhaite conserver un bit on met `F` sur le masque sinon `0`.
@@ -156,7 +159,7 @@ def run(self, prog):
 
 ## Conclusion
 
-Et c'est tout pour la machine virtuelle ! Il ne reste plus qu'à écrire un programme et à le lancer on c'est terminé !
+Et c'est tout pour la machine virtuelle ! Il ne reste plus qu'à écrire un programme et à le lancer.. c'est terminé !
 
 ```python
 prog = [0x1064, 0x11C8, 0x12FA, 0x2301, 0x3132, 0x2201, 0x0000]
