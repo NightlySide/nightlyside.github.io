@@ -4,7 +4,7 @@ date: 2021-01-14T13:08:00
 layout: "post"
 tags: ["python", "assembleur", "vm", "compilation"]
 image: "../../assets/posts/python/arch_ordi.jpg"
-published: true
+published: false
 ---
 
 Nous allons maintenant améliorer la machine virtuelle que l'on a conçut dans l'article précédent et ajoutant des fonctionnalités et en redéfinissant les objectifs attendus.

@@ -105,10 +105,6 @@ module.exports = {
 				}
 			}
 		},
-		{
-			resolve: "gatsby-plugin-exclude",
-			options: { paths: ["/TwitterTrendR/**"] }
-		},
 		`gatsby-plugin-react-helmet`,
 		`gatsby-plugin-sharp`,
 		`gatsby-plugin-typescript`,
